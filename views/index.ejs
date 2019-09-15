@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form id="sandwich">
+        <input type="text" name="name" id="name" placeholder="Votre nom">
+        <input type="button" id="button" value="Test du bouton">
+        <input type="button" id="submit" value="Envoyer le formulaire">
+    </form>
+</body>
+<script src="../js/jquery-3.4.1.min.js"></script>
+<script>
+    var clicked = false;
+
+    $('#button').click(()=>{
+        clicked = true
+    });
+
+    $('#submit').click(()=>{
+        var name = $('#name').val();
+
+        $.post('/',{postname:name,postclicked:clicked});
+    });
+</script>
+</html>
