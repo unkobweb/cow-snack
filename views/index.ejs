@@ -1,30 +1,293 @@
 <!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <form id="sandwich">
-        <input type="text" name="name" id="name" placeholder="Votre nom">
-        <input type="button" id="button" value="Test du bouton">
-        <input type="button" id="submit" value="Envoyer le formulaire">
-    </form>
-</body>
-<script src="../js/jquery-3.4.1.min.js"></script>
-<script>
-    var clicked = false;
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" type="icon/png" href="image/favicon.png"/>
+		<title>Cow-snack</title>
+		<link rel="stylesheet" href="css/style.css">
+		<script src="../js/jquery-3.4.1.min.js"></script>
+	</head>
+	<body>
+		<header></header>
 
-    $('#button').click(()=>{
-        clicked = true
-    });
+		<section id="choiceSandwich">
+			<a href="#cowmenu"></a>
+			<a href="#cowcustom"></a>
+		</section>
+		<section id="cowmenu">
+			<form>
 
-    $('#submit').click(()=>{
-        var name = $('#name').val();
+			<!-- Menus -->
+				<div>
+					<h3>Nos Menus</h3>
+				</div>
 
-        $.post('/',{postname:name,postclicked:clicked});
-    });
-</script>
-</html>
+				<div id="menu" class="flex-row">
+  					<div>
+  						<button type="button" type="button" id="cow-classique"><img src="img/steak.png" width="40vw"></button>
+  						<div class="popupfood">
+  							<p>Jambon</p>
+  							<p>Beurre</p>
+  						</div>
+  						<p>Cow-Classique</p>
+  					</div>
+  					<div>
+  						<button type="button" id="cow-love"><img src="img/jambon.png"  width="40vw"></button>
+  						<p>Cow-love</p>
+  					</div>
+  					<div>
+  				    	<button type="button" id="cow-good"><img src="img/emince.png"  width="40vw"></button>
+  				    	<p>Cow Good</p>
+  					</div>
+  					<div>
+	  				    <button type="button" id="cow-healthy"><img src="img/nuggets.png"  width="40vw"></button>
+	  				    <p>Cow-healthy</p>
+  					</div>
+  					<div>
+  						<button type="button" id="cow-pasboy"><img src="img/merguez.png"  width="40vw"></button>
+  						<p>Cow Pasboy</p>
+  					</div>
+  					<div>
+  						<button type="button" id="cow-girl"><img src="img/merguez.png"  width="40vw"></button>
+  						<p>Cow-girl</p>
+  					</div>
+  					<div>
+  						<button type="button" id="cow-work"><img src="img/merguez.png"  width="40vw"></button>
+  						<p>Cow Work</p>
+  					</div>
+  					<div>
+  						<button type="button" id="cow-ma"><img src="img/merguez.png"  width="40vw"></button>
+  						<p>Cow-Ma</p>
+  					</div>
+  					<div>
+  						<button type="button" id="cow-without-cow"><img src="img/merguez.png"  width="40vw"></button>
+  						<p>Cow Without-Cow</p>
+  					</div>
+  				</div>
+
+
+			<!-- Taille -->
+				<h3>Tailles</h3>
+				<div class="flex-row wrap size">
+					<div>
+						<input type="radio" name="taille" value="small" id="small">
+						<label for="small">S</label>
+						<p>Tiers</p>
+					</div>
+					<div>
+						<input type="radio" name="taille" value="medium" id="medium">
+						<label for="medium">M</label>
+						<p>Demi</p>
+					</div>
+					<div>
+						<input type="radio" name="taille" value="large" id="large">
+						<label for="large">L</label>
+						<p>Baguette</p>
+					</div>
+				</div>
+
+			<!-- Prix -->
+				<h4>Total</h4>
+				<p class="prix">3000€</p>
+
+			<!-- Nom du Sandwich -->
+				<p>Donnez un nom à votre sandwich</p>
+				<input type="" name="" class="name">
+				<p>Le nom du sandwich doit commencer par COW-</p>
+
+				<input type="submit" name="" value="😋Poursuivre la commande" id="menusubmit">
+			</form>
+		</section>
+		<section id="cowcustom">
+			<form>
+
+			<!-- Viandes -->
+				<div class="flex-row">
+					<h3>Viandes</h3><h5> &nbsp(2 max)</h5>
+				</div>
+				<div class="flex-row">
+	  				<div id="viande" class="flex-row">
+	  					<div>
+	  						<button type="button" class="selecteurViande" value="selectedSteak"><img src="img/steak.png" width="40vw"></button>
+	  						<p>Steak</p>
+	  					</div>
+	  					<div>
+	  						<button type="button" class="selecteurViande" value="selectedJambon"><img src="img/jambon.png"  width="40vw"></button>
+	  						<p>Jambon</p>
+	  					</div>
+	  					<div>
+	  				    	<button type="button" class="selecteurViande" value="selectedEmince"><img src="img/emince.png"  width="40vw"></button>
+	  				    	<p>Émincé de Poulet</p>
+	  					</div>
+	  					<div>
+		  				    <button type="button" class="selecteurViande" value="selectedNuggets"><img src="img/nuggets.png"  width="40vw"></button>
+		  				    <p>Nuggets</p>
+	  					</div>
+	  					<div>
+	  						<button type="button" class="selecteurViande" value="selectedMerguez"><img src="img/merguez.png"  width="40vw"></button>
+	  						<p>Merguez</p>
+	  					</div>
+	  				</div>
+	      			<div class="cont-compteur">
+	      				<div class="compteur" id="compteurViande">0</div>
+	      				<p class="limit">Maximum Atteint😔</p>      				
+	      			</div>
+				</div>
+
+
+			<!-- Suppléments -->
+				<div class="flex-row"><h3>Suppléments</h3><h5> &nbsp(2 max)</h5></div>
+				<div class="flex-row">
+					<div id="supplement" class="flex-row">
+						<div>
+							<button type="button" id="cheddar"><img src="img/cheddar.png" width="40vw"></button>
+							<p>Cheddar</p>
+						</div>
+						<div>
+	      					<button type="button" id="bacon"><img src="img/bacon.png"  width="40vw"></button>
+	      					<p>Bacon</p>
+	      				</div>
+						<div>
+	      					<button type="button" id="salade"><img src="img/salade.png"  width="40vw"></button>
+	      					<p>Salade</p>
+	      				</div>
+						<div>
+	      					<button type="button" id="gruyère"><img src="img/gruyere.png"  width="40vw"></button>
+	      					<p>Gruyère</p>
+						</div>
+						<div>
+							<button type="button" id="tomates"><img src="img/tomates.png"  width="40vw"></button>
+							<p>Tomates</p>
+						</div>
+	      				<div>
+	      					<button type="button" id="lardons"><img src="img/lardons.png"  width="40vw"></button>
+	      				   	<p>Lardons</p>
+	      				</div>
+	      			</div>
+	      			<div class="cont-compteur">
+	      				<div class="compteur">0</div>
+	      				<p class="limit">Maximum Atteint😔</p>      				
+	      			</div>
+				</div>
+
+
+			<!-- Sauces -->
+				<div class="flex-row">
+					<h3>Sauces</h3><h5> &nbsp(3 max)</h5>
+				</div>
+				<div class="flex-row">
+					<div id="sauce" class="flex-row">				
+    					<div>
+    					    <button type="button" id="ketchup"><img src="img/ketchup.png" width="40vw"></button>
+    					    <p>Ketchup</p>
+    					</div>
+    					<div>
+    				    	<button type="button" id="mayo"><img src="img/mayo.png"  width="40vw"></button>
+    				    	<p>Mayonnaise</p>
+    				    </div>
+    				    <div>
+    				    	<button type="button" id="bbq"><img src="img/bbq.png"  width="40vw"></button>
+    				    	<p>Barbecue</p>
+    				    </div>
+    				    <div>
+    				    	<button type="button" id="biggy"><img src="img/biggy.png"  width="40vw"></button>
+    				    	<p>Biggy</p>
+    					</div>
+    					<div>
+    					    <button type="button" id="curry"><img src="img/curry.png"  width="40vw"></button>
+    					    <p>Curry</p>
+    					</div>
+    				</div>
+    				<div class="cont-compteur">
+	      				<div class="compteur">0</div>
+	      				<p class="limit">Maximum Atteint😔</p>      				
+	      			</div>
+				</div>
+
+			<!-- Taille -->
+				<h3>Tailles</h3>
+				<div class="flex-row wrap size">
+					<div>
+						<input type="radio" name="taille" value="small" id="small">
+						<label for="small">S</label>
+						<p>Tiers</p>
+					</div>
+					<div>
+						<input type="radio" name="taille" value="medium" id="medium">
+						<label for="medium">M</label>
+						<p>Demi</p>
+					</div>
+					<div>
+						<input type="radio" name="taille" value="large" id="large">
+						<label for="large">L</label>
+						<p>Baguette</p>
+					</div>
+				</div>
+			<!-- Prix -->
+				<h4>Total</h4>
+				<p class="prix">3000€</p>
+
+			<!-- Nom du Sandwich -->
+				<p>Donnez un nom à votre sandwich</p>
+				<input type="" name="" class="name">
+				<p>Le nom du sandwich doit commencer par COW-</p>
+
+				<input type="submit" name="" value="😋Poursuivre la commande" id="customsubmit">
+			</form>
+		</section>
+
+
+		<footer></footer>
+		<script type="text/javascript">
+
+			var commande = {
+				name: '',
+				phone: '',
+				ingredients: {
+					meat: {},
+					suppl: {},
+					sauce: {},
+					drink: {},
+					dessert: {}
+				}
+			}
+
+			// Viandes
+			var selectedSteak 	= false;
+			var selectedJambon 	= false;
+			var selectedEmince 	= false;
+			var selectedNuggets = false;
+			var selectedMerguez = false;
+
+			var selectedMeat;
+
+			var meatChoice = 0;
+
+			function print(){
+				$('#compteurViande').text(meatChoice);
+				console.log('Nb viande = '+meatChoice);
+				console.log('Steak : '+selectedSteak);
+				console.log('Jambon : '+selectedJambon);
+				console.log('Emince : '+selectedEmince);
+				console.log('Nuggets : '+selectedNuggets);
+				console.log('Merguez : '+selectedMerguez);
+			}
+
+			$('.selecteurViande').click(function(){
+
+				if (eval(this.value + " ==  false") && meatChoice < 2){
+					eval(this.value + " = true");
+					meatChoice++;
+				} else {
+					if (eval(this.value + " == true")){
+						meatChoice--;
+					}
+					eval(this.value + " = false");
+				}
+				print();
+			});
+
+		</script>
+	</body>
+</html> 

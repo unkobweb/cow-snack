@@ -1,0 +1,95 @@
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	padding: 0;
+	margin: 0;
+	display: flex;
+	justify-content: center;
+}
+
+p{
+	margin: 0;
+}
+
+.flex-row {
+	display: flex;
+	flex-direction: row;
+}
+
+.flew-col {
+	display: flex;
+	flex-direction: column;
+}
+
+.wrap{
+	flex-wrap: wrap;
+}
+
+
+
+
+/*COW CUSTOM*/
+#cowcustom button {
+	width: 100px;
+	height: 100px;
+	margin: 20px;
+	border: 3px solid #FFA504;
+	border-radius: 25px;
+	background-color: #FFFFFF;
+}
+#cowcustom button img {
+	filter: drop-shadow(0px 0px 10px #DADADA);
+}
+
+#viande div, #supplement div, #sauce div {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#viande p, #supplement p, #sauce p {
+	width: 100px;
+	text-align: center;
+}
+
+.cont-compteur {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.compteur {
+	background-color: #FFA504;
+	width: 50px;
+	height: 50px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.size div{
+	margin: 50px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.size label{
+	background-color: #FFA504;
+	display: block;
+	width: 50px;
+	height: 50px;
+	border-radius: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#customsubmit{
+	background-color: #FFA504;
+	border: none;
+}
