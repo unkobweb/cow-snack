@@ -131,7 +131,7 @@
 	  				</div>
 	      			<div class="cont-compteur">
 	      				<div class="compteur" id="compteurViande">0</div>
-	      				<p class="limit">Maximum Atteint😔</p>      				
+	      				<p id="viandeLimit"></p>      				
 	      			</div>
 				</div>
 
@@ -141,33 +141,33 @@
 				<div class="flex-row">
 					<div id="supplement" class="flex-row">
 						<div>
-							<button type="button" id="cheddar"><img src="img/cheddar.png" width="40vw"></button>
+							<button type="button" class="selecteurSupp" value="selectedCheddar"><img src="img/cheddar.png" width="40vw"></button>
 							<p>Cheddar</p>
 						</div>
 						<div>
-	      					<button type="button" id="bacon"><img src="img/bacon.png"  width="40vw"></button>
+	      					<button type="button" class="selecteurSupp" value="selectedBacon"><img src="img/bacon.png"  width="40vw"></button>
 	      					<p>Bacon</p>
 	      				</div>
 						<div>
-	      					<button type="button" id="salade"><img src="img/salade.png"  width="40vw"></button>
+	      					<button type="button" class="selecteurSupp" value="selectedSalade"><img src="img/salade.png"  width="40vw"></button>
 	      					<p>Salade</p>
 	      				</div>
 						<div>
-	      					<button type="button" id="gruyère"><img src="img/gruyere.png"  width="40vw"></button>
+	      					<button type="button" class="selecteurSupp" value="selectedGruyere"><img src="img/gruyere.png"  width="40vw"></button>
 	      					<p>Gruyère</p>
 						</div>
 						<div>
-							<button type="button" id="tomates"><img src="img/tomates.png"  width="40vw"></button>
+							<button type="button" class="selecteurSupp" value="selectedTomate"><img src="img/tomates.png"  width="40vw"></button>
 							<p>Tomates</p>
 						</div>
 	      				<div>
-	      					<button type="button" id="lardons"><img src="img/lardons.png"  width="40vw"></button>
+	      					<button type="button" class="selecteurSupp" value="selectedLardon"><img src="img/lardons.png"  width="40vw"></button>
 	      				   	<p>Lardons</p>
 	      				</div>
 	      			</div>
 	      			<div class="cont-compteur">
-	      				<div class="compteur">0</div>
-	      				<p class="limit">Maximum Atteint😔</p>      				
+	      				<div class="compteur" id="compteurSupp">0</div>
+	      				<p id="suppLimit"></p>      				
 	      			</div>
 				</div>
 
@@ -179,29 +179,29 @@
 				<div class="flex-row">
 					<div id="sauce" class="flex-row">				
     					<div>
-    					    <button type="button" id="ketchup"><img src="img/ketchup.png" width="40vw"></button>
+    					    <button type="button" class="selecteurSauce" value="selectedKetchup"><img src="img/ketchup.png" width="40vw"></button>
     					    <p>Ketchup</p>
     					</div>
     					<div>
-    				    	<button type="button" id="mayo"><img src="img/mayo.png"  width="40vw"></button>
+    				    	<button type="button" class="selecteurSauce" value="selectedMayo"><img src="img/mayo.png"  width="40vw"></button>
     				    	<p>Mayonnaise</p>
     				    </div>
     				    <div>
-    				    	<button type="button" id="bbq"><img src="img/bbq.png"  width="40vw"></button>
+    				    	<button type="button" class="selecteurSauce" value="selectedBBQ"><img src="img/bbq.png"  width="40vw"></button>
     				    	<p>Barbecue</p>
     				    </div>
     				    <div>
-    				    	<button type="button" id="biggy"><img src="img/biggy.png"  width="40vw"></button>
+    				    	<button type="button" class="selecteurSauce" value="selectedBiggy"><img src="img/biggy.png"  width="40vw"></button>
     				    	<p>Biggy</p>
     					</div>
     					<div>
-    					    <button type="button" id="curry"><img src="img/curry.png"  width="40vw"></button>
+    					    <button type="button" class="selecteurSauce" value="selectedCurry"><img src="img/curry.png"  width="40vw"></button>
     					    <p>Curry</p>
     					</div>
     				</div>
     				<div class="cont-compteur">
-	      				<div class="compteur">0</div>
-	      				<p class="limit">Maximum Atteint😔</p>      				
+	      				<div class="compteur" id="compteurSauce">0</div>
+	      				<p id="sauceLimit"></p>
 	      			</div>
 				</div>
 
@@ -246,7 +246,7 @@
 				phone: '',
 				ingredients: {
 					meat: {},
-					suppl: {},
+					supp: {},
 					sauce: {},
 					drink: {},
 					dessert: {}
@@ -259,33 +259,68 @@
 			var selectedEmince 	= false;
 			var selectedNuggets = false;
 			var selectedMerguez = false;
+			var allMeat = ['selectedSteak', 'selectedJambon', 'selectedEmince', 'selectedNuggets', 'selectedMerguez'];
 
-			var selectedMeat;
+			// Suppléments
+			var selectedCheddar = false;
+			var selectedBacon 	= false;
+			var selectedSalade 	= false;
+			var selectedGruyere = false;
+			var selectedTomate 	= false;
+			var selectedLardon 	= false;
+			var allSupp = ['selectedCheddar', 'selectedBacon', 'selectedSalade', 'selectedGruyere', 'selectedTomate', 'selectedLardon'];
 
-			var meatChoice = 0;
+			//Sauces
+			var selectedKetchup = false;
+			var selectedMayo 	= false;
+			var selectedBBQ 	= false;
+			var selectedBiggy 	= false;
+			var selectedCurry 	= false;
+			var selectedBBQMiel	= false;
+			var allSauce = ['selectedKetchup', 'selectedMayo', 'selectedBBQ', 'selectedBiggy', 'selectedCurry', 'selectedBBQMiel'];
 
-			function print(){
-				$('#compteurViande').text(meatChoice);
-				console.log('Nb viande = '+meatChoice);
-				console.log('Steak : '+selectedSteak);
-				console.log('Jambon : '+selectedJambon);
-				console.log('Emince : '+selectedEmince);
-				console.log('Nuggets : '+selectedNuggets);
-				console.log('Merguez : '+selectedMerguez);
-			}
+			var viandeChoice = 0;
 
-			$('.selecteurViande').click(function(){
+			var suppChoice = 0;
 
-				if (eval(this.value + " ==  false") && meatChoice < 2){
+			var sauceChoice = 0;
+
+			var allType = ['allMeat', 'allSupp', 'allSauce'];
+
+			function updateCommand(){
+				allType.forEach(element => {
+					var ingredient = element.substring(3).toLowerCase();
+					var ingredientNb = 0;
+					eval(element).forEach(element => {
+						if (eval(element + " == true")){
+							eval("commande.ingredients."+ingredient+"[ingredient+ingredientNb.toString()] = element.substring(8)");
+							ingredientNb++;
+						}
+					});
+				});
+				console.log(commande);
+			};
+
+			$('.selecteurViande, .selecteurSupp, .selecteurSauce').click(function(){
+				if (eval(this.value + " ==  false") && eval(this.className.substring(9).toLowerCase()+"Choice" + "< 2")){
 					eval(this.value + " = true");
-					meatChoice++;
+					eval(this.className.substring(9).toLowerCase()+"Choice" + "++");
 				} else {
 					if (eval(this.value + " == true")){
-						meatChoice--;
+						eval(this.className.substring(9).toLowerCase()+"Choice" + "--");
 					}
 					eval(this.value + " = false");
 				}
-				print();
+
+				if (eval(this.className.substring(9).toLowerCase()+"Choice" + "== 2")){
+					$('#'+this.className.substring(9).toLowerCase()+'Limit').text('Maximum Atteint😔');
+				} else {
+					$('#'+this.className.substring(9).toLowerCase()+'Limit').text('');
+				}
+
+				$('#compteur'+this.className.substring(9)).text(eval(this.className.substring(9).toLowerCase()+"Choice"));
+
+				updateCommand();
 			});
 
 		</script>
