@@ -29,10 +29,18 @@ body {
 	background-color: #F5F5F5;
 
 }
+a{
+	text-decoration: none;
+	color: #FFA504;
+}
 
 p{
 	margin: 0;
 	transform: scaleY(.95);
+}
+
+input {
+		outline-color: #FFA504;
 }
 
 strong{
@@ -59,16 +67,28 @@ strong{
 	width: 300px;
 }
 
+.line2 {
+	background-color: #DADADA;
+	height: 2px;
+	width: 360px;
+}
+
 
 
 /*Choix des sandwich*/
-#choiceSandwich {
+#choiceSandwich{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	margin-bottom: 200px;
 }
 
+#choiceSpe {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 100px;
+}
 .choicebutton {
 	width: 50vw;
 	display: flex;
@@ -83,25 +103,29 @@ strong{
 
 
 
-.presentation-sandwich {
+.presentation-sandwich, .presentationSpe {
 	width: 100%;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 }
-.presentation-sandwich > div {
+.presentation-sandwich > div, .presentationSpe > div {
 	margin-left: 100px;
 }
 
-.presentation-sandwich > img {
+.presentation-sandwich > img, .presentationSpe > img {
 	margin-right: 100px;
 	width: 500px;
 }
-.presentation-sandwich > div > h2 {
+.presentation-sandwich > div > h2, .presentationSpe > div > h2 {
 	font-size: 2.7rem;
 	color: #FFA504;
 	margin-bottom: 15px;
 	transform: scaleY(.97);
+}
+
+.presentationSpe > div > h2 {
+	font-size: 2.4rem;
 }
 .para-sand {
 	width: 500px;
@@ -110,6 +134,25 @@ strong{
 	font-size: 1.3rem;
 	opacity: .6;
 	line-height: 35px;
+}
+.paraSpe {
+	font-size: 1.2rem;
+	transform: scaleY(0.95);
+}
+.choiceSpe {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.choiceSpe > h3{
+	font-size: 2rem;
+	color: #303030;
+	opacity: .5;
+	margin-top: 200px;
+}
+
+.choiceSpe > h5 {
+	margin-bottom: 100px;
 }
 
 .choicebutton > a > div {
@@ -458,5 +501,11 @@ input:checked + label {
 	width: 420px;
 	height: 75px;
 	color: #F5F5F5;
+	font-weight: bold;
+}
+
+.red {
+	font-size: 1.7rem;
+	color: #EC632D;
 	font-weight: bold;
 }

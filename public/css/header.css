@@ -1,0 +1,40 @@
+header {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	width: 100vw;
+	margin-top: 40px;
+}
+
+header > div {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+header > div > a {
+	font-size: 1rem;
+	font-weight: bold;
+	margin-right: 45px;
+}
+#logo {
+	width: 167px;
+	height: 39px;
+	margin-left: 50px;
+}
+
+#panier{
+	width: 30px;
+	height: 30px;
+}
+.connexion {
+	width: 120px;
+	height: 40px;
+	border-radius: 10px;
+	background-color: #FFA504;
+	color: #F5F5F5;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

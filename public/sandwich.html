@@ -5,11 +5,26 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="icon" type="icon/png" href="img/favicon.png"/>
 		<title>Cow-snack</title>
+		<link rel="stylesheet" href="css/header.css">
+		<link rel="stylesheet" href="css/footer.css">
 		<link rel="stylesheet" href="css/style.css">
 <!-- 		<script src="../js/jquery-3.4.1.min.js"></script> -->
 	</head>
 	<body>
-		<header></header>
+		<header>
+			<img src="img/logo.png" id="logo">
+			<div>
+				<a href="sandwich.html">Sandwich</a>
+				<a href="special.html">Spéciales</a>
+					<!-- Ajout de la div du panier -->
+				<a href="panier.html"> 
+					<img src="img/panierWhite.png" id="panier">
+				</a>
+				<a href="connexion.html">
+					<div class="connexion">Connexion</div>
+				</a>
+			</div>
+		</header>
 
 		<section id="choiceSandwich">
 			<div class="presentation-sandwich">
@@ -303,11 +318,11 @@
 					<p>3.00€</p>
 					<div class="nameSandwich">
 						<h5>Donnez un nom à votre sandwich 😉</h5>
-						<input type="text" name="" class="name">
+						<input type="" name="" class="name">
 						<p>Le nom du sandwich doit commencer par COW-</p>
 					</div>
 					<div class="nameSandwich">
-						<h5>Des précisions sur votre Sandwich ?</h5>
+						<h5>Des précisions sur votre Sandwich <span class="red">?</span></h5>
 						<input type="text" name="" class="name">
 						<p>Une cuisson spécifique, une plus petite quantité, ...</p>
 					</div>
@@ -322,7 +337,17 @@
 		</section>
 
 
-		<footer></footer>
+
+		<footer>
+			<img src="img/logoWhite.png" id="logo">
+			<div>
+				<a href="contact.html">Nous contacter</a>
+				<a href="apropos.html">À propos</a>
+				<a href="conditionsgenerales.html">Conditions générales</a>
+				<a href="politique.html">Politique de Confidentialité</a>
+				<a href="mentionslegales.html">Mentions Légales</a>
+			</div>
+		</footer>
 		<script type="text/javascript">
 
 			function openMenu() {
