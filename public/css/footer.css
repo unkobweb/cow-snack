@@ -1,0 +1,34 @@
+footer {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	width: 100vw;
+	height: 100px;
+	margin-top: 40px;
+	background-color: #FFA504;
+}
+
+footer > div {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+footer > div > a {
+	font-size: .9rem;
+	font-weight: bold;
+	margin-right: 45px;
+	color: #F5F5F5;
+}
+
+#logo {
+	width: 167px;
+	height: 39px;
+	margin-left: 50px;
+}
+
+.absolute {
+	position: absolute;
+	bottom: 0;
+}
