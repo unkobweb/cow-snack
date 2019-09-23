@@ -6,63 +6,130 @@
 		<link rel="icon" type="icon/png" href="image/favicon.png"/>
 		<title>Cow-snack</title>
 		<link rel="stylesheet" href="css/style.css">
-		<script src="../js/jquery-3.4.1.min.js"></script>
 	</head>
 	<body>
 		<header></header>
 
 		<section id="choiceSandwich">
-			<a href="#cowmenu"></a>
-			<a href="#cowcustom"></a>
+			<div class="presentation-sandwich">
+				<div class="flex-col">
+					<h2>Nos Sandwich</h2>
+					<div class="line"></div>
+					<p class="para-sand">Nos délicieux sandwich sont préparés le matin même avec des ingrédients sélectionnés par notre grand cuisinier et maître coq <strong>Sebou</strong></p>
+				</div>
+				<img src="img/main.png" width="40%">
+			</div>
+			<div class="choicebutton">
+				<a href="#cowmenu" onclick="opacityMenu()">
+				<div id="choicemenu">
+					<h3>Cow-Menu</h3>
+					<p>Choisissez le sandwich de vos rêves parmi notre sélection</p>
+				</div>
+				</a>
+				<a href="#cowcustom" onclick="opacityCustom()">
+				<div id="choicecustom">
+					<h3>Cow-Custom</h3>
+					<p>Personnalisez votre sandwich et donnez lui un nom</p>
+				</div>
+				</a>
+			</div>
 		</section>
 		<section id="cowmenu">
 			<form>
 
 			<!-- Menus -->
-				<div>
-					<h3>Nos Menus</h3>
-				</div>
-
-				<div id="menu" class="flex-row">
+	
+				<h3>Nos Menus</h3>
+				<div id="menu" class="wrap">
   					<div>
-  						<button type="button" type="button" id="cow-classique"><img src="img/steak.png" width="40vw"></button>
-  						<div class="popupfood">
-  							<p>Jambon</p>
-  							<p>Beurre</p>
-  						</div>
   						<p>Cow-Classique</p>
+  						<button type="button" id="cow-classique"><img src="img/steak.png" width="100vw" class="vitrine"></button>
+  						
+  						<div class="popupfood">
+  							<p> &#8226; &nbsp Jambon</p>
+  							<p> &#8226; &nbsp Beurre</p>
+  							<p></p>
+  						</div>
   					</div>
   					<div>
-  						<button type="button" id="cow-love"><img src="img/jambon.png"  width="40vw"></button>
   						<p>Cow-love</p>
+  						<button type="button" id="cow-love"><img src="img/jambon.png"  width="100vw" class="vitrine"></button>
+  						
+  						<div class="popupfood">
+  							<p> &#8226; &nbsp Émincé de Poulet</p>
+  							<p> &#8226; &nbsp Tomate, Beurre</p>
+  							<p> &#8226; &nbsp Gruyère</p>
+  						</div>
+  						
   					</div>
   					<div>
-  				    	<button type="button" id="cow-good"><img src="img/emince.png"  width="40vw"></button>
-  				    	<p>Cow Good</p>
+  						<p>Cow Good</p>
+  				    	<button type="button" id="cow-good"><img src="img/emince.png"  width="100vw" class="vitrine"></button>
+  				    	<div class="popupfood">
+  							<p> &#8226; &nbsp Steak, Bacon</p>
+  							<p> &#8226; &nbsp Cheddar, Lardons</p>
+  							<p> &#8226; &nbsp Gruyère</p>
+  						</div>
+  				    
   					</div>
   					<div>
-	  				    <button type="button" id="cow-healthy"><img src="img/nuggets.png"  width="40vw"></button>
-	  				    <p>Cow-healthy</p>
+  						<p>Cow-healthy</p>
+	  				    <button type="button" id="cow-healthy"><img src="img/nuggets.png"  width="100vw" class="vitrine"></button>
+	  				    <div class="popupfood">
+  							<p> &#8226; &nbsp Émincé de poulet</p>
+  							<p> &#8226; &nbsp Salade, Tomate</p>
+  							<p> &#8226; &nbsp Ketchup</p>
+  						</div>
+	  				    
   					</div>
   					<div>
-  						<button type="button" id="cow-pasboy"><img src="img/merguez.png"  width="40vw"></button>
   						<p>Cow Pasboy</p>
+  						<button type="button" id="cow-pasboy"><img src="img/merguez.png"  width="100vw" class="vitrine"></button>
+  						<div class="popupfood">
+  							<p> &#8226; &nbsp Steak, Saucisse</p>
+  							<p> &#8226; &nbsp Salade, Tomate</p>
+  							<p> &#8226; &nbsp Biggy</p>
+  						</div>
+  						
   					</div>
   					<div>
-  						<button type="button" id="cow-girl"><img src="img/merguez.png"  width="40vw"></button>
   						<p>Cow-girl</p>
+  						<button type="button" id="cow-girl"><img src="img/merguez.png"  width="100vw" class="vitrine"></button>
+  						<div class="popupfood">
+  							<p> &#8226; &nbsp Merguez, Cordon bleu</p>
+  							<p> &#8226; &nbsp Gruyère, Tomate</p>
+  							<p> &#8226; &nbsp Ketchup</p>
+  						</div>
+  						
   					</div>
   					<div>
-  						<button type="button" id="cow-work"><img src="img/merguez.png"  width="40vw"></button>
   						<p>Cow Work</p>
+  						<button type="button" id="cow-work"><img src="img/merguez.png"  width="100vw" class="vitrine"></button>
+  						<div class="popupfood">
+  							<p> &#8226; &nbsp Steak, Cheddar</p>
+							<p> &#8226; &nbsp Salade, Tomate</p>
+							<p> &#8226; &nbsp Biggy</p>
+						</div>
+  						
   					</div>
   					<div>
-  						<button type="button" id="cow-ma"><img src="img/merguez.png"  width="40vw"></button>
   						<p>Cow-Ma</p>
+  						<button type="button" id="cow-ma"><img src="img/merguez.png"  width="100vw" class="vitrine"></button>
+  						<div class="popupfood">
+  							<p> &#8226; &nbsp Merguez, Nuggets</p>
+							<p> &#8226; &nbsp Gruyère</p>
+							<p> &#8226; &nbsp Pâtes</p>
+						</div>
   					</div>
   					<div>
-  						<button type="button" id="cow-without-cow"><img src="img/merguez.png"  width="40vw"></button>
   						<p>Cow Without-Cow</p>
+  						<button type="button" id="cow-without-cow"><img src="img/merguez.png"  width="100vw" class="vitrine"></button>
+	  					<div class="popupfood">
+	  						<p> &#8226; &nbsp Nuggets</p>
+	  						<p> &#8226; &nbsp Salade, Bacon</p>
+	  						<p> &#8226; &nbsp Barbecue-miel</p>
+	  					</div>
+  						
   					</div>
   				</div>
 
@@ -72,257 +139,177 @@
 				<div class="flex-row wrap size">
 					<div>
 						<input type="radio" name="taille" value="small" id="small">
-						<label for="small">S</label>
+						<label class="radioSize" for="small">S</label>
 						<p>Tiers</p>
 					</div>
 					<div>
 						<input type="radio" name="taille" value="medium" id="medium">
-						<label for="medium">M</label>
+						<label class="radioSize" for="medium">M</label>
 						<p>Demi</p>
 					</div>
 					<div>
 						<input type="radio" name="taille" value="large" id="large">
-						<label for="large">L</label>
+						<label class="radioSize" for="large">L</label>
 						<p>Baguette</p>
 					</div>
 				</div>
 
 			<!-- Prix -->
-				<h4>Total</h4>
-				<p class="prix">3000€</p>
-
-			<!-- Nom du Sandwich -->
-				<p>Donnez un nom à votre sandwich</p>
-				<input type="" name="" class="name">
-				<p>Le nom du sandwich doit commencer par COW-</p>
-
-				<input type="submit" name="" value="😋Poursuivre la commande" id="menusubmit">
+				<div class="prix">
+					<h4>Total</h4>
+					<p>3.00€</p>
+				</div>
+				<div class="submite">
+					<input type="submit" name="" value="😋 Poursuivre la commande" id="menusubmit">
+				</div>
 			</form>
 		</section>
 		<section id="cowcustom">
 			<form>
 
 			<!-- Viandes -->
-				<div class="flex-row">
-					<h3>Viandes</h3><h5> &nbsp(2 max)</h5>
+				<div class="flex-row title">
+					<h3>Viandes</h3><h6> &nbsp(2 max)</h6>
 				</div>
-				<div class="flex-row">
-	  				<div id="viande" class="flex-row">
-	  					<div>
-	  						<button type="button" class="selecteurViande" value="selectedSteak"><img src="img/steak.png" width="40vw"></button>
-	  						<p>Steak</p>
-	  					</div>
-	  					<div>
-	  						<button type="button" class="selecteurViande" value="selectedJambon"><img src="img/jambon.png"  width="40vw"></button>
-	  						<p>Jambon</p>
-	  					</div>
-	  					<div>
-	  				    	<button type="button" class="selecteurViande" value="selectedEmince"><img src="img/emince.png"  width="40vw"></button>
-	  				    	<p>Émincé de Poulet</p>
-	  					</div>
-	  					<div>
-		  				    <button type="button" class="selecteurViande" value="selectedNuggets"><img src="img/nuggets.png"  width="40vw"></button>
-		  				    <p>Nuggets</p>
-	  					</div>
-	  					<div>
-	  						<button type="button" class="selecteurViande" value="selectedMerguez"><img src="img/merguez.png"  width="40vw"></button>
-	  						<p>Merguez</p>
-	  					</div>
+				<div id="viande" class="flex-row wrap pad-200">
+	  				<div>
+	  					<button type="button" class="selecteurViande" value="selectedSteak"><img src="img/steak.png" width="100vw"></button>
+	  					<p>Steak</p>
 	  				</div>
-	      			<div class="cont-compteur">
-	      				<div class="compteur" id="compteurViande">0</div>
-	      				<p id="viandeLimit"></p>      				
-	      			</div>
+	  				<div>
+	  					<button type="button" class="selecteurViande" value="selectedJambon"><img src="img/jambon.png"  width="80vw"></button>
+	  					<p>Jambon</p>
+	  				</div>
+	  				<div>
+	  			    	<button type="button" class="selecteurViande" value="selectedEmince"><img src="img/emince.png"  width="100vw"></button>
+	  			    	<p>Émincé de Poulet</p>
+	  				</div>
+	  				<div>
+		  			    <button type="button" class="selecteurViande" value="selectedNuggets"><img src="img/nuggets.png"  width="100vw"></button>
+		  			    <p>Nuggets</p>
+	  				</div>
+	  				<div>
+	  					<button type="button" class="selecteurViande" value="selectedMerguez"><img src="img/merguez.png"  width="100vw"></button>
+	  					<p>Merguez</p>
+	  				</div>
 				</div>
+				  
+	      		<div class="cont-compteur">
+	      			<div class="compteur" id="compteurViande">0</div>
+	      			<p id="viandeLimit"></p>      				
+	      		</div>
 
 
 			<!-- Suppléments -->
-				<div class="flex-row"><h3>Suppléments</h3><h5> &nbsp(2 max)</h5></div>
-				<div class="flex-row">
-					<div id="supplement" class="flex-row">
-						<div>
-							<button type="button" class="selecteurSupp" value="selectedCheddar"><img src="img/cheddar.png" width="40vw"></button>
-							<p>Cheddar</p>
-						</div>
-						<div>
-	      					<button type="button" class="selecteurSupp" value="selectedBacon"><img src="img/bacon.png"  width="40vw"></button>
-	      					<p>Bacon</p>
-	      				</div>
-						<div>
-	      					<button type="button" class="selecteurSupp" value="selectedSalade"><img src="img/salade.png"  width="40vw"></button>
-	      					<p>Salade</p>
-	      				</div>
-						<div>
-	      					<button type="button" class="selecteurSupp" value="selectedGruyere"><img src="img/gruyere.png"  width="40vw"></button>
-	      					<p>Gruyère</p>
-						</div>
-						<div>
-							<button type="button" class="selecteurSupp" value="selectedTomate"><img src="img/tomates.png"  width="40vw"></button>
-							<p>Tomates</p>
-						</div>
-	      				<div>
-	      					<button type="button" class="selecteurSupp" value="selectedLardon"><img src="img/lardons.png"  width="40vw"></button>
-	      				   	<p>Lardons</p>
-	      				</div>
+				<div class="flex-row title">
+					<h3>Suppléments</h3><h6> &nbsp(2 max)</h6></div>
+				<div id="supplement" class="flex-row wrap pad-200">
+					<div>
+						<button type="button" class="selecteurSupp" value="selectedCheddar"><img src="img/cheddar.png" width="100vw"></button>
+						<p>Cheddar</p>
+					</div>
+					<div>
+	      				<button type="button" class="selecteurSupp" value="selectedBacon"><img src="img/bacon.png"  width="100vw"></button>
+	      				<p>Bacon</p>
 	      			</div>
-	      			<div class="cont-compteur">
-	      				<div class="compteur" id="compteurSupp">0</div>
-	      				<p id="suppLimit"></p>      				
+					<div>
+	      				<button type="button" class="selecteurSupp" value="selectedSalade"><img src="img/salade.png"  width="100vw"></button>
+	      				<p>Salade</p>
+	      			</div>
+					<div>
+	      				<button type="button" class="selecteurSupp" value="selectedGruyere"><img src="img/gruyere.png"  width="100vw"></button>
+	      				<p>Gruyère</p>
+					</div>
+					<div>
+						<button type="button" class="selecteurSupp" value="selectedTomate"><img src="img/tomates.png"  width="100vw"></button>
+						<p>Tomates</p>
+					</div>
+	      			<div>
+	      				<button type="button" class="selecteurSupp" value="selectedLardon"><img src="img/lardons.png"  width="100vw"></button>
+	      			   	<p>Lardons</p>
 	      			</div>
 				</div>
-
-
+				  
+	      		<div class="cont-compteur">
+	      			<div class="compteur" id="compteurSupp">0</div>
+	      			<p id="suppLimit"></p>      				
+	      		</div>
+				
 			<!-- Sauces -->
-				<div class="flex-row">
-					<h3>Sauces</h3><h5> &nbsp(3 max)</h5>
+				<div class="flex-row title">
+					<h3>Sauces</h3><h6> &nbsp(3 max)</h6>
 				</div>
-				<div class="flex-row">
-					<div id="sauce" class="flex-row">				
-    					<div>
-    					    <button type="button" class="selecteurSauce" value="selectedKetchup"><img src="img/ketchup.png" width="40vw"></button>
-    					    <p>Ketchup</p>
-    					</div>
-    					<div>
-    				    	<button type="button" class="selecteurSauce" value="selectedMayo"><img src="img/mayo.png"  width="40vw"></button>
-    				    	<p>Mayonnaise</p>
-    				    </div>
-    				    <div>
-    				    	<button type="button" class="selecteurSauce" value="selectedBBQ"><img src="img/bbq.png"  width="40vw"></button>
-    				    	<p>Barbecue</p>
-    				    </div>
-    				    <div>
-    				    	<button type="button" class="selecteurSauce" value="selectedBiggy"><img src="img/biggy.png"  width="40vw"></button>
-    				    	<p>Biggy</p>
-    					</div>
-    					<div>
-    					    <button type="button" class="selecteurSauce" value="selectedCurry"><img src="img/curry.png"  width="40vw"></button>
-    					    <p>Curry</p>
-    					</div>
+				<div id="sauce" class="flex-row wrap pad-200">				
+    				<div>
+    				    <button type="button" class="selecteurSauce" value="selectedKetchup"><img src="img/ketchup.png" width="100vw"></button>
+    				    <p>Ketchup</p>
     				</div>
-    				<div class="cont-compteur">
-	      				<div class="compteur" id="compteurSauce">0</div>
-	      				<p id="sauceLimit"></p>
-	      			</div>
+    				<div>
+    			    	<button type="button" class="selecteurSauce" value="selectedMayo"><img src="img/mayo.png"  width="100vw"></button>
+    			    	<p>Mayonnaise</p>
+    			    </div>
+    			    <div>
+    			    	<button type="button" class="selecteurSauce" value="selectedBBQ"><img src="img/bbq.png"  width="100vw"></button>
+    			    	<p>Barbecue</p>
+    			    </div>
+    			    <div>
+    			    	<button type="button" class="selecteurSauce" value="selectedBiggy"><img src="img/biggy.png"  width="100vw"></button>
+    			    	<p>Biggy</p>
+    				</div>
+    				<div>
+    				    <button type="button" class="selecteurSauce" value="selectedCurry"><img src="img/curry.png"  width="100vw"></button>
+    				    <p>Curry</p>
+    				</div>
 				</div>
+				
+    			<div class="cont-compteur">
+	      			<div class="compteur" id="compteurSauce">0</div>
+	      			<p id="sauceLimit"></p>
+	      		</div>
 
 			<!-- Taille -->
-				<h3>Tailles</h3>
+				<h3 class="title">Tailles</h3>
 				<div class="flex-row wrap size">
 					<div>
-						<input type="radio" name="taille" value="small" id="small">
-						<label for="small">S</label>
+						<input type="radio" name="taille2" value="small" id="small2" checked="true">
+						<label class="radioSize" for="small2">S</label>
 						<p>Tiers</p>
 					</div>
 					<div>
-						<input type="radio" name="taille" value="medium" id="medium">
-						<label for="medium">M</label>
+						<input type="radio" name="taille2" value="medium" id="medium2">
+						<label class="radioSize" for="medium2">M</label>
 						<p>Demi</p>
 					</div>
 					<div>
-						<input type="radio" name="taille" value="large" id="large">
-						<label for="large">L</label>
+						<input type="radio" name="taille2" value="large" id="large2">
+						<label class="radioSize" for="large2">L</label>
 						<p>Baguette</p>
 					</div>
 				</div>
 			<!-- Prix -->
-				<h4>Total</h4>
-				<p class="prix">3000€</p>
+				<div class="prix">
+					<h4>Total</h4>
+					<p>3.00€</p>
 
-			<!-- Nom du Sandwich -->
-				<p>Donnez un nom à votre sandwich</p>
-				<input type="" name="" class="name">
-				<p>Le nom du sandwich doit commencer par COW-</p>
+					<!-- Nom du Sandwich -->
+					
+					<div class="nameSandwich">
+						<h5>Donnez un nom à votre sandwich 😉</h5>
+						<input type="" name="" class="name">
+						<p>Le nom du sandwich doit commencer par COW-</p>
+					</div>
+				</div>
 
-				<input type="submit" name="" value="😋Poursuivre la commande" id="customsubmit">
+				<div class="submite">
+					<input type="submit" name="" value="😋 Poursuivre la commande" id="customsubmit">
+				</div>
+
 			</form>
 		</section>
 
 
 		<footer></footer>
-		<script type="text/javascript">
-
-			var commande = {
-				name: '',
-				phone: '',
-				ingredients: {
-					meat: {},
-					supp: {},
-					sauce: {},
-					drink: {},
-					dessert: {}
-				}
-			}
-
-			// Viandes
-			var selectedSteak 	= false;
-			var selectedJambon 	= false;
-			var selectedEmince 	= false;
-			var selectedNuggets = false;
-			var selectedMerguez = false;
-			var allMeat = ['selectedSteak', 'selectedJambon', 'selectedEmince', 'selectedNuggets', 'selectedMerguez'];
-
-			// Suppléments
-			var selectedCheddar = false;
-			var selectedBacon 	= false;
-			var selectedSalade 	= false;
-			var selectedGruyere = false;
-			var selectedTomate 	= false;
-			var selectedLardon 	= false;
-			var allSupp = ['selectedCheddar', 'selectedBacon', 'selectedSalade', 'selectedGruyere', 'selectedTomate', 'selectedLardon'];
-
-			//Sauces
-			var selectedKetchup = false;
-			var selectedMayo 	= false;
-			var selectedBBQ 	= false;
-			var selectedBiggy 	= false;
-			var selectedCurry 	= false;
-			var selectedBBQMiel	= false;
-			var allSauce = ['selectedKetchup', 'selectedMayo', 'selectedBBQ', 'selectedBiggy', 'selectedCurry', 'selectedBBQMiel'];
-
-			var viandeChoice = 0;
-
-			var suppChoice = 0;
-
-			var sauceChoice = 0;
-
-			var allType = ['allMeat', 'allSupp', 'allSauce'];
-
-			function updateCommand(){
-				allType.forEach(element => {
-					var ingredient = element.substring(3).toLowerCase();
-					var ingredientNb = 0;
-					eval(element).forEach(element => {
-						if (eval(element + " == true")){
-							eval("commande.ingredients."+ingredient+"[ingredient+ingredientNb.toString()] = element.substring(8)");
-							ingredientNb++;
-						}
-					});
-				});
-				console.log(commande);
-			};
-
-			$('.selecteurViande, .selecteurSupp, .selecteurSauce').click(function(){
-				if (eval(this.value + " ==  false") && eval(this.className.substring(9).toLowerCase()+"Choice" + "< 2")){
-					eval(this.value + " = true");
-					eval(this.className.substring(9).toLowerCase()+"Choice" + "++");
-				} else {
-					if (eval(this.value + " == true")){
-						eval(this.className.substring(9).toLowerCase()+"Choice" + "--");
-					}
-					eval(this.value + " = false");
-				}
-
-				if (eval(this.className.substring(9).toLowerCase()+"Choice" + "== 2")){
-					$('#'+this.className.substring(9).toLowerCase()+'Limit').text('Maximum Atteint😔');
-				} else {
-					$('#'+this.className.substring(9).toLowerCase()+'Limit').text('');
-				}
-
-				$('#compteur'+this.className.substring(9)).text(eval(this.className.substring(9).toLowerCase()+"Choice"));
-
-				updateCommand();
-			});
-
-		</script>
 	</body>
+	<script src="../js/jquery-3.4.1.min.js"></script>
+	<script src="../js/command.js"></script>
 </html> 
