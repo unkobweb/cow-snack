@@ -95,28 +95,36 @@ function updateCommand(){
     console.log(commande);
 };
 
+let viandeLimit = 2;
+let suppLimit = 2;
+let sauceLimit = 3;
+
 $('.selecteurViande, .selecteurSupp, .selecteurSauce').click(function(){
-    if (eval(this.value + " ==  false") && eval(this.classList[0].substring(9).toLowerCase()+"Choice" + "< 2")){
+    console.log(this.classList[0].substring(9).toLowerCase());
+    let typeFood = this.classList[0].substring(9).toLowerCase()
+    if (eval(this.value + " ==  false") && eval(typeFood+"Choice < "+typeFood+"Limit")){
         eval(this.value + " = true");
-        eval(this.classList[0].substring(9).toLowerCase()+"Choice" + "++");
+        eval(typeFood+"Choice" + "++");
+        this.classList.add('active');
     } else {
         if (eval(this.value + " == true")){
-            eval(this.classList[0].substring(9).toLowerCase()+"Choice" + "--");
+            eval(typeFood+"Choice" + "--");
+            this.classList.remove('active');
         }
         eval(this.value + " = false");
     }
 
-    if (eval(this.classList[0].substring(9).toLowerCase()+"Choice" + "== 2")){
-        $('#'+this.classList[0].substring(9).toLowerCase()+'Limit').text('Maximum Atteint😔');
+    if (eval(typeFood+"Choice == "+typeFood+"Limit")){
+        $('#'+typeFood+'Limit').text('Maximum Atteint😔');
     } else {
-        $('#'+this.classList[0].substring(9).toLowerCase()+'Limit').text('');
+        $('#'+typeFood+'Limit').text('');
     }
 
-    $('#compteur'+this.classList[0].substring(9)).text(eval(this.classList[0].substring(9).toLowerCase()+"Choice"));
+    console.log(eval(typeFood+"Choice"));
+
+    $('#compteur'+this.classList[0].substring(9)).text(eval(typeFood+"Choice"));
 
     updateCommand();
-
-    this.classList.toggle('active');
 });
 
 $('.size').click(function(){
