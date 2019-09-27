@@ -6,6 +6,9 @@ const session = require('express-session');
 
 const nourriture = ['viande','supp','sauce','boisson','dessert'];
 
+const countDownDate = new Date('October 11, 2019 13:15:00').getTime();
+let now = new Date().getTime();
+
 const app = express();
 const connexion = mysql.createConnection({
     host: 'localhost',
@@ -52,40 +55,45 @@ connexion.query('SELECT * FROM composition INNER JOIN purchase PC on composition
     }
 });
 
-app.get('/', (req, res) =>{
-    res.render('countdown.ejs');
-})
-.get('/sandwich', (req, res) => {
-    connexion.query('SELECT * FROM stock', (err, rows) => {
-        res.render('sandwich.ejs', {print: rows, print2: rows, print3: rows, print4: rows});
+if (countDownDate > now) {
+    app.use((req, res, next) => {
+        res.render('countdown.ejs');
     });
-})
-.post('/sandwich', urlencodedParser, (req, res) => {
-    console.log(req.body.postname);
-    console.log(req.body.postclicked);
-})
-.get('/special', (req, res) => {
-    res.render('special.ejs');
-})
-.get('/apropos', (req, res) => {
-    res.render('apropos.ejs');
-})
-.get('/contact', (req, res) => {
-    res.render('contact.ejs');
-})
-.get('/conditionsgenerales', (req, res) => {
-    res.render('conditionsgenerales.ejs');
-})
-.get('/politique', (req, res) => {
-    res.render('politique.ejs')
-})
-.get('/mentionslegales', (req, res) => {
-    res.render('mentionslegales.ejs')
-})
-.use((req, res, next) => {
-    res.status(404).render('maintenance.ejs');
-});
-
+} else {
+    app.get('/', (req, res) =>{
+        res.render('index.ejs');
+    })
+    .get('/sandwich', (req, res) => {
+        connexion.query('SELECT * FROM stock', (err, rows) => {
+            res.render('sandwich.ejs', {print: rows, print2: rows, print3: rows, print4: rows});
+        });
+    })
+    .post('/sandwich', urlencodedParser, (req, res) => {
+        console.log(req.body.postname);
+        console.log(req.body.postclicked);
+    })
+    .get('/special', (req, res) => {
+        res.render('special.ejs');
+    })
+    .get('/apropos', (req, res) => {
+        res.render('apropos.ejs');
+    })
+    .get('/contact', (req, res) => {
+        res.render('contact.ejs');
+    })
+    .get('/conditionsgenerales', (req, res) => {
+        res.render('conditionsgenerales.ejs');
+    })
+    .get('/politique', (req, res) => {
+        res.render('politique.ejs')
+    })
+    .get('/mentionslegales', (req, res) => {
+        res.render('mentionslegales.ejs')
+    })
+    .use((req, res, next) => {
+        res.status(404).render('maintenance.ejs');
+    });
+}
 app.listen(8080);
 
 //SELECT * FROM composition INNER JOIN purchase PC on composition.sandwich_id = PC.composition_id INNER JOIN stock ST on composition.ingredient_id = ST.id INNER JOIN size SZ on PC.size_id = SZ.id
