@@ -45,32 +45,6 @@ var commande = {
     }
 }
 
-// Viandes
-var selectedSteak 	= false;
-var selectedJambon 	= false;
-var selectedEmince 	= false;
-var selectedNuggets = false;
-var selectedMerguez = false;
-var allMeat = ['selectedSteak', 'selectedJambon', 'selectedEmince', 'selectedNuggets', 'selectedMerguez'];
-
-// Suppléments
-var selectedCheddar = false;
-var selectedBacon 	= false;
-var selectedSalade 	= false;
-var selectedGruyere = false;
-var selectedTomate 	= false;
-var selectedLardon 	= false;
-var allSupp = ['selectedCheddar', 'selectedBacon', 'selectedSalade', 'selectedGruyere', 'selectedTomate', 'selectedLardon'];
-
-//Sauces
-var selectedKetchup = false;
-var selectedMayo 	= false;
-var selectedBBQ 	= false;
-var selectedBiggy 	= false;
-var selectedCurry 	= false;
-var selectedBBQMiel	= false;
-var allSauce = ['selectedKetchup', 'selectedMayo', 'selectedBBQ', 'selectedBiggy', 'selectedCurry', 'selectedBBQMiel'];
-
 var viandeChoice = 0;
 
 var suppChoice = 0;

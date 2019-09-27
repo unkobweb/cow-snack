@@ -169,6 +169,11 @@
 			</form>
 		</section>
 		<section id="cowcustom">
+			<script>
+				let allMeat = [];
+				let allSupp = [];
+				let allSauce = [];
+			</script>
 			<form>
 
 			<!-- Viandes -->
@@ -176,15 +181,17 @@
 					<h3>Viandes</h3><h6> &nbsp(2 max)</h6>
 				</div>
 				<div id="viande" class="flex-row wrap pad-200">
-					<%let instanceCompteurViande = false;%>
-					<%let instanceCompteurSupp = false%>
-					<%let instanceCompteurSauce = false%>
+					
 					<% print.forEach((result) => { %>
 						<%if (result.type == 1) { %>
 							<div>
 								<button type="button" class="selecteurViande" value="selected<%=result.slug.charAt(0).toUpperCase()+result.slug.slice(1)%>"><img src="img/<%=result.slug%>.png" width="100vw"></button>
 								<p><%=result.label%></p>
 							</div>
+							<script>
+								eval("selected"+"<%=result.slug.charAt(0).toUpperCase()+result.slug.slice(1)%>"+" = false");
+								allMeat.push("selected"+"<%=result.slug.charAt(0).toUpperCase()+result.slug.slice(1)%>");
+							</script>	
 						<%}%>
 					<% }); %>
 				</div>
@@ -205,7 +212,10 @@
 								<button type="button" class="selecteurSupp" value="selected<%=result.slug.charAt(0).toUpperCase()+result.slug.slice(1)%>"><img src="img/<%=result.slug%>.png" width="100vw"></button>
 								<p><%=result.label%></p>
 							</div>
-							<%let type0 = false%>
+							<script>
+								eval("selected"+"<%=result.slug.charAt(0).toUpperCase()+result.slug.slice(1)%>"+" = false");
+								allSupp.push("selected"+"<%=result.slug.charAt(0).toUpperCase()+result.slug.slice(1)%>");
+							</script>	
 						<%}%>
 					<% }); %>
 				</div>
@@ -225,7 +235,11 @@
 							<div>
 								<button type="button" class="selecteurSauce" value="selected<%=result.slug.charAt(0).toUpperCase()+result.slug.slice(1)%>"><img src="img/<%=result.slug%>.png" width="100vw"></button>
 								<p><%=result.label%></p>
-							</div>					
+							</div>
+							<script>
+								eval("selected"+"<%=result.slug.charAt(0).toUpperCase()+result.slug.slice(1)%>"+" = false");
+								allSauce.push("selected"+"<%=result.slug.charAt(0).toUpperCase()+result.slug.slice(1)%>");
+							</script>				
 						<%}%>
 					<% }); %>
 				</div>
