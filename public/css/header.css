@@ -38,3 +38,31 @@ header > div > a {
 	justify-content: center;
 	align-items: center;
 }
+
+#activeCompte{
+	position: relative;
+}
+
+#deconnected {
+	position: absolute;
+	top: 0;
+	width: 120px;
+	height: 30px;
+	background-color: #FFFFFF;
+	color: #c0c0c0;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	font-size: .8rem;
+	z-index: -6;
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+	padding-bottom: 10px;
+	transition-delay: .5s;
+	transition-duration: .4s;
+}
+
+#activeCompte:hover #deconnected {
+	transform: translateY(35px);
+
+}
