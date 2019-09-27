@@ -7,6 +7,7 @@
 		<title>Cow-snack</title>
 		<link rel="stylesheet" href="css/style.css">
 		<link rel="stylesheet" href="css/header.css">
+		<link rel="stylesheet" href="css/footer.css">
 	</head>
 	<body>
 		<header>
@@ -175,31 +176,22 @@
 					<h3>Viandes</h3><h6> &nbsp(2 max)</h6>
 				</div>
 				<div id="viande" class="flex-row wrap pad-200">
-	  				<div>
-	  					<button type="button" class="selecteurViande" value="selectedSteak"><img src="img/steak.png" width="100vw"></button>
-	  					<p>Steak</p>
-	  				</div>
-	  				<div>
-	  					<button type="button" class="selecteurViande" value="selectedJambon"><img src="img/jambon.png"  width="80vw"></button>
-	  					<p>Jambon</p>
-	  				</div>
-	  				<div>
-	  			    	<button type="button" class="selecteurViande" value="selectedEmince"><img src="img/emince.png"  width="100vw"></button>
-	  			    	<p>Émincé de Poulet</p>
-	  				</div>
-	  				<div>
-		  			    <button type="button" class="selecteurViande" value="selectedNuggets"><img src="img/nuggets.png"  width="100vw"></button>
-		  			    <p>Nuggets</p>
-	  				</div>
-	  				<div>
-	  					<button type="button" class="selecteurViande" value="selectedMerguez"><img src="img/merguez.png"  width="100vw"></button>
-	  					<p>Merguez</p>
-	  				</div>
+					<%let instanceCompteurViande = false;%>
+					<%let instanceCompteurSupp = false%>
+					<%let instanceCompteurSauce = false%>
+					<% print.forEach((result) => { %>
+						<%if (result.type == 1) { %>
+							<div>
+								<button type="button" class="selecteurViande" value="selected<%=result.slug.charAt(0).toUpperCase()+result.slug.slice(1)%>"><img src="img/<%=result.slug%>.png" width="100vw"></button>
+								<p><%=result.label%></p>
+							</div>
+						<%}%>
+					<% }); %>
 				</div>
 				  
 	      		<div class="cont-compteur">
 	      			<div class="compteur" id="compteurViande">0</div>
-	      			<p id="viandeLimit"></p>      				
+	      			<p id="viandeLimit"></p>
 	      		</div>
 
 
@@ -207,30 +199,15 @@
 				<div class="flex-row title">
 					<h3>Suppléments</h3><h6> &nbsp(2 max)</h6></div>
 				<div id="supplement" class="flex-row wrap pad-200">
-					<div>
-						<button type="button" class="selecteurSupp" value="selectedCheddar"><img src="img/cheddar.png" width="100vw"></button>
-						<p>Cheddar</p>
-					</div>
-					<div>
-	      				<button type="button" class="selecteurSupp" value="selectedBacon"><img src="img/bacon.png"  width="100vw"></button>
-	      				<p>Bacon</p>
-	      			</div>
-					<div>
-	      				<button type="button" class="selecteurSupp" value="selectedSalade"><img src="img/salade.png"  width="100vw"></button>
-	      				<p>Salade</p>
-	      			</div>
-					<div>
-	      				<button type="button" class="selecteurSupp" value="selectedGruyere"><img src="img/gruyere.png"  width="100vw"></button>
-	      				<p>Gruyère</p>
-					</div>
-					<div>
-						<button type="button" class="selecteurSupp" value="selectedTomate"><img src="img/tomates.png"  width="100vw"></button>
-						<p>Tomates</p>
-					</div>
-	      			<div>
-	      				<button type="button" class="selecteurSupp" value="selectedLardon"><img src="img/lardons.png"  width="100vw"></button>
-	      			   	<p>Lardons</p>
-	      			</div>
+					<% print.forEach((result) => { %>
+						<%if (result.type == 2) { %>
+							<div>
+								<button type="button" class="selecteurSupp" value="selected<%=result.slug.charAt(0).toUpperCase()+result.slug.slice(1)%>"><img src="img/<%=result.slug%>.png" width="100vw"></button>
+								<p><%=result.label%></p>
+							</div>
+							<%let type0 = false%>
+						<%}%>
+					<% }); %>
 				</div>
 				  
 	      		<div class="cont-compteur">
@@ -242,27 +219,15 @@
 				<div class="flex-row title">
 					<h3>Sauces</h3><h6> &nbsp(3 max)</h6>
 				</div>
-				<div id="sauce" class="flex-row wrap pad-200">				
-    				<div>
-    				    <button type="button" class="selecteurSauce" value="selectedKetchup"><img src="img/ketchup.png" width="100vw"></button>
-    				    <p>Ketchup</p>
-    				</div>
-    				<div>
-    			    	<button type="button" class="selecteurSauce" value="selectedMayo"><img src="img/mayo.png"  width="100vw"></button>
-    			    	<p>Mayonnaise</p>
-    			    </div>
-    			    <div>
-    			    	<button type="button" class="selecteurSauce" value="selectedBBQ"><img src="img/bbq.png"  width="100vw"></button>
-    			    	<p>Barbecue</p>
-    			    </div>
-    			    <div>
-    			    	<button type="button" class="selecteurSauce" value="selectedBiggy"><img src="img/biggy.png"  width="100vw"></button>
-    			    	<p>Biggy</p>
-    				</div>
-    				<div>
-    				    <button type="button" class="selecteurSauce" value="selectedCurry"><img src="img/curry.png"  width="100vw"></button>
-    				    <p>Curry</p>
-    				</div>
+				<div id="sauce" class="flex-row wrap pad-200">
+					<% print.forEach((result) => {%>
+						<%if (result.type == 3) {%>
+							<div>
+								<button type="button" class="selecteurSauce" value="selected<%=result.slug.charAt(0).toUpperCase()+result.slug.slice(1)%>"><img src="img/<%=result.slug%>.png" width="100vw"></button>
+								<p><%=result.label%></p>
+							</div>					
+						<%}%>
+					<% }); %>
 				</div>
 				
     			<div class="cont-compteur">
@@ -311,8 +276,15 @@
 		</section>
 
 
-		<footer></footer>
+		<footer>
+			<% include footer %>
+		</footer>
 	</body>
 	<script src="../js/jquery-3.4.1.min.js"></script>
+	<script>
+		
+	</script>
+		
+	
 	<script src="../js/command.js"></script>
-</html> 
+</html>
