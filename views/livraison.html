@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" type="icon/png" href="../public/img/favicon.png"/>
+		<title>Livraison - Cow-snack</title>
+		<link rel="stylesheet" href="../public/css/header.css">
+		<link rel="stylesheet" href="../public/css/footer.css">
+		<link rel="stylesheet" href="../public/css/unique.css">
+<!-- 		<script src="../js/jquery-3.4.1.min.js"></script> -->
+	</head>
+	<body>
+		<header>
+			<img src="../public/img/logo.png" class="logo">
+			<div>
+				<a href="sandwich.html">Sandwich</a>
+				<a href="special.html">Spéciales</a>
+					<!-- Ajout de la div du panier -->
+				<a href="panier.html"> 
+					<img src="../public/img/panierWhite.png" class="panier">
+				</a>
+				<a href="connexion.html" class="activeCompte">
+					<div class="connexion">Connexion</div>
+					<div class="deconnected">Se déconnecter</div>
+				</a>
+			</div>
+		</header>
+		
+		<section id="livraison">
+			<form>
+			<h1>Livraison 🚚</h1>
+			<h3>Choisissez vos conditions de livraisons de nos délicieux plats.</h3>
+
+			<h2>Quel jour souhaitez-vous être livrés ?</h2>
+<!-- Calendar -->
+			<div id="hintCalendar">
+				<div class="sample"></div>
+				<p>Disponibilité de Livraison</p>
+			</div>
+			<div>
+				<div class="nameCustomer">
+					<h5>Dites nous votre nom, on pourra savoir qui à commandé 😉</h5>
+					<input type="text" name="nameCommand" class="name" placeholder="nom prénom">
+				</div>
+				<div class="nameCustomer">
+					<h5>Il ne manque plus que votre numéro de téléphone pour pouvoir vous contacter 😃</h5>
+					<input type="text" name="numTel" class="name" value="" placeholder="06 72 56 89 73">
+				</div>
+			</div>
+
+			<h2>Récapitulatif de la commande</h2>
+			<div class="recap">
+				<h4>Sandwich</h4>
+				<div class="flex-row">
+					<p>Cow-thon - Small</p><p class="price">3.00€</p>
+				</div>
+				<h4>Boisson</h4>
+				<div class="flex-row">
+					<p>Orangina</p><p class="price">0.50€</p>
+				</div>
+				<h4>Dessert</h4>
+				<div class="flex-row">
+					<p>Panini Nutella</p><p class="price">1.00€</p>
+				</div>
+				<div class="line"></div>
+				<div class="flex-row total">
+					<h3>Total</h3>
+					<p>4.50€</p>
+				</div>
+			</div>
+			<div class="submitLivraison">
+				<input type="submit" name="" value="Envoyer la commande 🍔" id="livraisonSubmit">
+				<a href="dessert.html">
+					<div class="annul">
+						Revenir en arrière
+					</div>
+				</a>
+			</div>
+				
+			</form>
+		</section>
+
+
+
+		<footer>
+			<img src="../public/img/logoWhite.png" id="logo">
+			<div>
+				<a href="contact.html">Nous contacter</a>
+				<a href="apropos.html">À propos</a>
+				<a href="conditionsgenerales.html">Conditions générales</a>
+				<a href="politique.html">Politique de Confidentialité</a>
+				<a href="mentionslegales.html">Mentions Légales</a>
+			</div>
+		</footer>
+	</body>
+</html> 

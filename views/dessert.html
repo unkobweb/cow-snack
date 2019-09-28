@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" type="icon/png" href="../public/img/favicon.png"/>
+		<title>Dessert & Boissons - Cow-snack</title>
+		<link rel="stylesheet" href="../public/css/header.css">
+		<link rel="stylesheet" href="../public/css/footer.css">
+		<link rel="stylesheet" href="../public/css/style.css">
+		<link rel="stylesheet" href="../public/css/unique.css">
+<!-- 		<script src="../js/jquery-3.4.1.min.js"></script> -->
+	</head>
+	<body>
+		<header>
+			<img src="../public/img/logo.png" class="logo">
+			<div>
+				<a href="sandwich.html">Sandwich</a>
+				<a href="special.html">Spéciales</a>
+					<!-- Ajout de la div du panier -->
+				<a href="panier.html"> 
+					<img src="../public/img/panierWhite.png" class="panier">
+				</a>
+				<a href="connexion.html" class="activeCompte">
+					<div class="connexion">Connexion</div>
+					<div class="deconnected">Se déconnecter</div>
+				</a>
+			</div>
+		</header>
+
+		<section id="TopDessert">
+				<h1>Boissons et Desserts</h1>
+					<a href="dessert.html">
+						<div class="annul">
+							<img src="../public/img/left-arrow.svg" width="10%">
+							Revenir en arrière
+						</div>
+					</a>
+				<div id="recapDessert">
+					<img src="../public/img/thon.png" id="recapImage">
+					<div>
+						<div class="flex-row align"><h4>Sandwich</h4><h6>Prix</h6></div>
+						<div class="flex-row align recapSauce">
+							<h5>Sauce</h5><p>Mayonnaise</p>
+						</div>
+						<div class="flex-row align ingredient">
+							<h5>Ingrédients</h5>
+							<p>Thon, tomates, oeufs, oignons</p>
+						</div>
+						<div class="flex-row align">
+							<div class="extend align">
+								<h5>Taille</h5><p>Small</p>
+							</div>
+							<p class="price">3.00€</p>
+						</div>
+						<div class="flex-row align">
+							<h4>Boisson</h4>
+							<div class="reserve">
+								<p class="price">- -</p><p>-</p>
+							</div>
+						</div>
+						<div class="flex-row align">
+							<h4>Dessert</h4><div class="reserve"><p class="price">- - </p><p>-</p></div>
+						</div>
+						<div class="line"></div>
+						<div class="flex-row align"><h3>Total</h3><p class="totalPrice">3.00€</p></div>
+					</div>
+				</div>
+				<h2>Une <b>boisson </b><span class="red">?</span>, un <b>dessert</b><span class="red"> ?</span></h2>
+				<div id="choiceDessert">
+						<button type="button" id="drinkButton">
+							<img src="../public/img/can.png" width="100vw" class="vitrine">
+						</button>
+						<button type="button" id="dessertButton">
+							<img src="../public/img/cookies.png" width="100vw" class="vitrine">
+						</button>
+				</div>
+		</section>
+
+
+
+		<!--  -->
+		<section id="cowDessert">
+			<form>
+				<section class="Boissons">
+					<h2>Boisson</h2>
+					<div class="flex-row align extend wrap">
+						<div id="groupDrink">
+							<div class="flex-row">
+								<div><img src="../public/img/coca.jpg"></div>
+								<div><img src="../public/img/fuzetea.jpg"></div>
+								<div><img src="../public/img/fanta.jpg"></div>
+							</div>
+							<div class="flex-row">
+								<div><img src="../public/img/tropico.jpg"></div>
+								<div><img src="../public/img/sprite.jpg"></div>
+								<div><img src="../public/img/lipton.jpg"></div>
+							</div>
+							<div class="flex-row"> 
+								<div><img src="../public/img/orangina.jpg"></div>
+								<div><img src="../public/img/7up.jpg"></div>
+								<div><img src="../public/img/pepsi.jpg"></div>
+							</div>
+						</div>
+						<div id="customDrink">
+							<h3>Vous ne trouvez pas la boisson que vous cherchez ?</h3>
+							<div class="nameDrink">
+								<h5>Dites-nous de quelle boisson il s'agit ?</h5>
+								<input type="" name="" class="name">
+								<p>Si la boisson est indisponible, vous serez recontacté pour en choisir une autre.</p>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section class="Desserts">
+								<h2>Dessert</h2>
+								<div id="buttonDessert" class="flex-row wrap pad-200">
+				  					<div>
+				  						<button type="button" id="nutella"><img src="../public/img/panini-nutella.png" width="90%"></button>
+				  						<p>Panini Nutella</p>
+				  					</div>
+				  					<div>
+				  						<button type="button" id="cookies"><img src="../public/img/cookie.png" width="100%"></button>
+				  						<p>Cookies</p>
+				  					</div>
+				  					<div>
+				  				    	<button type="button" id="confiture"><img src="../public/img/confiture.png" width="90%"></button>
+				  				    	<p>Panini Confiture</p>
+				  					</div>
+				  				</div>
+				</section>
+				
+				<div class="submite">
+					<input type="submit" name="" value="Finaliser la commande" id="customsubmit">
+				</div>
+				
+			</form>
+		</section>
+
+
+
+		<footer>
+			<img src="../public/img/logoWhite.png" id="logo">
+			<div>
+				<a href="contact.html">Nous contacter</a>
+				<a href="apropos.html">À propos</a>
+				<a href="conditionsgenerales.html">Conditions générales</a>
+				<a href="politique.html">Politique de Confidentialité</a>
+				<a href="mentionslegales.html">Mentions Légales</a>
+			</div>
+		</footer>
+		<script type="text/javascript">
+
+
+
+			function goToDrink() {
+				document.querySelector('.Boissons').classList.toggle('opac');
+			}
+
+			function goToDessert() {
+				document.querySelector('.Desserts').classList.toggle('opac');
+			}
+
+			document.querySelector('#drinkButton').addEventListener('click', goToDrink);
+			document.querySelector('#dessertButton').addEventListener('click', goToDessert);
+
+
+			// Changement de style des boutons.
+			var buttons = document.querySelectorAll('img');
+
+			for (var i = 0; i < buttons.length; i++) {
+				buttons[i].addEventListener('click', function(event){
+					event.target.parentElement.classList.toggle('active');
+				});
+			} 
+
+		</script>
+		
+	</body>
+</html> 

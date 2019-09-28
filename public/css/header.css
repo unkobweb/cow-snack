@@ -5,6 +5,7 @@ header {
 	align-items: center;
 	width: 100vw;
 	margin-top: 40px;
+	z-index: 50;
 }
 
 header > div {
@@ -37,10 +38,12 @@ header > div > a {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	z-index: 5;
 }
 
 .activeCompte{
 	position: relative;
+	z-index: 6;
 }
 
 .deconnected {
@@ -53,7 +56,7 @@ header > div > a {
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
 	font-size: .8rem;
-	z-index: -6;
+	z-index: -1;
 	display: flex;
 	align-items: flex-end;
 	justify-content: center;

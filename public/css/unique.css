@@ -322,6 +322,7 @@ a {
 	font-weight: bold;
 	font-size: 1rem;
 	margin-right: 50px;
+	cursor: pointer;
 }
 
 
@@ -434,6 +435,30 @@ a {
 	flex-direction: column;
 	align-items: center;
 }
+
+.Desserts{
+	display: none;
+}
+
+.Desserts.opac{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.Boissons{
+	display: none;
+}
+
+.Boissons.opac{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+#drinkButton, #dessertButton {
+	cursor: pointer;
+}
+
 /*Drink*/
 #cowDessert form h2{
 	color: #FFA504;
@@ -451,6 +476,11 @@ a {
 	margin-bottom: 100px;
 	height: 350px;
 }
+
+.Boissons .extend{
+	width: 100vw;
+	justify-content: space-around;
+}
 #customDrink{
 	height: 100%;
 }
@@ -464,6 +494,7 @@ a {
 	height: 100px;
 	margin-bottom: 20px;
 	margin-right: 20px;
+	cursor: pointer;
 }
 #groupDrink div img {
 	width: 100px;
@@ -508,6 +539,10 @@ a {
 	flex-direction: column;
 	align-items: center;
 	margin-bottom: 40px;
+}
+
+#buttonDessert button {
+	cursor: pointer;
 }
 #buttonDessert img{
 	filter: drop-shadow(0px 0px 10px #DADADA);
@@ -601,6 +636,7 @@ border: none;
 	color: #EC632D;
 	min-height: 30px!important;
 	padding: 12px 20px 12px 20px;
+	cursor: pointer;
 }
 
 #envoiRemarque + p {
@@ -659,6 +695,7 @@ border: none;
 #connexion input[type="submit"] {
 	border: none;
 	font-size: 1.5rem;
+	cursor: pointer;
 }
 
 #connexion h4{
@@ -689,6 +726,7 @@ border: none;
 	font-size: .9rem;
 	margin-left: 5px;
 	margin-top: 10px;
+	cursor: pointer;
 }
 
 #familyName, #firstName{
@@ -760,6 +798,7 @@ border: none;
 	margin-right: 50px;
 	margin-left: 20px;
 	font-size: .8rem;
+	cursor: pointer;
 }
 
 	/*profil*/
@@ -905,6 +944,7 @@ border: none;
 	-webkit-box-shadow: 0px 3px 6px 0px rgba(156,156,156,0.6);
 	-moz-box-shadow: 0px 3px 6px 0px rgba(156,156,156,0.6);
 	box-shadow: 0px 3px 6px 0px rgba(156,156,156,0.6);
+	cursor: pointer;
 }
 
 .recommand::after {
@@ -994,6 +1034,7 @@ border: none;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
+	cursor: pointer;
 }
 
 
@@ -1003,6 +1044,7 @@ border: none;
 
 .colorSandwich.custom {
 	color: #67c119;
+	cursor: pointer;
 }
 
 
@@ -1065,7 +1107,7 @@ border: none;
 
 .dish-arrow img{
 	width: 20px;
-
+	cursor: pointer;
 }
 
 .dish b {
@@ -1118,4 +1160,5 @@ border: none;
 	right: -100px;
 	top: 0;
 	box-shadow: 0px 3px 6px 0px rgba(156,156,156,0.6);
+	cursor: pointer;
 }
