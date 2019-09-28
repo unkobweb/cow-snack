@@ -185,12 +185,12 @@
 					<% print.forEach((result) => { %>
 						<%if (result.type == 1) { %>
 							<div>
-								<button type="button" class="selecteurViande" value="selected<%=result.slug.charAt(0).toUpperCase()+result.slug.slice(1)%>"><img src="img/<%=result.slug%>.png" width="100vw"></button>
+								<button type="button" class="selecteurViande" value="selected<%=result.id%>"><img src="img/<%=result.slug%>.png" width="100vw"></button>
 								<p><%=result.label%></p>
 							</div>
 							<script>
-								eval("selected"+"<%=result.slug.charAt(0).toUpperCase()+result.slug.slice(1)%>"+" = false");
-								allMeat.push("selected"+"<%=result.slug.charAt(0).toUpperCase()+result.slug.slice(1)%>");
+								eval("selected"+"<%=result.id%>"+" = false");
+								allMeat.push("selected"+"<%=result.id%>");
 							</script>	
 						<%}%>
 					<% }); %>
@@ -209,13 +209,13 @@
 					<% print.forEach((result) => { %>
 						<%if (result.type == 2) { %>
 							<div>
-								<button type="button" class="selecteurSupp" value="selected<%=result.slug.charAt(0).toUpperCase()+result.slug.slice(1)%>"><img src="img/<%=result.slug%>.png" width="100vw"></button>
+								<button type="button" class="selecteurSupp" value="selected<%=result.id%>"><img src="img/<%=result.slug%>.png" width="100vw"></button>
 								<p><%=result.label%></p>
 							</div>
 							<script>
-								eval("selected"+"<%=result.slug.charAt(0).toUpperCase()+result.slug.slice(1)%>"+" = false");
-								allSupp.push("selected"+"<%=result.slug.charAt(0).toUpperCase()+result.slug.slice(1)%>");
-							</script>	
+								eval("selected"+"<%=result.id%>"+" = false");
+								allSupp.push("selected"+"<%=result.id%>");
+							</script>
 						<%}%>
 					<% }); %>
 				</div>
@@ -233,12 +233,12 @@
 					<% print.forEach((result) => {%>
 						<%if (result.type == 3) {%>
 							<div>
-								<button type="button" class="selecteurSauce" value="selected<%=result.slug.charAt(0).toUpperCase()+result.slug.slice(1)%>"><img src="img/<%=result.slug%>.png" width="100vw"></button>
+								<button type="button" class="selecteurSauce" value="selected<%=result.id%>"><img src="img/<%=result.slug%>.png" width="100vw"></button>
 								<p><%=result.label%></p>
 							</div>
 							<script>
-								eval("selected"+"<%=result.slug.charAt(0).toUpperCase()+result.slug.slice(1)%>"+" = false");
-								allSauce.push("selected"+"<%=result.slug.charAt(0).toUpperCase()+result.slug.slice(1)%>");
+								eval("selected"+"<%=result.id%>"+" = false");
+								allSauce.push("selected"+"<%=result.id%>");
 							</script>				
 						<%}%>
 					<% }); %>
@@ -271,7 +271,7 @@
 			<!-- Prix -->
 				<div class="prix">
 					<h4>Total</h4>
-					<p>3.00€</p>
+					<p id="price">3.00€</p>
 
 					<!-- Nom du Sandwich -->
 					
@@ -295,10 +295,10 @@
 		</footer>
 	</body>
 	<script src="../js/jquery-3.4.1.min.js"></script>
-	<script>
-		
-	</script>
-		
-	
+	<% printSize.forEach((result) => { %>
+			<script>
+				eval("<%=result.slug%>"+" = "+"<%=result.price%>");
+			</script>
+	<% }); %>	
 	<script src="../js/command.js"></script>
 </html>

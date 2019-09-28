@@ -56,12 +56,15 @@ var size = '';
 var allType = ['allMeat', 'allSupp', 'allSauce'];
 
 function updateCommand(){
+    commande.ingredients.meat = {};
+    commande.ingredients.supp = {};
+    commande.ingredients.sauce = {};
     allType.forEach(element => {
         var ingredient = element.substring(3).toLowerCase();
         var ingredientNb = 0;
         eval(element).forEach(element => {
             if (eval(element + " == true")){
-                eval("commande.ingredients."+ingredient+"[ingredient+ingredientNb.toString()] = element.substring(8)");
+                eval("commande.ingredients."+ingredient+"[ingredient+ingredientNb.toString()] = parseInt(element.substring(8))");
                 ingredientNb++;
             }
         });
@@ -101,7 +104,10 @@ $('.selecteurViande, .selecteurSupp, .selecteurSauce').click(function(){
     updateCommand();
 });
 
+$('#price').text(small.toFixed(2)+"€");
+
 $('.size').click(function(){
     commande.ingredients.size = document.querySelector('input[name="taille"]:checked, input[name="taille2"]:checked').value;
+    $('#price').text(eval(commande.ingredients.size).toFixed(2)+"€");
     console.log(commande);
 });

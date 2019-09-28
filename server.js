@@ -55,7 +55,7 @@ connexion.query('SELECT * FROM composition INNER JOIN purchase PC on composition
     }
 });
 
-if (countDownDate > now) {
+if (false/*countDownDate > now*/) {
     app.use((req, res, next) => {
         res.render('countdown.ejs');
     });
@@ -64,8 +64,12 @@ if (countDownDate > now) {
         res.render('index.ejs');
     })
     .get('/sandwich', (req, res) => {
-        connexion.query('SELECT * FROM stock', (err, rows) => {
-            res.render('sandwich.ejs', {print: rows, print2: rows, print3: rows, print4: rows});
+        let stock;
+        let size;
+        connexion.query('SELECT * FROM stock', (err, rows1) => {
+            connexion.query('SELECT * FROM size', (err, rows2) => {
+                res.render('sandwich.ejs', {print: rows1, printSize: rows2});
+            });
         });
     })
     .post('/sandwich', urlencodedParser, (req, res) => {
