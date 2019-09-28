@@ -73,7 +73,9 @@ a {
 .align{
 	align-items: center;
 }
-
+.align-end{
+	align-items: flex-end;
+}
 
 
 .line {
@@ -742,7 +744,11 @@ border: none;
 	width: 200px;
 	margin-left: 50px;
 }
-
+#compte h2{
+	align-self: flex-start;
+	margin-top: 100px;
+	font-size: 2rem;
+}
 #compte .bouton{
 	width: 100px;
 }
@@ -753,38 +759,363 @@ border: none;
 	border-radius: 10px;
 	margin-right: 50px;
 	margin-left: 20px;
+	font-size: .8rem;
 }
 
 	/*profil*/
-#compte h4+div  {
+#compte > div > div > h4+div  {
 	background-color: #FFFFFF;
-	height: 25px;
-	border-radius: 5px;
+	height: 35px;
+	border-radius: 10px;
 	-webkit-box-shadow: 0px 3px 5px 0px rgba(189,189,189,0.55);
 	-moz-box-shadow: 0px 3px 5px 0px rgba(189,189,189,0.55);
 	box-shadow: 0px 3px 5px 0px rgba(189,189,189,0.55);
 	display: flex;
 	align-items: center;
-	padding: 5px 0 0 12px;
-		
+	padding: 2px 0 0 12px;
+	color: #FFA504;
+	font-weight: bold;
+	font-size: 1.1rem;
+	margin-bottom: 20px;
 }
+
 #compte .profil > div{
 	margin-right: 50px;
 }
+
+
+#compte .align-end{
+	justify-content: space-between;
+	width: 740px;
+}
+#nameCompte div {
+	width: 200px;
+}
+
+#nameFamilyCompte div{
+	width: 200px;
+}
+
+#telCompte div{
+	width: 150px;
+}
+
+#mailCompte div{
+	width: 300px;
+}
+
+.changePassword{
+	opacity: .4;
+	width: 200px;
+	margin-right: 50px;
+}
+
+
+
+
+
+
+
 /*commandes*/
+
+#commandCompte {
+	width: 100vw;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding-bottom: 150px;
+}
+
+#commandCompte .align{
+	margin-bottom: 20px;
+}
+
 .topCommand {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-start;
+	width: 920px;
+}
+
+.topCommand h3{
+	color: #EC632D;
+	width: 200px;
+	text-align: center;
+}
+
+.topCommand h3:last-child, .commandContainer p:last-child {
+	width: 100px;
+}
+
+.commandContainer {
+	width: 920px;
+	height: 50px;
+	border-radius: 10px;
+	background-color: #FFFFFF;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	-webkit-box-shadow: 0px 3px 6px 0px rgba(156,156,156,0.6);
+	-moz-box-shadow: 0px 3px 6px 0px rgba(156,156,156,0.6);
+	box-shadow: 0px 3px 6px 0px rgba(156,156,156,0.6);
+	position: relative;
+}
+
+#admin .commandContainer {
+	margin-bottom: 20px;
+}
+
+.commandContainer p{
+	width: 200px;
+	text-align: center;
+}
+
+.statut{
+	color: #67c119;
+	font-weight: bold;
+}
+
+.statut.encours {
+	color: #FFA504;
+	font-weight: bold;	
+}
+
+.statut.finish {
+	color: #EC632D;
+	font-weight: bold;
+}
+
+.recommand{
+	background-color: #FFA504;
+	width: 170px;
+	height: 40px;
+	border-radius: 10px;
+	padding-left: 20px;
+	padding-right: 30px;
+	font-size: 1rem;
+	color: #F5F5F5;
+	font-weight: bold;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	right: 50px;
+	-webkit-box-shadow: 0px 3px 6px 0px rgba(156,156,156,0.6);
+	-moz-box-shadow: 0px 3px 6px 0px rgba(156,156,156,0.6);
+	box-shadow: 0px 3px 6px 0px rgba(156,156,156,0.6);
+}
+
+.recommand::after {
+	content: '😋';
+	position: absolute;
+	right: 10px;
+	font-size: .9rem;
+}
+
+
+
+/*Admin*/
+#admin{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+#admin > div:first-child{
+	margin-top: 35px;	
+	justify-content: space-between;
+	width: 100vw;
+}
+.logoFirst{
+	align-self: flex-start;
+	width: 200px;
+	margin-left: 50px;
+}
+#admin h2{
+	margin-top: 100px;
+	font-size: 4rem;
+	color: #EC632D;
+}
+#admin .bouton{
+	width: 100px;
+}
+
+.deconnexion{
+	border: 1px solid #c0c0c0;
+	padding: 10px;
+	border-radius: 10px;
+	margin-right: 50px;
+	margin-left: 20px;
+	font-size: .8rem;
+}
+
+/*commandes admin*/
+
+#admin .topCommand{
+	padding-left: 10px;
+}
+#admin .commandContainer p:first-child {
+	color: #FFA504;
+	font-weight: bold;
+}
+
+#commandAdmin .commandContainer {
+	width: 1100px;
+	padding-left: 10px;
+	border-radius: 10px;
+	background-color: #FFFFFF;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	-webkit-box-shadow: 0px 3px 6px 0px rgba(156,156,156,0.6);
+	-moz-box-shadow: 0px 3px 6px 0px rgba(156,156,156,0.6);
+	box-shadow: 0px 3px 6px 0px rgba(156,156,156,0.6);
+}
+
+#commandAdmin .commandContainer > div {
+	width: 920px;
+	height: 50px;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 }
 
-.commandContainer {
-	height: 50px;
-	background-color: #FFFFFF;
+.paiementValidate {
+	background-color: #FFA504;
+	color: #FFFFFF;
+	font-size: .9rem;
+	font-weight: bold;
+	height: 30px!important;
+	width: 150px!important;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+
+.colorSandwich {
+	color: #303030;
+}
+
+.colorSandwich.custom {
+	color: #67c119;
+}
+
+
+/*Compteur Admin*/
+
+.sectionStock{
 	display: flex;
 	flex-direction: row;
 	align-items: center;
+	justify-content: center;
 }
-.commandContainer p{
-	margin-right: 10px;
+
+.compteurContainer{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.dish {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.dish-img{
+	background-color: #FFA504;
+	width: 90px;
+	height: 90px;
+	border-radius: 20px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+.dish-img img{
+	width: 100px;
+}
+
+.dish-compteur{
+	width: 80px;
+	height: 60px;
+	padding: 10px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	background-color: #FFFFFF;
+	box-shadow: 0px 3px 6px 0px rgba(156,156,156,0.6);
+	border-radius: 7px;
+	margin-left: 20px;
+}
+
+.dish-arrow{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 60px;
+}
+
+.dish-arrow img{
+	width: 20px;
+
+}
+
+.dish b {
+	font-size: 3.5rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	margin-left: 20px;
+}
+
+.compteurBottom{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	width: 210px;
+	padding-left: 50px;
+	margin-top: 5px;
+}
+
+.compteurBottom div{
+	background-color: #FFFFFF;
+	box-shadow: 0px 3px 6px 0px rgba(156,156,156,0.6);
+	padding: 5px;
+	border-radius: 7px;
+	margin-left: 65px;
+	font-size: .8rem;
+}
+
+.compteurBottom p{
+	font-weight: bold;
+}
+
+.besoin{
+	color: #FFA504;
+	font-weight: bold;
+}
+
+.infos {
+	background-color: #FFFFFF;
+	color: #EC632D;
+	border-radius: 50px;
+	font-size: 3.5rem;
+	width: 50px!important;
+	height: 50px!important;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	right: -100px;
+	top: 0;
+	box-shadow: 0px 3px 6px 0px rgba(156,156,156,0.6);
 }
