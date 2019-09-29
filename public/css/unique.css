@@ -502,7 +502,31 @@ a {
 	border-radius: 20px;
 }
 
+#groupDrink input{
+	display: none;
+}
 
+#groupDrink input:checked + label {
+	opacity: 1;
+	transition-duration: .7s;
+	background-color: transparent;
+}
+
+#groupDrink input:not(:checked) + label {
+	opacity: .4;
+	background-color: transparent;
+}
+.sodaButton{
+	opacity: 1;
+}
+
+.sodabutton.opac{
+	opacity: .4;
+}
+
+.sodaButton.active {
+	opacity: 1!important;
+}
 
 .nameDrink {
 	display: flex;
