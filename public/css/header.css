@@ -5,6 +5,7 @@ header {
 	align-items: center;
 	width: 100vw;
 	margin-top: 40px;
+	z-index: 50;
 }
 
 header > div {
@@ -18,13 +19,13 @@ header > div > a {
 	font-weight: bold;
 	margin-right: 45px;
 }
-#logo {
-	width: 167px;
-	height: 39px;
-	margin-left: 50px;
+.logo {
+	width: 204px;
+	height: 50px;
+	margin-left: 80px;
 }
 
-#panier{
+.panier{
 	width: 30px;
 	height: 30px;
 }
@@ -37,13 +38,15 @@ header > div > a {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	z-index: 5;
 }
 
-#activeCompte{
+.activeCompte{
 	position: relative;
+	z-index: 6;
 }
 
-#deconnected {
+.deconnected {
 	position: absolute;
 	top: 0;
 	width: 120px;
@@ -53,16 +56,42 @@ header > div > a {
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
 	font-size: .8rem;
-	z-index: -6;
+	z-index: -1;
 	display: flex;
 	align-items: flex-end;
 	justify-content: center;
 	padding-bottom: 10px;
 	transition-delay: .5s;
 	transition-duration: .4s;
+	opacity: 0;
 }
 
-#activeCompte:hover #deconnected {
+.activeCompte:hover .deconnected {
 	transform: translateY(35px);
+	opacity: 1!important;
 
+}
+
+
+
+/*Accueil Header*/
+#generalHead{
+	background-color: #FFA504;
+	margin-top: 0;
+	padding: 40px 0 0 0;
+	width: 100vw!important;
+}
+#generalHead .connexion{
+	background-color: #F5F5F5;
+	color: #FFA504;
+}
+#generalHead .deconnected{
+	background-color: #EC632D;
+	color: #F5F5F5;
+	z-index: -1;
+}
+
+
+#generalHead a {
+	color: #F5F5F5;
 }

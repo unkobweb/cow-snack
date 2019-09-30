@@ -243,7 +243,7 @@ strong{
 	border-bottom-right-radius: 20px;
 	position: absolute;
 	height: 200px;
-	width: 200px;
+	width: 198px;
 	top: 45px;
 	z-index: -5;
 	display: flex;
@@ -255,7 +255,7 @@ strong{
 }
 
 #menu > div:hover .popupfood {
-	transform: translateY(65px);
+	transform: translateY(75px);
 	transition-duration: .7s;
 	transition-delay: .5s;
 	opacity: 1;
@@ -280,6 +280,7 @@ button {
 	border-radius: 25px;
 	background-color: #F5F5F5;
 	outline: none!important;
+	cursor: pointer;
 }
 
 button.active {
@@ -435,6 +436,7 @@ button.active img{
 #customsubmit, #menusubmit{
 	background-color: #FFA504;
 	border: none;
+	cursor: pointer;
 }
 
 input:checked + label {
