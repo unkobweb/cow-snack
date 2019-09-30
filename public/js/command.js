@@ -97,17 +97,20 @@ $('.selecteurViande, .selecteurSupp, .selecteurSauce').click(function(){
         $('#'+typeFood+'Limit').text('');
     }
 
-    console.log(eval(typeFood+"Choice"));
-
     $('#compteur'+this.classList[0].substring(9)).text(eval(typeFood+"Choice"));
 
     updateCommand();
 });
 
-$('#price').text(small.toFixed(2)+"€");
+$('#price').text(small.toFixed(2)+" €");
 
 $('.size').click(function(){
     commande.ingredients.size = document.querySelector('input[name="taille"]:checked, input[name="taille2"]:checked').value;
-    $('#price').text(eval(commande.ingredients.size).toFixed(2)+"€");
+    $('#price').text(eval(commande.ingredients.size).toFixed(2)+" €");
     console.log(commande);
+});
+
+$('#customsubmit').click(() => {
+    console.log(commande);
+    $.post('/sandwich',{user_commande: JSON.stringify(commande)});
 });

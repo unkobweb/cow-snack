@@ -14,7 +14,7 @@ const connexion = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: '',
-    database: 'cow-snack',
+    database: 'cow_snack',
     port: 3306
 });
 
@@ -28,7 +28,7 @@ app.use(session({
 
 connexion.query('SELECT * FROM composition INNER JOIN purchase PC on composition.sandwich_id = PC.composition_id INNER JOIN stock ST on composition.ingredient_id = ST.id INNER JOIN size SZ on PC.size_id = SZ.id', (err, rows) => {
     if (err){
-        console.log('une erreur est survenue !');
+        console.log('💥|La connexion a la BDD a échouée');
     } else {
         let actual = 0;
         let count;
@@ -68,13 +68,13 @@ if (false/*countDownDate > now*/) {
         let size;
         connexion.query('SELECT * FROM stock', (err, rows1) => {
             connexion.query('SELECT * FROM size', (err, rows2) => {
-                res.render('sandwich.ejs', {print: rows1, printSize: rows2});
+                res.render('sandwich.ejs', {print: rows1, printSize: rows2, session: req.session});
             });
         });
     })
     .post('/sandwich', urlencodedParser, (req, res) => {
-        console.log(req.body.postname);
-        console.log(req.body.postclicked);
+        req.session.commande = JSON.parse(req.body.user_commande);
+        console.log(req.session.commande);
     })
     .get('/special', (req, res) => {
         res.render('special.ejs');
