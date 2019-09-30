@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" type="icon/png" href="img/favicon.png"/>
+		<title>Crée une compte - Cow-snack</title>
+		<link rel="stylesheet" href="css/unique.css">
+		<link rel="stylesheet" href="css/header.css">
+		<link rel="stylesheet" href="css/footer.css">
+<!-- 		<script src="../js/jquery-3.4.1.min.js"></script> -->
+	</head>
+	<body id="connexion">
+
+		<a href="index.ejs" class="flex-end abs-button">
+			<div class="bouton">Retourner à l'accueil</div>
+		</a>
+		<img src="img/logo.png" class="highLogo">
+
+		<div class="flex-col align">
+			<h1>Crée un compte</h1>
+			<h3>Bienvenue chez nous 🤠</h3>
+		</div>
+		<% if (locals.err) { %>
+			<ul>
+				<% err.forEach(element => { %>
+					<li><%=element%></li>	
+				<%});%>
+			</ul>	
+		<%}%>
+		<form method="POST" action="/creationcompte">
+			<div class="flex-col align">	
+				<div class="flex-row align">
+					<input type="text" name="username" id="familyName" placeholder="Nom" required>
+					<input type="text" name="userfirstname" id="firstName" placeholder="Prénom" required>
+				</div>
+				<input type="email" id="mail" name="usermail" placeholder="Email" required>
+				<input type="tel"  name="userphone" placeholder="Téléphone" id="tel" required>
+				<input type="password" name="userpassword" id="password" placeholder="Mot de passe" required>
+			</div>
+			<a href="/connexion"><h4>Vous avez déjà un compte ! Connectez-vous 😊</h4></a>
+			<input type="submit" value="Crée le compte" class="bouton" id="createCompte">
+		</form>
+	</body>
+	<script>
+		let phoneInput = document.querySelector('#tel');
+		console.log(phoneInput);
+		let phoneVal = phoneInput.value;
+		phoneInput.addEventListener('change', ()=>{
+			phoneVal = phoneInput.value;
+			if (phoneVal.length == 10) {
+				document.querySelector('#tel').value = phoneVal.slice(0,2)+" "+phoneVal.slice(2,4)+" "+phoneVal.slice(4,6)+" "+phoneVal.slice(6,8)+" "+phoneVal.slice(-2);
+			}
+		});
+	</script>
+</html> 

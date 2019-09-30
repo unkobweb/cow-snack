@@ -45,104 +45,30 @@
 	
 				<h3>Nos Menus</h3>
 				<div id="menu" class="wrap">
-  					<div>
-  						<p>Cow-Classique</p>
-  						<button type="button" id="cow-classique"><img src="img/steak.png" width="100vw" class="vitrine"></button>
-  						
-  						<div class="popupfood">
-  							<p> &#8226; &nbsp Jambon</p>
-  							<p> &#8226; &nbsp Beurre</p>
-  							<p></p>
-  						</div>
-  					</div>
-  					<div>
-  						<p>Cow-love</p>
-  						<button type="button" id="cow-love"><img src="img/merguez.png"  width="100vw" class="vitrine"></button>
-  						
-  						<div class="popupfood">
-  							<p> &#8226; &nbsp Émincé de Poulet</p>
-  							<p> &#8226; &nbsp Tomate, Beurre</p>
-  							<p> &#8226; &nbsp Gruyère</p>
-  						</div>
-  						
-  					</div>
-  					<div>
-  						<p>Cow Good</p>
-  				    	<button type="button" id="cow-good"><img src="img/merguez.png"  width="100vw" class="vitrine"></button>
-  				    	<div class="popupfood">
-  							<p> &#8226; &nbsp Steak, Bacon</p>
-  							<p> &#8226; &nbsp Cheddar, Lardons</p>
-  							<p> &#8226; &nbsp Gruyère</p>
-  						</div>
-  				    
-  					</div>
-  					<div>
-  						<p>Cow-healthy</p>
-	  				    <button type="button" id="cow-healthy"><img src="img/nuggets.png"  width="100vw" class="vitrine"></button>
-	  				    <div class="popupfood">
-  							<p> &#8226; &nbsp Émincé de poulet</p>
-  							<p> &#8226; &nbsp Salade, Tomate</p>
-  							<p> &#8226; &nbsp Ketchup</p>
-  						</div>
-	  				    
-  					</div>
-  					<div>
-  						<p>Cow Pasboy</p>
-  						<button type="button" id="cow-pasboy"><img src="img/merguez.png"  width="100vw" class="vitrine"></button>
-  						<div class="popupfood">
-  							<p> &#8226; &nbsp Steak, Saucisse</p>
-  							<p> &#8226; &nbsp Salade, Tomate</p>
-  							<p> &#8226; &nbsp Biggy</p>
-  						</div>
-  						
-  					</div>
-  					<div>
-  						<p>Cow-girl</p>
-  						<button type="button" id="cow-girl"><img src="img/merguez.png"  width="100vw" class="vitrine"></button>
-  						<div class="popupfood">
-  							<p> &#8226; &nbsp Merguez, Cordon bleu</p>
-  							<p> &#8226; &nbsp Gruyère, Tomate</p>
-  							<p> &#8226; &nbsp Ketchup</p>
-  						</div>
-  						
-  					</div>
-  					<div>
-  						<p>Cow Work</p>
-  						<button type="button" id="cow-work"><img src="img/merguez.png"  width="100vw" class="vitrine"></button>
-  						<div class="popupfood">
-  							<p> &#8226; &nbsp Steak, Cheddar</p>
-							<p> &#8226; &nbsp Salade, Tomate</p>
-							<p> &#8226; &nbsp Biggy</p>
+					<%let sandwichCount = 1;%>
+					<%printMenu.forEach((result) => { %>
+						<%if (result.composition_id == sandwichCount) {%>
+							<%sandwichCount++;%>
+						<div>
+							<p><%=result.name.charAt(0).toUpperCase() + result.name.slice(1).toLowerCase()%></p>
+							<button type="button" id="cow-classique"><img src="img/steak.png" width="100vw" class="vitrine"></button>
+							
+							<div class="popupfood">
+								<%printMenu.forEach((result) => { %>
+									<%if (result.composition_id == (sandwichCount-1)) {%>
+										<p> &#8226; &nbsp <%=result.label%></p>
+									<%}%>
+								<%});%>
+							</div>
 						</div>
-  						
-  					</div>
-  					<div>
-  						<p>Cow-Ma</p>
-  						<button type="button" id="cow-ma"><img src="img/merguez.png"  width="100vw" class="vitrine"></button>
-  						<div class="popupfood">
-  							<p> &#8226; &nbsp Merguez, Nuggets</p>
-							<p> &#8226; &nbsp Gruyère</p>
-							<p> &#8226; &nbsp Pâtes</p>
-						</div>
-  					</div>
-  					<div>
-  						<p>Cow Without-Cow</p>
-  						<button type="button" id="cow-without-cow"><img src="img/merguez.png"  width="100vw" class="vitrine"></button>
-	  					<div class="popupfood">
-	  						<p> &#8226; &nbsp Nuggets</p>
-	  						<p> &#8226; &nbsp Salade, Bacon</p>
-	  						<p> &#8226; &nbsp Barbecue-miel</p>
-	  					</div>
-  						
-  					</div>
-  				</div>
-
-
+						<%}%>  
+					<%});%>
+				</div>
 			<!-- Taille -->
 				<h3>Tailles</h3>
 				<div class="flex-row wrap size">
 					<div>
-						<input type="radio" name="taille" value="small" id="small">
+						<input type="radio" name="taille" value="small" id="small" checked>
 						<label class="radioSize" for="small">S</label>
 						<p>Tiers</p>
 					</div>
@@ -161,7 +87,7 @@
 			<!-- Prix -->
 				<div class="prix">
 					<h4>Total</h4>
-					<p>3.00€</p>
+					<p id="priceMenu">3.00€</p>
 				</div>
 				<div class="submite">
 					<input type="submit" name="" value="😋 Poursuivre la commande" id="menusubmit">
@@ -271,7 +197,7 @@
 			<!-- Prix -->
 				<div class="prix">
 					<h4>Total</h4>
-					<p id="price">3.00€</p>
+					<p id="priceCustom">3.00€</p>
 
 					<!-- Nom du Sandwich -->
 					
@@ -296,7 +222,6 @@
 	</body>
 	<script src="js/jquery-3.4.1.min.js"></script>
 	<% printSize.forEach((result) => { %>
-		<%console.log%>
 			<script>
 				eval("<%=result.size_slug%>"+" = "+"<%=result.price%>");
 			</script>

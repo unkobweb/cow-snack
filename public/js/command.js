@@ -1,3 +1,6 @@
+let selected = "";
+let commande = {};
+
 function openMenu() {
     document.querySelector('#cowmenu').classList.toggle('see');
     document.querySelector('#cowcustom').classList.remove('see');
@@ -10,11 +13,36 @@ function openCustom() {
 function opacityCustom() {
     document.querySelector('#choicemenu').classList.toggle('opac');
     document.querySelector('#choicecustom').classList.remove('opac');
+    selected = "custom";
+    commande = {
+        name: '',
+        phone: '',
+        ingredients: {
+            meat: {},
+            supp: {},
+            sauce: {},
+            drink: {},
+            dessert: {},
+            size: ''
+        }
+    };
+    console.log(commande);
 }
 
 function opacityMenu() {
     document.querySelector('#choicecustom').classList.toggle('opac');
     document.querySelector('#choicemenu').classList.remove('opac');
+    selected = "menu";
+    commande = {
+        name: '',
+        phone: '',
+        ingredients: {
+            sandwich_name: '',
+            size: '',
+            composition_id: 0
+        }
+    };
+    console.log(commande);
 }
 
 //$('#choicemenu').addEventListener('click', openMenu);
@@ -31,19 +59,6 @@ $('#choicecustom').click(()=>{
 /*$('button').click(function(){
     this.classList.toggle('active');
 });*/
-
-var commande = {
-    name: '',
-    phone: '',
-    ingredients: {
-        meat: {},
-        supp: {},
-        sauce: {},
-        drink: {},
-        dessert: {},
-        size: ''
-    }
-}
 
 var viandeChoice = 0;
 
@@ -102,15 +117,16 @@ $('.selecteurViande, .selecteurSupp, .selecteurSauce').click(function(){
     updateCommand();
 });
 
-console.log(small);
-console.log(medium);
-console.log(large);
-
-$('#price').text(small.toFixed(2)+" €");
+$('#priceCustom, #priceMenu').text(small.toFixed(2)+" €");
 
 $('.size').click(function(){
-    commande.ingredients.size = document.querySelector('input[name="taille"]:checked, input[name="taille2"]:checked').value;
-    $('#price').text(eval(commande.ingredients.size).toFixed(2)+" €");
+    if (selected != "custom") {
+        commande.ingredients.size = document.querySelector('input[name="taille"]:checked').value;
+        $('#priceMenu').text(eval(commande.ingredients.size).toFixed(2)+" €");
+    } else {
+        commande.ingredients.size = document.querySelector('input[name="taille2"]:checked').value;
+        $('#priceCustom').text(eval(commande.ingredients.size).toFixed(2)+" €");
+    }
     console.log(commande);
 });
 
