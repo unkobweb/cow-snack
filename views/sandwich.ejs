@@ -57,7 +57,7 @@
   					</div>
   					<div>
   						<p>Cow-love</p>
-  						<button type="button" id="cow-love"><img src="img/jambon.png"  width="100vw" class="vitrine"></button>
+  						<button type="button" id="cow-love"><img src="img/merguez.png"  width="100vw" class="vitrine"></button>
   						
   						<div class="popupfood">
   							<p> &#8226; &nbsp Émincé de Poulet</p>
@@ -68,7 +68,7 @@
   					</div>
   					<div>
   						<p>Cow Good</p>
-  				    	<button type="button" id="cow-good"><img src="img/emince.png"  width="100vw" class="vitrine"></button>
+  				    	<button type="button" id="cow-good"><img src="img/merguez.png"  width="100vw" class="vitrine"></button>
   				    	<div class="popupfood">
   							<p> &#8226; &nbsp Steak, Bacon</p>
   							<p> &#8226; &nbsp Cheddar, Lardons</p>
@@ -294,11 +294,12 @@
 			<% include footer %>
 		</footer>
 	</body>
-	<script src="../js/jquery-3.4.1.min.js"></script>
+	<script src="js/jquery-3.4.1.min.js"></script>
 	<% printSize.forEach((result) => { %>
+		<%console.log%>
 			<script>
-				eval("<%=result.slug%>"+" = "+"<%=result.price%>");
+				eval("<%=result.size_slug%>"+" = "+"<%=result.price%>");
 			</script>
 	<% }); %>	
-	<script src="../js/command.js"></script>
+	<script src="js/command.js"></script>
 </html>

@@ -3,6 +3,7 @@ const mysql = require('mysql');
 const bodyParser = require('body-parser');
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
 const session = require('express-session');
+const bcrypt = require('bcrypt');
 
 const nourriture = ['viande','supp','sauce','boisson','dessert'];
 
@@ -14,7 +15,7 @@ const connexion = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: '',
-    database: 'cow_snack',
+    database: 'cow-snack',
     port: 3306
 });
 
@@ -28,7 +29,7 @@ app.use(session({
 
 connexion.query('SELECT * FROM composition INNER JOIN purchase PC on composition.sandwich_id = PC.composition_id INNER JOIN stock ST on composition.ingredient_id = ST.id INNER JOIN size SZ on PC.size_id = SZ.id', (err, rows) => {
     if (err){
-        console.log('💥|La connexion a la BDD a échouée');
+        console.log('💥-La connexion a la BDD a échouee');
     } else {
         let actual = 0;
         let count;

@@ -102,6 +102,10 @@ $('.selecteurViande, .selecteurSupp, .selecteurSauce').click(function(){
     updateCommand();
 });
 
+console.log(small);
+console.log(medium);
+console.log(large);
+
 $('#price').text(small.toFixed(2)+" €");
 
 $('.size').click(function(){
