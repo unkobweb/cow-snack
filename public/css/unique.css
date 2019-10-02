@@ -120,6 +120,11 @@ a {
 	flex-direction: column;
 	align-items: center;
 }
+
+#chrono h1{
+	text-align: center;
+}
+
 #noteChrono{
 	font-weight: bold;
 	font-size: 1.2rem;
@@ -1185,4 +1190,41 @@ border: none;
 	top: 0;
 	box-shadow: 0px 3px 6px 0px rgba(156,156,156,0.6);
 	cursor: pointer;
+}
+
+
+
+@media screen and (max-width: 1050px){
+
+	#chrono h1{
+		font-size: 7rem;
+	}
+}
+
+@media screen and (max-width: 760px){
+
+	#chrono h1{
+		font-size: 5rem;
+	}
+}
+
+@media screen and (max-width: 500px){
+	#countdown{
+		background: url("../img/phoneBg.png") no-repeat center fixed;
+		overflow: hidden;
+		background-size: cover;
+		background-color: #F5F5F5;
+		margin: 0;
+		padding: 0;
+		height: 100vh;
+	}
+	#chrono img{
+		width: 200px;
+	}
+	#chrono h1{
+		font-size: 2rem;
+	}
+	#noteChrono{
+		font-size: .7rem;
+	}
 }
