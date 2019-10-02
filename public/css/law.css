@@ -1,14 +1,14 @@
 @font-face {
     font-family: 'proxima_nova';
-    src: url('../font/proximanova-regular-webfont.woff2') format('woff2'),
-         url('../font/proximanova-regular-webfont.woff') format('woff');
+    src: url('font/proximanova-regular-webfont.woff2') format('woff2'),
+         url('font/proximanova-regular-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: 'proxima_nova';
-    src: url('../font/proxima_nova_bold-webfont.woff2') format('woff2'),
-         url('../font/proxima_nova_bold-webfont.woff') format('woff');
+    src: url('font/proxima_nova_bold-webfont.woff2') format('woff2'),
+         url('font/proxima_nova_bold-webfont.woff') format('woff');
     font-weight: bold;
     font-style: normal;
 
@@ -26,6 +26,7 @@ html,body{
 a{
 	text-decoration: none;
 	color: #FFA504;
+	font-weight: bold;
 }
 
 .law strong {
@@ -54,8 +55,25 @@ a{
 	color: #FFA504;
 }
 
+.law h2{
+	margin-top: 100px;
+}
+
+.law h3{
+	margin-top: 50px;
+}
+
+.law h5{
+	margin-top: 0;
+}
+
 .law > p{
 	padding-left: 25vw;
 	padding-right: 25vw;
 	font-size: 1.3em;
+}
+
+
+.alignLeft {
+	align-self: flex-start;
 }
