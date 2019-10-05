@@ -130,7 +130,33 @@ $('.size').click(function(){
     console.log(commande);
 });
 
-$('#customsubmit').click(() => {
+$('#customsubmit, #menusubmit').click(() => {
     console.log(commande);
     $.post('/sandwich',{user_commande: JSON.stringify(commande)});
 });
+
+$('.presandwich').click(function(){
+    //$('.presandwich').classList.remove('active');
+    document.querySelectorAll('.presandwich').forEach(element => {
+        element.classList.remove('active');
+    })
+    if (this.classList == 'active') {
+        this.classList.remove('active');
+    } else {
+        this.classList.toggle('active');
+    }
+});
+/*var buttons = document.querySelectorAll('button');
+var image = document.querySelectorAll('img');
+
+for (var i = 0; i < image.length; i++) {
+	image[i].addEventListener('click', function(event){
+		event.target.parentElement.classList.toggle('active');
+	});
+}
+
+for (var i = 0; i < buttons.length; i++) {
+	buttons[i].addEventListener('click', function(event){
+		event.target.classList.toggle('active');
+	});
+}*/

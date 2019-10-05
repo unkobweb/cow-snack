@@ -62,13 +62,13 @@ if (false/*countDownDate > now*/) {
     });
 } else {
     app.get('/', (req, res) =>{
-        res.render('index.ejs');
+        res.render('index.ejs', {session: req.session});
     })
     .get('/sandwich', (req, res) => {
         connexion.query('SELECT * FROM stock', (err, rows1) => {
             connexion.query('SELECT * FROM size', (err, rows2) => {
                 connexion.query('SELECT * FROM composition INNER JOIN sandwich SW on composition.sandwich_id = SW.composition_id INNER JOIN stock ST on composition.ingredient_id = ST.id', (err, rows3) => {
-                    res.render('sandwich.ejs', {print: rows1, printSize: rows2, printMenu: rows3});
+                    res.render('sandwich.ejs', {print: rows1, printSize: rows2, printMenu: rows3, session: req.session});
                 });
             });
         });
@@ -78,22 +78,29 @@ if (false/*countDownDate > now*/) {
         console.log(req.session.commande);
     })
     .get('/special', (req, res) => {
-        res.render('special.ejs');
+        res.render('special.ejs', {session: req.session});
     })
     .get('/apropos', (req, res) => {
-        res.render('apropos.ejs');
+        res.render('apropos.ejs', {session: req.session});
     })
     .get('/contact', (req, res) => {
-        res.render('contact.ejs');
+        res.render('contact.ejs', {session: req.session});
     })
     .get('/conditionsgenerales', (req, res) => {
-        res.render('conditionsgenerales.ejs');
+        res.render('conditionsgenerales.ejs', {session: req.session});
     })
     .get('/politique', (req, res) => {
-        res.render('politique.ejs')
+        res.render('politique.ejs', {session: req.session})
     })
     .get('/mentionslegales', (req, res) => {
-        res.render('mentionslegales.ejs')
+        res.render('mentionslegales.ejs', {session: req.session})
+    })
+    .get('/compte', (req, res) => {
+        res.render('compte.ejs', {session: req.session});
+    })
+    .get('/deconnexion', (req, res) => {
+        req.session.destroy();
+        res.redirect('/');
     })
     .get('/connexion', (req, res) => {
         if (req.session.userID) {
@@ -109,7 +116,7 @@ if (false/*countDownDate > now*/) {
                 } else {
                     rows.forEach((result) => {
                         bcrypt.compare(req.body.userpassword, result.password, (err, res) => {
-                            if (err) {
+                            if (!res) {
                                 resolve({err: "Vous n'avez pas entré le bon mot de passe !"});
                             } else {
                                 resolve({userID: result.id, userName: result.name, userFirstname: result.firstname, userMail: result.mail, userPhone: result.phone});
@@ -162,9 +169,7 @@ if (false/*countDownDate > now*/) {
         });
     })
     .use((req, res, next) => {
-        res.status(404).render('maintenance.ejs');
+        res.status(404).render('maintenance.ejs', {session: req.session});
     });
 }
 app.listen(8080);
-
-//SELECT * FROM composition INNER JOIN purchase PC on composition.sandwich_id = PC.composition_id INNER JOIN stock ST on composition.ingredient_id = ST.id INNER JOIN size SZ on PC.size_id = SZ.id

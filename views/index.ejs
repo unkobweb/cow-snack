@@ -29,10 +29,16 @@
 				<a href="panier.html"> 
 					<img src="img/panierWhite.png" class="panier">
 				</a>
-				<a href="connexion.html" class="activeCompte">
-					<div class="connexion">Connexion</div>
-					<div class="deconnected">Se déconnecter</div>
-				</a>
+				<%if (session.userID) { %>
+					<a href="/compte" class="activeCompte">
+						<div class="connexion"><%=session.userFirstname + " " + session.userName%></div>
+						<div class="deconnected">Se déconnecter</div>
+					</a>
+				<%} else {%>
+					<a href="/connexion" class="activeCompte">
+						<div class="connexion">Connexion</div>
+					</a>
+				<%}%>
 			</div>
 		</header>
 
