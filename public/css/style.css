@@ -77,6 +77,118 @@ strong{
 	width: 360px;
 }
 
+/*Alerte d'indisponibilité pour la semaine*/
+.symbol {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-around;
+	margin-bottom: 100px;
+}
+.weekAlert {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	background-color: #FFF;
+	width: 350px;
+	border-radius: 15px;
+	box-shadow: 0px 3px 6px 0px rgba(140,140,140,0.3);
+}
+
+.redAlert {
+	background-color: #EC632D;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	color: #F9F9F9;
+	font-weight: bold;
+	font-size: 1rem;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+.redAlert + p {
+	padding-left: 10px;
+	font-size: .85rem;
+}
+
+.symbolRight {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	font-size: .7rem;
+}
+
+
+
+
+
+.symbolRight .weekAlert {
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	left: -30px;
+	top: 2px;
+	transition-duration: .5s;
+}
+.symbolRight .weekAlert:hover {
+	width: 180px;
+}
+
+
+
+
+.symbolRight .textAlert{
+	font-size: .7rem;
+	padding-left: 10px;
+	width: 0;
+	display: none;
+	overflow: hidden;
+    white-space: nowrap;
+
+
+}
+
+.symbolRight .weekAlert:hover .textAlert {
+	animation-name: alert;
+    animation-duration: .5s;
+    width: 140px;
+	display: block;
+}
+
+
+
+
+.symbolRight .redAlert {
+	width: 20px!important;
+	height: 20px;
+}
+
+@keyframes alert {
+	0%{
+		width: 0;
+	}
+	50%{
+		width: 0;
+	}
+	100%{
+		width: 140px;
+	}
+}
+
+
+
+
+
+
+
+
+
+
 
 
 /*Choix des sandwich*/
@@ -208,11 +320,9 @@ strong{
 	display: block;
 }
 
-#cowmenu > form > h3 {
+#cowmenu > form  h3 {
 	font-size: 3rem;
 	color: #FFA504;
-	margin-left: 150px;
-	margin-top: 100px;
 }
 
 
@@ -231,7 +341,7 @@ strong{
 	position: relative;
 }
 
-#menu > div > p {
+#menu > div > p, .symbolRight > p {
 	font-size: 1.2rem;
 	font-weight: bold;
 	margin-bottom: 10px;
@@ -307,9 +417,6 @@ button.active img{
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	margin-top: 100px;
-	margin-left: 150px;
-	margin-bottom: 75px;
 }
 
 #cowcustom h3 {
@@ -333,6 +440,7 @@ button.active img{
 
 #cowcustom button img, #cowmenu button img {
 	filter: drop-shadow(0px 0px 10px #DADADA);
+	width: 100%;
 }
 
 .pad-200 {
@@ -391,7 +499,9 @@ button.active img{
 
 
 
-
+.deport {
+	margin-left: 230px;
+}
 
 /*Tailles*/
 .size {

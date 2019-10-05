@@ -253,7 +253,7 @@ a {
 }
 
 .price {
-	font-size: 1.2rem;
+	font-size: .7rem;
 	font-weight: bold;
 }
 
@@ -464,6 +464,11 @@ a {
 }
 #drinkButton, #dessertButton {
 	cursor: pointer;
+	padding: 0;
+}
+
+#drinkButton img, #dessertButton img {
+	width: 100%;
 }
 
 /*Drink*/
@@ -574,9 +579,11 @@ a {
 
 #buttonDessert button {
 	cursor: pointer;
+	padding: 0;
 }
 #buttonDessert img{
 	filter: drop-shadow(0px 0px 10px #DADADA);
+	width: 100%;
 }
 
 #buttonDessert p{
