@@ -9,7 +9,11 @@
 		<img src="img/panierWhite.png" class="panier">
 	</a>
 	<a href="/connexion" class="activeCompte">
-		<div class="connexion">Connexion</div>
-		<div class="deconnected">Se déconnecter</div>
+		<%if (session.userID) { %>
+			<div class="connexion"><%=session.userFirstname + " " + session.userName%></div>
+			<div class="deconnected">Se déconnecter</div>
+		<%} else {%>
+			<div class="connexion">Connexion</div>
+		<%}%>
 	</a>
 </div>

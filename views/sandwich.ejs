@@ -1,3 +1,12 @@
+<%
+	let countMeat  = 0;
+	let countSupp  = 0;
+	let countSauce = 0;
+
+	let sentenceMeat = "";
+	let sentenceSupp = "";
+	let sentenceSauce = "";
+%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -51,18 +60,42 @@
 							<%sandwichCount++;%>
 						<div>
 							<p><%=result.name.charAt(0).toUpperCase() + result.name.slice(1).toLowerCase()%></p>
-							<button type="button" id="cow-classique"><img src="img/steak.png" width="100vw" class="vitrine"></button>
+							<button type="button" class="presandwich" id="cow-classique"><img src="img/steak.png" width="100vw" class="vitrine"></button>
 							
 							<div class="popupfood">
 								<%printMenu.forEach((result) => { %>
-									<%if (result.composition_id == (sandwichCount-1)) {%>
-										<p> &#8226; &nbsp <%=result.label%></p>
-									<%}%>
+									<%if (result.composition_id == (sandwichCount-1)) {
+										if (result.type == 1) {
+											countMeat == 0 ? sentenceMeat += result.label : sentenceMeat += ", "+result.label;
+											countMeat++;
+										} else if (result.type == 2) {
+											countSupp == 0 ? sentenceSupp += result.label : sentenceSupp += ", "+result.label;
+											countSupp++;
+										} else if (result.type == 3) {
+											countSauce == 0 ? sentenceSauce += result.label : sentenceSupp += ", "+result.label;
+										}
+									}%>
 								<%});%>
+								<%if (sentenceMeat != "") {%>
+									<p> &#8226; &nbsp <%=sentenceMeat%></p>
+								<%}%>
+								<%if (sentenceSupp != "") {%>
+									<p> &#8226; &nbsp <%=sentenceSupp%></p>
+								<%}%>
+								<%if (sentenceSauce != "") {%>
+									<p> &#8226; &nbsp <%=sentenceSauce%></p>
+								<%}%>
+								<%if (sentenceMeat == "" || sentenceSupp == "" || sentenceSauce == ""){%>
+									<p></p>
+								<%}%>
+								<%
+									sentenceMeat = sentenceSupp = sentenceSauce = "";
+									countMeat = countSupp = countSauce = 0;
+								%>
 							</div>
 						</div>
-						<%}%>  
-					<%});%>
+						<%}
+					});%>
 				</div>
 			<!-- Taille -->
 				<h3>Tailles</h3>
