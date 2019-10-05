@@ -681,7 +681,7 @@ border: none;
 
 
 /*Connexion*/
-#connexion, #connexion form {
+#connexion, #connexion form, #forgot, #forgot form {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -697,21 +697,26 @@ border: none;
 	width: 30%;
 }
 
-#connexion h1{
+#connexion h1, #forgot h1{
 	margin-bottom: 0;
 }
-#connexion h3{
+#connexion h3, #forgot h3{
 	opacity: .7;
 	font-weight: normal;
 	font-size: .95rem;
 	margin-bottom: 50px;
 }
-#connexion .bouton{
+#connexion .bouton, #forgot .bouton{
 	width: 170px;
 	height: 40px;
-	font-size: 1rem;
 	padding-right: 10px;
 	padding-left: 10px;
+}
+
+#forgot input[type="submit"]  {
+	width: 300px;
+	font-size: 1.2rem!important;
+	margin-top: 75px;
 }
 #connexion .flex-end{
 	align-self: flex-end;
@@ -723,20 +728,20 @@ border: none;
 	right: 50px;
 }
 
-#connexion input[type="submit"] {
+#connexion input[type="submit"], #forgot input[type="submit"] {
 	border: none;
 	font-size: 1.5rem;
 	cursor: pointer;
 }
 
-#connexion h4{
+#connexion h4, #forgot h4{
 	font-size: .8rem;
 	margin-left: 20px;
 	margin-top: 60px;
 	opacity: .7;
 }
 
-#connexion div input {
+#connexion div input, #forgot div input {
 	border-radius: 10px;
 	border: 1px solid #c0c0c0;
 	background-color: #F5F5F5;
@@ -748,11 +753,11 @@ border: none;
 	font-weight: bold;
 }
 
-#connexion > div input::placeholder {
+#connexion > div input::placeholder, #forgot > div input::placeholder {
 	opacity: .4;
 }
 
-#password + p{
+#password + p, #mailpassword + p{
 	align-self: flex-start;
 	font-size: .9rem;
 	margin-left: 5px;
@@ -794,6 +799,17 @@ border: none;
 	height: 50px!important;
 	margin-bottom: 100px;
 }
+
+
+/* forgot password*/
+
+#forgot {
+
+}
+
+
+
+
 
 
 
