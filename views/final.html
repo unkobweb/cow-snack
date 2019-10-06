@@ -37,11 +37,11 @@
 					<div>
 						<h4>Combien de chapeau cowboy vaut notre service ?</h4>
 						<div id="rate">
-							<a href=""><img src="img/favicon.png"></a>
-							<a href=""><img src="img/favicon.png"></a>
-							<a href=""><img src="img/favicon.png"></a>
-							<a href=""><img src="img/favicon.png"></a>
-							<a href=""><img src="img/favicon.png"></a>
+							<img src="img/favicon.png" class="cowRate">
+							<img src="img/favicon.png" class="cowRate">
+							<img src="img/favicon.png" class="cowRate">
+							<img src="img/favicon.png" class="cowRate">
+							<img src="img/favicon.png" class="cowRate">
 						</div>
 					</div>
 					<div>
@@ -63,5 +63,34 @@
 				<a href="mentionslegales.html">Mentions Légales</a>
 			</div>
 		</footer>
+		<script>
+			let rate = document.querySelectorAll('.cowRate');
+
+			for(let i = 0; i < rate.length; i++){
+				rate[i].addEventListener('click', function(event){
+						event.target.classList.add('choose');
+						for(let y = 0; y < 5; y++){
+							if (i == y) {
+								event.target.parentElement.children[y].classList.add('choose');	
+							}
+							else if(i < y){
+								event.target.parentElement.children[y].classList.remove('choose');	
+							}
+							else{
+								event.target.parentElement.children[y].classList.add('choose');	
+							}
+							
+						}
+				});
+
+			}
+
+
+
+
+
+
+
+		</script>
 	</body>
 </html> 
