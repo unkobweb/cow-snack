@@ -10,7 +10,7 @@
 		<link rel="stylesheet" href="css/footer.css">
 <!-- 		<script src="../js/jquery-3.4.1.min.js"></script> -->
 	</head>
-	<body id="connexion">
+	<body id="create">
 
 		<a href="index.ejs" class="flex-end abs-button">
 			<div class="bouton">Retourner à l'accueil</div>
@@ -22,7 +22,7 @@
 			<h3>Bienvenue chez nous 🤠</h3>
 		</div>
 		<% if (locals.err) { %>
-			<ul>
+			<ul class="errorUser">
 				<% err.forEach(element => { %>
 					<li><%=element%></li>	
 				<%});%>
@@ -37,6 +37,7 @@
 				<input type="email" id="mail" name="usermail" placeholder="Email" required>
 				<input type="tel"  name="userphone" placeholder="Téléphone" id="tel" required>
 				<input type="password" name="userpassword" id="password" placeholder="Mot de passe" required>
+				<p>En vous créant un compte vous acceptez notre politique de confidentialité et nos conditions générales.</p>
 			</div>
 			<a href="/connexion"><h4>Vous avez déjà un compte ! Connectez-vous 😊</h4></a>
 			<input type="submit" value="Crée le compte" class="bouton" id="createCompte">

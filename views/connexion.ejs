@@ -8,7 +8,6 @@
 		<link rel="stylesheet" href="css/unique.css">
 		<link rel="stylesheet" href="css/header.css">
 		<link rel="stylesheet" href="css/footer.css">
-<!-- 		<script src="../js/jquery-3.4.1.min.js"></script> -->
 	</head>
 	<body id="connexion">
 
@@ -22,11 +21,13 @@
 			<h3>Bienvenue chez nous 🤠</h3>
 		</div>
 		<% if (locals.err) { %>
-			<ul>
-				<li><%=err%></li>
+			<ul class="errorUser">
+				<%err.forEach(element => { %>
+					<li><%=element%></li>
+				<%});%>
 			</ul>	
 		<%} else if (locals.success) { %>
-			<ul>
+			<ul class="successUser">
 				<li><%=success%></li>
 			</ul>	
 		<%}%>
