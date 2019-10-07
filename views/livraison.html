@@ -3,33 +3,20 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="icon" type="icon/png" href="../public/img/favicon.png"/>
+		<link rel="icon" type="icon/png" href="img/favicon.png"/>
 		<title>Livraison - Cow-snack</title>
-		<link rel="stylesheet" href="../public/css/header.css">
-		<link rel="stylesheet" href="../public/css/footer.css">
-		<link rel="stylesheet" href="../public/css/unique.css">
-		<link rel="stylesheet" href="../public/css/jquery.datetimepicker.css"/>
-		<script src="../public/js/jquery-3.4.1.min.js"></script>
+		<link rel="stylesheet" href="css/header.css">
+		<link rel="stylesheet" href="css/footer.css">
+		<link rel="stylesheet" href="css/unique.css">
+		<link rel="stylesheet" href="css/jquery.datetimepicker.css"/>
 	</head>
 	<body>
 		<header>
-			<img src="../public/img/logo.png" class="logo">
-			<div>
-				<a href="sandwich.html">Sandwich</a>
-				<a href="special.html">Spéciales</a>
-					<!-- Ajout de la div du panier -->
-				<a href="panier.html"> 
-					<img src="../public/img/panierWhite.png" class="panier">
-				</a>
-				<a href="connexion.html" class="activeCompte">
-					<div class="connexion">Connexion</div>
-					<div class="deconnected">Se déconnecter</div>
-				</a>
-			</div>
+			<% include header %>
 		</header>
 		
 		<section id="livraison">
-			<form>
+			<form action="final.html">
 			<h1>Livraison 🚚</h1>
 			<h3>Choisissez vos conditions de livraisons de nos délicieux plats.</h3>
 
@@ -87,49 +74,42 @@
 
 
 		<footer>
-			<img src="../public/img/logoWhite.png" id="logo">
-			<div>
-				<a href="contact.html">Nous contacter</a>
-				<a href="apropos.html">À propos</a>
-				<a href="conditionsgenerales.html">Conditions générales</a>
-				<a href="politique.html">Politique de Confidentialité</a>
-				<a href="mentionslegales.html">Mentions Légales</a>
-			</div>
+			<% include footer %>
 		</footer>
 
-		<script src="../public/js/jquery.datetimepicker.full.min.js"></script>
-    	<script src="../public/js/moment.min.js"></script>
-    	<script src="../public/js/fr.js"></script>
+		<script src="js/jquery.datetimepicker.full.min.js"></script>
+    	<script src="js/moment.min.js"></script>
+    	<script src="js/fr.js"></script>
     	<script>
 
-        moment.locale('fr');
-        let startDate = moment().format('DD/MM/YYYY');
-        let nextWeek = moment().add(1, 'week');
-        let maxDate = nextWeek.endOf('week').format('DD/MM/YYYY');
+	        moment.locale('fr');
+	        let startDate = moment().format('DD/MM/YYYY');
+	        let nextWeek = moment().add(1, 'week');
+	        let maxDate = nextWeek.endOf('week').format('DD/MM/YYYY');
 
-        $.datetimepicker.setLocale('fr');
-        $('#datetimepicker').datetimepicker({
-            formatDate: 'd/m/Y',
-            format: 'd/m/Y',
-            timepicker: false,
-            disabledWeekDays: [0, 2, 6],
-            startDate: startDate,
-            minDate: startDate,
-            maxDate: maxDate,
-            todayButton: false,
-            prevButton: false,
-            nextButton: false,
-            allowBlank: false,
-            monthChangeSpinner: false,
-            scrollMonth: false,
-            dayOfWeekStart: 1,
-            defaultSelect: false,
-            inline: true
-        });
+	        $.datetimepicker.setLocale('fr');
+	        $('#datetimepicker').datetimepicker({
+	            formatDate: 'd/m/Y',
+	            format: 'd/m/Y',
+	            timepicker: false,
+	            disabledWeekDays: [0, 2, 6],
+	            startDate: startDate,
+	            minDate: startDate,
+	            maxDate: maxDate,
+	            todayButton: false,
+	            prevButton: false,
+	            nextButton: false,
+	            allowBlank: false,
+	            monthChangeSpinner: false,
+	            scrollMonth: false,
+	            dayOfWeekStart: 1,
+	            defaultSelect: false,
+	            inline: true
+	        });
 
-        document.getElementById('livraisonSubmit').addEventListener('click', ()=>{
-            console.log(document.getElementById("datetimepicker").value);
-        });
+	        document.getElementById('livraisonSubmit').addEventListener('click', ()=>{
+	            console.log(document.getElementById("datetimepicker").value);
+	        });
     </script>
 	</body>
 </html> 
