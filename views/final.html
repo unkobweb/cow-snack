@@ -8,7 +8,6 @@
 		<link rel="stylesheet" href="css/unique.css">
 		<link rel="stylesheet" href="css/header.css">
 		<link rel="stylesheet" href="css/footer.css">
-<!-- 		<script src="../js/jquery-3.4.1.min.js"></script> -->
 	</head>
 	<body>
 		<header>
@@ -16,10 +15,29 @@
 			<div>
 				<a href="sandwich.html">Sandwich</a>
 				<a href="special.html">Spéciales</a>
-					<!-- Ajout de la div du panier -->
-				<a href="panier.html"> 
+				<div class="coverBasket">
 					<img src="img/panierWhite.png" class="panier">
-				</a>
+					<div class="basket">
+						<img src="img/slope.png" class="slope">
+						<h3>Commandes</h3>
+						<div class="basketImg">
+							<img src="img/sandwich.png"/>
+							<img src="img/drink.png"/>
+							<img src="img/icon-cookie.png"/>
+						</div>
+						<div class="basketCommand">
+							<div>
+								<h5>Sandwich</h5>
+								<div><p>Cow-Thon</p><p>Orangina</p><p>Panini</p></div>
+							</div>
+							<div><h5>Livraison</h5><p>Mardi 6 Août</p></div>
+							<hr>
+						</div>
+						<hr>
+						<div class="flex-row align"><h4>Total</h4><h4>3.00€</h4></div>
+						<div class="bBask"><button class="basketCancel">Annuler</button><button class="basketAction">Commander</button></div>
+					</div>
+				</div>
 				<a href="connexion.html" class="activeCompte">
 					<div class="connexion">Connexion</div>
 					<div class="deconnected">Se déconnecter</div>
@@ -63,29 +81,6 @@
 				<a href="mentionslegales.html">Mentions Légales</a>
 			</div>
 		</footer>
-		<script>
-			let rate = document.querySelectorAll('.cowRate');
-
-			for(let i = 0; i < rate.length; i++){
-				rate[i].addEventListener('click', function(event){
-						event.target.classList.add('choose');
-						for(let y = 0; y < 5; y++){
-							console.log(i);
-							if(i < y){
-								event.target.parentElement.children[y].classList.remove('choose');	
-							}
-							else{
-								event.target.parentElement.children[y].classList.add('choose');	
-							}
-						}
-				});
-			}
-
-			document.querySelector('.star').addEventListener('click', function(event){
-				for (let e = 0; e < 5; e++){
-					event.target.parentElement.children[e].classList.toggle('anim');
-				}
-			})
-		</script>
+		<script src="js/rate.js"></script>
 	</body>
 </html> 

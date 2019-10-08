@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -175,36 +175,7 @@
 				<a href="mentionslegales.html">Mentions Légales</a>
 			</div>
 		</footer>
-		<script type="text/javascript">
-
-			function opacitySoda() {
-				document.querySelectorAll('.sodaButton').classList.toggle('opac');
-			}
-
-			function goToDrink() {
-				document.querySelector('.Boissons').classList.toggle('opac');
-			}
-
-			function goToDessert() {
-				document.querySelector('.Desserts').classList.toggle('opac');
-			}
-
-			document.querySelector('#drinkButton').addEventListener('click', goToDrink);
-			document.querySelector('#dessertButton').addEventListener('click', goToDessert);
-
-			document.querySelector('.sodaButton').addEventListener('click', opacitySoda);
-
-
-			// Changement de style des boutons de choix des boissons et des desserts.
-			var buttons = document.querySelectorAll('img');
-
-			for (var i = 0; i < buttons.length; i++) {
-				buttons[i].addEventListener('click', function(event){
-					event.target.parentElement.classList.toggle('active');
-				});
-			} 
-
-		</script>
-		
+		<script src="js/button.js"></script>
+		<script src="js/dessert.js"></script>
 	</body>
 </html> 

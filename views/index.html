@@ -142,18 +142,7 @@
 				<a href="mentionslegales.html">Mentions Légales</a>
 			</div>
 		</footer>
-		<script>
-			document.querySelector('.panier').addEventListener('click', function() {
-				document.querySelector('.basket').classList.toggle('visible');
-			})
-
-			document.querySelector('.denied').addEventListener('click', function(){
-				history.back();
-			})
-
-			document.querySelector('.validRGPD').addEventListener('click', function(event){
-				event.target.parentElement.parentElement.parentElement.remove();
-			})
-		</script>
+		<script src="js/panier.js"></script>
+		<script src="js/cookie.js"></script>
 	</body>
 </html> 
