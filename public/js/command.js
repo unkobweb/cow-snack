@@ -18,6 +18,7 @@ function opacityCustom() {
         name: '',
         phone: '',
         ingredients: {
+            sandwich_name: '',
             meat: {},
             supp: {},
             sauce: {},
@@ -38,7 +39,7 @@ function opacityMenu() {
         phone: '',
         ingredients: {
             sandwich_name: '',
-            size: '',
+            size: 'small',
             composition_id: 0
         }
     };
@@ -131,12 +132,17 @@ $('.size').click(function(){
 });
 
 $('#customsubmit, #menusubmit').click(() => {
-    console.log(commande);
-    $.post('/sandwich',{user_commande: JSON.stringify(commande)});
+    if (selected == "custom") {
+        commande.ingredients.sandwich_name = $('#sandwichName').val();
+    }
+    
+    $.post('/sandwich',{user_commande: JSON.stringify(commande)}, () => {
+        window.location.href = "/dessert";
+    });
 });
 
 $('.presandwich').click(function(){
-    //$('.presandwich').classList.remove('active');
+    console.log(this.id);
     document.querySelectorAll('.presandwich').forEach(element => {
         element.classList.remove('active');
     })
@@ -145,18 +151,8 @@ $('.presandwich').click(function(){
     } else {
         this.classList.toggle('active');
     }
+
+    commande.ingredients.composition_id = parseInt(this.value);
+    commande.ingredients.sandwich_name = this.id;
 });
-/*var buttons = document.querySelectorAll('button');
-var image = document.querySelectorAll('img');
 
-for (var i = 0; i < image.length; i++) {
-	image[i].addEventListener('click', function(event){
-		event.target.parentElement.classList.toggle('active');
-	});
-}
-
-for (var i = 0; i < buttons.length; i++) {
-	buttons[i].addEventListener('click', function(event){
-		event.target.classList.toggle('active');
-	});
-}*/

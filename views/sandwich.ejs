@@ -60,7 +60,7 @@
 							<%sandwichCount++;%>
 						<div>
 							<p><%=result.name.charAt(0).toUpperCase() + result.name.slice(1).toLowerCase()%></p>
-							<button type="button" class="presandwich" id="cow-classique"><img src="img/steak.png" width="100vw" class="vitrine"></button>
+							<button type="button" class="presandwich" value="<%=result.composition_id%>" id="<%=result.name%>"><img src="img/<%=result.name.toLowerCase()%>.png" width="100vw" class="vitrine"></button>
 							
 							<div class="popupfood">
 								<%printMenu.forEach((result) => { %>
@@ -123,7 +123,7 @@
 					<p id="priceMenu">3.00€</p>
 				</div>
 				<div class="submite">
-					<input type="submit" name="" value="😋 Poursuivre la commande" id="menusubmit">
+					<input type="button" name="" value="😋 Poursuivre la commande" id="menusubmit">
 				</div>
 			</form>
 		</section>
@@ -236,7 +236,7 @@
 					
 					<div class="nameSandwich">
 						<h5>Donnez un nom à votre sandwich 😉</h5>
-						<input type="" name="" class="name">
+						<input type="text" id="sandwichName" class="name">
 						<p>Le nom du sandwich doit commencer par COW-</p>
 					</div>
 				</div>
