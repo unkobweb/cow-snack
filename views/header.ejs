@@ -4,10 +4,29 @@
 <div>
 	<a href="/sandwich">Sandwich</a>
 	<a href="/special">Spéciales</a>
-		<!-- Ajout de la div du panier -->
-	<!--<a href="/panier"> 
+	<!--<div class="coverBasket">
 		<img src="img/panierWhite.png" class="panier">
-	</a>
+		<div class="basket">
+			<img src="img/slope.png" class="slope">
+			<h3>Commandes</h3>
+			<div class="basketImg">
+				<img src="img/sandwich.png"/>
+				<img src="img/drink.png"/>
+				<img src="img/icon-cookie.png"/>
+			</div>
+			<div class="basketCommand">
+				<div>
+					<h5>Sandwich</h5>
+					<div><p>Cow-Thon</p><p>Orangina</p><p>Panini</p></div>
+				</div>
+				<div><h5>Livraison</h5><p>Mardi 6 Août</p></div>
+				<hr>
+			</div>
+			<hr>
+			<div class="flex-row align"><h4>Total</h4><h4>3.00€</h4></div>
+			<div class="bBask"><button class="basketCancel">Annuler</button><button class="basketAction">Commander</button></div>
+		</div>
+	</div>
 	<a href="/connexion" class="activeCompte">
 		<%if (session.userID) { %>
 			<div class="connexion"><%=session.userFirstname + " " + session.userName%></div>
@@ -15,5 +34,7 @@
 		<%} else {%>
 			<div class="connexion">Connexion</div>
 		<%}%>
+		<div class="connexion">Connexion</div>
+		<div class="deconnected">Se déconnecter</div>
 	</a>-->
 </div>

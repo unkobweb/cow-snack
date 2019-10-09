@@ -38,9 +38,12 @@ p {
 	transform: scaleY(.95);
 }
 
-input {
-		outline-color: #FFA504;
+
+input:focus {
+	box-shadow: 0px 0px 1px 1px rgba(175,175,175,0.75)!important;
+	outline: none;
 }
+
 
 strong {
 	color: #FFA504;

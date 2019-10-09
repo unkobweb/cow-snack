@@ -16,9 +16,31 @@
 				<a href="sandwich.html">Sandwich</a>
 				<a href="special.html">Spéciales</a>
 					<!-- Ajout de la div du panier -->
-				<a href="panier.html"> 
+				
+				<div class="coverBasket">
 					<img src="img/panierWhite.png" class="panier">
-				</a>
+					<div class="basket">
+						<img src="img/slope.png" class="slope">
+						<h3>Commandes</h3>
+						<div class="basketImg">
+							<img src="img/sandwich.png"/>
+							<img src="img/drink.png"/>
+							<img src="img/icon-cookie.png"/>
+						</div>
+						<div class="basketCommand">
+							<div>
+								<h5>Sandwich</h5>
+								<div><p>Cow-Thon</p><p>Orangina</p><p>Panini</p></div>
+							</div>
+							<div><h5>Livraison</h5><p>Mardi 6 Août</p></div>
+							<hr>
+						</div>
+						<hr>
+						<div class="flex-row align"><h4>Total</h4><h4>3.00€</h4></div>
+						<div class="bBask"><button class="basketCancel">Annuler</button><button class="basketAction">Commander</button></div>
+					</div>
+				</div>
+
 				<a href="connexion.html" class="activeCompte">
 					<div class="connexion">Connexion</div>
 					<div class="deconnected">Se déconnecter</div>
@@ -372,48 +394,8 @@
 				<a href="mentionslegales.html">Mentions Légales</a>
 			</div>
 		</footer>
-		<script type="text/javascript">
-
-			function openMenu() {
-				document.querySelector('#cowmenu').classList.toggle('see');
-				document.querySelector('#cowcustom').classList.remove('see');
-			}
-			function openCustom() {
-				document.querySelector('#cowcustom').classList.toggle('see');
-				document.querySelector('#cowmenu').classList.remove('see');
-			} 
-			
-			function opacityCustom() {
-				document.querySelector('#choicemenu').classList.toggle('opac');
-				document.querySelector('#choicecustom').classList.remove('opac');
-			}
-
-			function opacityMenu() {
-				document.querySelector('#choicecustom').classList.toggle('opac');
-				document.querySelector('#choicemenu').classList.remove('opac');
-			}
-
-			document.querySelector('#choicemenu').addEventListener('click', openMenu);
-			document.querySelector('#choicecustom').addEventListener('click', openCustom);
-
-
-			// Changement de style des boutons.
-			var buttons = document.querySelectorAll('button');
-			var image = document.querySelectorAll('img');
-
-			for (var i = 0; i < image.length; i++) {
-				image[i].addEventListener('click', function(event){
-					event.target.parentElement.classList.toggle('active');
-				});
-			}
-
-			for (var i = 0; i < buttons.length; i++) {
-				buttons[i].addEventListener('click', function(event){
-					event.target.classList.toggle('active');
-				});
-			}
-
-
-		</script>
+		<script src="js/panier.js"></script>
+		<script src="js/button.js"></script>
+		<script src="js/menu.js"></script>
 	</body>
 </html> 
