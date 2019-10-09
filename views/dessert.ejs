@@ -12,65 +12,23 @@
 	</head>
 	<body>
 		<header>
-			<img src="img/logo.png" class="logo">
-			<div>
-				<a href="sandwich.html">Sandwich</a>
-				<a href="special.html">Spéciales</a>
-					<!-- Ajout de la div du panier -->
-				<a href="panier.html"> 
-					<img src="img/panierWhite.png" class="panier">
-				</a>
-				<a href="connexion.html" class="activeCompte">
-					<div class="connexion">Connexion</div>
-					<div class="deconnected">Se déconnecter</div>
-				</a>
-			</div>
+			<%include header%>
 		</header>
 
 		<section id="TopDessert">
 				<h1>Boissons et Desserts</h1>
-					<a href="dessert.html">
+					<a href="/sandwich">
 						<div class="annul">
 							<img src="img/left-arrow.svg" width="10%">
 							Revenir en arrière
 						</div>
 					</a>
-				<div id="recapDessert">
-					<img src="img/thon.png" id="recapImage">
-					<div>
-						<div class="flex-row align"><h4>Sandwich</h4><h6>Prix</h6></div>
-						<div class="flex-row align recapSauce">
-							<h5>Sauce</h5><p>Mayonnaise</p>
-						</div>
-						<div class="flex-row align ingredient">
-							<h5>Ingrédients</h5>
-							<p>Thon, tomates, oeufs, oignons</p>
-						</div>
-						<div class="flex-row align">
-							<div class="extend align">
-								<h5>Taille</h5><p>Small</p>
-							</div>
-							<p class="price">3.00€</p>
-						</div>
-						<div class="flex-row align">
-							<h4>Boisson</h4>
-							<div class="reserve">
-								<p class="price">- -</p><p>-</p>
-							</div>
-						</div>
-						<div class="flex-row align">
-							<h4>Dessert</h4><div class="reserve"><p class="price">- - </p><p>-</p></div>
-						</div>
-						<div class="line"></div>
-						<div class="flex-row align"><h3>Total</h3><p class="totalPrice">3.00€</p></div>
-					</div>
-				</div>
 				<h2>Une <b>boisson </b><span class="red">?</span>, un <b>dessert</b><span class="red"> ?</span></h2>
 				<div id="choiceDessert">
-						<button type="button" id="drinkButton">
+						<button type="button" id="drinkButton" class="selecteur">
 							<img src="img/can.png" width="100vw" class="vitrine">
 						</button>
-						<button type="button" id="dessertButton">
+						<button type="button" id="dessertButton" class="selecteur">
 							<img src="img/cookies.png" width="100vw" class="vitrine">
 						</button>
 				</div>
@@ -85,54 +43,27 @@
 					<h2>Boisson</h2>
 					<div class="flex-row align extend wrap">
 						<div id="groupDrink">
-							<div class="flex-row">
-								<div class="sodaButton">
-									<input type="radio" name="soda" value="coca" id="coca">
-									<label for="coca"><img src="img/coca.jpg"></label>
+							<%	let drinkCount = 0 %>
+							<% for (let i = 1; i <= 3; i++) { %>
+								<div class="flex-row">
+									<% printDrink.forEach((element) => {%>
+										<%if ( drinkCount >= ((i-1)*3) && drinkCount < (i*3)) {%>
+											<div class="sodaButton">
+												<input type="radio" name="soda" value="<%=element.id%>" id="<%=element.slug%>" <%=drinkCount == 0 ? "checked" : ""%>>
+												<label for="<%=element.slug%>"><img src="img/<%=element.slug%>.jpg"></label>
+											</div>
+										<%}%>
+										<%drinkCount++;%>
+									<%})%>
+									<%drinkCount = 0;%>
 								</div>
-								<div class="sodaButton">
-									<input type="radio" name="soda" value="fuzetea" id="fuzetea">
-									<label for="fuzetea"><img src="img/fuzetea.jpg"></label>
-								</div>
-								<div class="sodaButton">
-									<input type="radio" name="soda" value="fanta" id="fanta">
-									<label for="fanta"><img src="img/fanta.jpg"></label>
-								</div>
-							</div>
-							<div class="flex-row">
-								<div class="sodaButton">
-									<input type="radio" name="soda" value="tropico" id="tropico">
-									<label for="tropico"><img src="img/tropico.jpg"></label>
-								</div>
-								<div class="sodaButton">
-									<input type="radio" name="soda" value="sprite" id="sprite">
-									<label for="sprite"><img src="img/sprite.jpg"></label>
-								</div>
-								<div class="sodaButton">
-									<input type="radio" name="soda" value="lipton" id="lipton">
-									<label for="lipton"><img src="img/lipton.jpg"></label>
-								</div>
-							</div>
-							<div class="flex-row"> 
-								<div class="sodaButton">
-									<input type="radio" name="soda" value="orangina" id="orangina">
-									<label for="orangina"><img src="img/orangina.jpg"></label>
-								</div>
-								<div class="sodaButton">
-									<input type="radio" name="soda" value="7up" id="7up">
-									<label for="7up"><img src="img/7up.jpg"></label>
-								</div>
-								<div class="sodaButton">
-									<input type="radio" name="soda" value="pepsi" id="pepsi">
-									<label for="pepsi"><img src="img/pepsi.jpg"></label>
-								</div>
-							</div>
+							<%}%>
 						</div>
 						<div id="customDrink">
 							<h3>Vous ne trouvez pas la boisson que vous cherchez ?</h3>
 							<div class="nameDrink">
 								<h5>Dites-nous de quelle boisson il s'agit ?</h5>
-								<input type="" name="" class="name">
+								<input type="text" id="drinkCustom" class="name">
 								<p>Si la boisson est indisponible, vous serez recontacté pour en choisir une autre.</p>
 							</div>
 						</div>
@@ -141,23 +72,19 @@
 				<section class="Desserts">
 								<h2>Dessert</h2>
 								<div id="buttonDessert" class="flex-row wrap pad-200">
-				  					<div>
-				  						<button type="button" id="nutella"><img src="img/panini-nutella.png" width="90%"></button>
-				  						<p>Panini Nutella</p>
-				  					</div>
-				  					<div>
-				  						<button type="button" id="cookies"><img src="img/cookie.png" width="100%"></button>
-				  						<p>Cookies</p>
-				  					</div>
-				  					<div>
-				  				    	<button type="button" id="confiture"><img src="img/confiture.png" width="90%"></button>
-				  				    	<p>Panini Confiture</p>
-				  					</div>
+									<%let dessertCount = 0;%>
+									<%printDessert.forEach((result) => {%>
+										<div>
+				  							<button type="button" id="<%=result.id%>" <%=dessertCount == 0 ? "class=active" : ""%>><img src="img/<%=result.slug%>.png" width="90%" class="img"></button>
+				  							<p><%=result.label%></p>
+										</div>
+										<%dessertCount++;%>  
+									<%})%>
 				  				</div>
 				</section>
 				
 				<div class="submite">
-					<input type="submit" name="" value="Finaliser la commande" id="customsubmit">
+					<input type="button" value="Finaliser la commande" id="customsubmit">
 				</div>
 				
 			</form>
@@ -166,26 +93,36 @@
 
 
 		<footer>
-			<img src="img/logoWhite.png" id="logo">
-			<div>
-				<a href="contact.html">Nous contacter</a>
-				<a href="apropos.html">À propos</a>
-				<a href="conditionsgenerales.html">Conditions générales</a>
-				<a href="politique.html">Politique de Confidentialité</a>
-				<a href="mentionslegales.html">Mentions Légales</a>
-			</div>
+			<%include footer%>
 		</footer>
+		<script src="js/jquery-3.4.1.min.js"></script>
 		<script type="text/javascript">
 
+			let wantDrink = false;
+			let wantDessert = false;
+
 			function opacitySoda() {
-				document.querySelectorAll('.sodaButton').classList.toggle('opac');
+				//document.querySelectorAll('.sodaButton').classList.toggle('opac');
+				this.classList.toggle('opac');
 			}
 
 			function goToDrink() {
+				if (!wantDrink) {
+					wantDrink = true;
+				} else {
+					wantDrink = false;
+				}
+				console.log(wantDrink);
 				document.querySelector('.Boissons').classList.toggle('opac');
 			}
 
 			function goToDessert() {
+				if (!wantDessert) {
+					wantDessert = true;
+				} else {
+					wantDessert = false;
+				}
+				console.log(wantDessert);
 				document.querySelector('.Desserts').classList.toggle('opac');
 			}
 
@@ -194,17 +131,52 @@
 
 			document.querySelector('.sodaButton').addEventListener('click', opacitySoda);
 
+			let selecteur = document.querySelectorAll('.selecteur');
+
+			for (let i = 0; i < selecteur.length; i++) {
+				selecteur[i].addEventListener('click', function() {
+					this.classList.toggle('active');
+				});
+			}
+
 
 			// Changement de style des boutons.
-			var buttons = document.querySelectorAll('img');
+			var buttons = document.querySelectorAll('.img');
 
-			for (var i = 0; i < buttons.length; i++) {
-				buttons[i].addEventListener('click', function(event){
+			function unSeeAll(){
+				for (var i = 0; i < buttons.length; i++) {
+					buttons[i].parentElement.classList.remove('active');
+				};
+			}
+
+			let actualDessert;
+
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].addEventListener('click', function(event){
+					unSeeAll();
 					event.target.parentElement.classList.toggle('active');
+					actualDessert = this.parentElement;
+                });
+			}
+			
+			let choosenDrink = "";
+			let choosenDessert = "";
+			document.querySelector('#customsubmit').addEventListener('click', () => {
+				if (wantDrink) {
+					if (document.querySelector('#drinkCustom').value.trim() != ""){
+						choosenDrink = document.querySelector('#drinkCustom').value;
+					} else {
+						choosenDrink = document.querySelector('input[name=soda]:checked').value;
+					}
+				}
+				if (wantDessert) {
+					choosenDessert = actualDessert;
+				}
+				$.post('/dessert',{boisson: choosenDrink, dessert: choosenDessert}, () => {
+					window.location.href = "/livraison";
 				});
-			} 
+			});
 
 		</script>
-		
 	</body>
-</html> 
+</html>

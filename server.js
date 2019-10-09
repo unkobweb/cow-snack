@@ -73,9 +73,97 @@ if (false/*countDownDate > now*/) {
             });
         });
     })
-    .post('/sandwich', urlencodedParser, (req, res) => {
-        req.session.commande = JSON.parse(req.body.user_commande);
-        console.log(req.session.commande);
+    .post('/sandwich', urlencodedParser, (req, res, next) => {
+        let beModified = JSON.parse(req.body.user_commande);
+
+        req.session.commande = {
+            name: "",
+            phone: "",
+            sandwich_name : "",
+            ingredients: [],
+            size: "",
+            dessert: "",
+            drink: ""
+        }
+
+        let treatment = new Promise((resolve, reject) => {
+            if (beModified.ingredients.composition_id != undefined) {
+                req.session.commande.sandwich_name = beModified.ingredients.sandwich_name;
+                req.session.commande.size = beModified.ingredients.size;
+                connexion.query('SELECT * FROM composition INNER JOIN sandwich SW on composition.sandwich_id = SW.composition_id INNER JOIN stock ST on composition.ingredient_id = ST.id WHERE composition_id = ?', [beModified.ingredients.composition_id], (err, rows) => {
+                    rows.forEach(x => {
+                        req.session.commande.ingredients.push({
+                            id: x.id,
+                            slug: x.slug,
+                            label: x.label,
+                            type: x.type
+                        });
+                    });
+                    resolve();
+                });
+            } else {
+                req.session.commande.sandwich_name = beModified.ingredients.sandwich_name;
+                req.session.commande.size = beModified.ingredients.size;
+                let ingredients = [];
+                let sentence = "SELECT * FROM stock WHERE id IN (";
+                let count = 0;
+                let commande = beModified;
+                while(commande.ingredients.meat["meat"+count] != undefined){
+                    ingredients.push(commande.ingredients.meat["meat"+count]);
+                    count++;
+                }
+                count = 0;
+                while(commande.ingredients.supp["supp"+count] != undefined){
+                    ingredients.push(commande.ingredients.supp["supp"+count]);
+                    count++;
+                }
+                count = 0;
+                while(commande.ingredients.sauce["sauce"+count] != undefined){
+                    ingredients.push(commande.ingredients.sauce["sauce"+count]);
+                    count++;
+                }
+                count = 0;
+                ingredients.forEach((result) => {
+                    count == 0 ? sentence += result : sentence += ", "+result;
+                    count++;
+                });
+                sentence += ")";
+                connexion.query(sentence, (err, rows) => {
+                    rows.forEach(x => {
+                        req.session.commande.ingredients.push({
+                            id: x.id,
+                            slug: x.slug,
+                            label: x.label,
+                            type: x.type
+                        });
+                    });
+                    resolve();
+                });
+            }
+        });
+        treatment.then((value) => {
+            res.sendStatus(200);
+        });
+    })
+    .get('/dessert', (req, res) => {
+        connexion.query('SELECT * FROM stock WHERE type = 4', (err, rows) => {
+            connexion.query('SELECT * FROM stock WHERE type = 5', (err, rows2) => {
+                res.render('dessert.ejs', {session: req.session, printDrink: rows, printDessert: rows2});
+            });
+        });     
+    })
+    .post('/dessert', urlencodedParser, (req, res) => {
+        let drinkDessert = new Promise ((resolve, reject) => {
+            req.session.commande.drink = req.body.boisson;
+            req.session.commande.dessert = req.body.dessert;
+            resolve();
+        })
+        drinkDessert.then((value) => {
+            res.sendStatus(200);
+        });
+    })
+    .get('/livraison', (req, res) => {
+        res.render('livraison.ejs', {session: req.session});
     })
     .get('/special', (req, res) => {
         res.render('special.ejs', {session: req.session});
@@ -95,7 +183,7 @@ if (false/*countDownDate > now*/) {
     .get('/mentionslegales', (req, res) => {
         res.render('mentionslegales.ejs', {session: req.session})
     })
-    .get('/compte', (req, res) => {
+    /*.get('/compte', (req, res) => {
         res.render('compte.ejs', {session: req.session});
     })
     .get('/deconnexion', (req, res) => {
@@ -167,7 +255,7 @@ if (false/*countDownDate > now*/) {
                 res.render('connexion.ejs',{success: "Votre compte à été créer, vous pouvez vous connecter !"});
             }
         });
-    })
+    })*/
     .use((req, res, next) => {
         res.status(404).render('maintenance.ejs', {session: req.session});
     });
