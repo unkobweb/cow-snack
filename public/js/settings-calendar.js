@@ -1,5 +1,5 @@
 moment.locale('fr');
-let startDate = moment().format('DD/MM/YYYY');
+let startDate = moment().add(1, 'day').format('DD/MM/YYYY');
 let nextWeek = moment().add(1, 'week');
 let maxDate = nextWeek.endOf('week').format('DD/MM/YYYY');
 
