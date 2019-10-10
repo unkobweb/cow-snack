@@ -622,3 +622,87 @@ input:checked + label {
 	color: #EC632D;
 	font-weight: bold;
 }
+
+@media screen and (max-width: 600px) {
+	.presentation-sandwich{
+		display: flex;
+		flex-direction: column;
+	}
+	.presentation-sandwich .flex-col {
+		margin-left: 0;
+		padding-right: 45px;
+		padding-left: 45px;
+		margin-top: 100px;
+	}
+	.presentation-sandwich h2 {
+		font-size: 1.5rem!important;
+		width: auto;
+	}
+	.presentation-sandwich .line{
+		width: 150px; 
+	}
+	.presentation-sandwich .para-sand{
+		font-size: 1rem;
+		width: auto;
+		margin-right: 0;
+	}
+	.presentation-sandwich img {
+		width: 350px;
+		margin-right: 0;
+	}
+
+
+
+	/*bouton de choix des sandwich*/
+	.choicebutton {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 100vw;
+	}
+	.choicebutton a {
+		margin-bottom: 50px;
+	}
+	.choicebutton div{
+		margin-right: 0!important;
+	}
+
+
+	/*radio button size*/
+	.size {
+		display: flex;
+		flex-direction: column;
+	}
+
+	#menusubmit, #customsubmit {
+		width: auto;
+		height: auto;
+		padding: 10px;
+		font-size: 1rem;
+		border-radius: 15px;
+	}
+
+	.symbol, .title {
+		display: flex;
+		flex-direction: column;
+	}
+	.title h3{
+		margin-top: 200px;
+		margin-bottom: 20px;
+	}
+	.title h6{
+		margin-top: 0;
+	}
+	.deport {
+		margin-left: 0!important;
+		text-align: center;
+	}
+	input[type="text"], input[type="name"]{
+		width: 200px;
+	}
+	.nameSandwich {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+}
