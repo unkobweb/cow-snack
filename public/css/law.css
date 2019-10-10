@@ -1,14 +1,14 @@
 @font-face {
     font-family: 'proxima_nova';
-    src: url('font/proximanova-regular-webfont.woff2') format('woff2'),
-         url('font/proximanova-regular-webfont.woff') format('woff');
+    src: url('../font/proximanova-regular-webfont.woff2') format('woff2'),
+         url('../font/proximanova-regular-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: 'proxima_nova';
-    src: url('font/proxima_nova_bold-webfont.woff2') format('woff2'),
-         url('font/proxima_nova_bold-webfont.woff') format('woff');
+    src: url('../font/proxima_nova_bold-webfont.woff2') format('woff2'),
+         url('../font/proxima_nova_bold-webfont.woff') format('woff');
     font-weight: bold;
     font-style: normal;
 
@@ -53,6 +53,7 @@ a{
 .law > h1 {
 	font-size: 3rem;
 	color: #FFA504;
+	text-align: center;
 }
 
 .law h2{
@@ -76,4 +77,26 @@ a{
 
 .alignLeft {
 	align-self: flex-start;
+}
+.bold {
+	font-weight: bold;
+}
+@media screen and (max-width: 500px) {
+
+	h1{
+		font-size: 2rem!important;
+		text-align: center;
+	}
+	.lineLaw {
+		width: 100px;
+	}
+	.law > p{
+		padding-left: 15vw;
+		padding-right: 15vw;
+	}
+	h2, h3 {
+		padding-left: 10vw;
+		padding-right: 10vw;
+		text-align: center;
+	}
 }
