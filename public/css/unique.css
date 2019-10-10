@@ -1509,6 +1509,8 @@ border: none;
 
 
 @media screen and (max-width: 500px) {
+
+	/*Livraison*/
 	.nameCustomer h5{
 		overflow-wrap: break-word;
 		text-align: center;
@@ -1535,5 +1537,40 @@ border: none;
 	}
 	#livraison{
 		text-align: center;
+	}
+
+
+	/*Merci de votre commande*/
+	.titled {
+		margin: 0;
+		text-align: center;
+	}
+	.titled h1 {
+		margin: 0!important;
+		padding-top: 150px;
+		font-size: 1.8rem!important;
+	}
+
+	.titled h2{
+		font-size: 1rem!important;
+	}
+
+	#end form > .align{
+		display: flex;
+		flex-direction: column;
+	}
+	#end h4{
+		font-size: .7rem;
+		margin-top: 125px;
+	}
+	#end input[type="text"]{
+		width: 200px;
+	}
+
+	#envoiRemarque + p {
+		font-size: .6rem;
+	}
+	#end > form > p {
+		font-size: .7rem;
 	}
 }
