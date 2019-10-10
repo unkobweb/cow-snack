@@ -313,9 +313,6 @@ box-shadow: 0px 3px 16px 2px rgba(102,102,102,0.2);
 	opacity: .4;
 	margin-right: 20px;
 }
-.nameCustomer:last-child{
-	width: 650px;
-}
 
 .recap {
 	margin-bottom: 75px;
@@ -362,11 +359,12 @@ box-shadow: 0px 3px 16px 2px rgba(102,102,102,0.2);
 .nameCustomer {
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 	margin-top: 150px;
 }
 
 .nameCustomer input{
-	width: 500px;
+	width: 400px;
 	height: 40px;
 	margin-top: 20px;
 	margin-bottom: 20px;
@@ -391,6 +389,7 @@ box-shadow: 0px 3px 16px 2px rgba(102,102,102,0.2);
 	flex-direction: row;
 	justify-content: space-between;
 	margin-bottom: 50px;
+	margin-top: 100px;
 }
 
 #livraisonSubmit{
@@ -1504,5 +1503,37 @@ border: none;
 	}
 	#noteChrono{
 		font-size: .7rem;
+	}
+}
+
+
+
+@media screen and (max-width: 500px) {
+	.nameCustomer h5{
+		overflow-wrap: break-word;
+		text-align: center;
+		padding-right: 50px;
+		padding-left: 50px;
+	}
+	.nameCustomer input{
+		width: 250px;
+	}
+	.submitLivraison {
+		display: flex;
+		flex-direction: column-reverse;
+		align-items: center;
+	}
+	#livraisonSubmit {
+		margin-right: 0!important;
+		margin-top: 20px;
+	}
+	.xdsoft_datepicker {
+		width: 350px!important;
+	}
+	#hintCalendar {
+		margin-left: -100px;
+	}
+	#livraison{
+		text-align: center;
 	}
 }
