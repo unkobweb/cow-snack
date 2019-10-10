@@ -1,5 +1,5 @@
 document.querySelector('.denied').addEventListener('click', function(){
-	history.back();
+	window.close();
 })
 
 document.querySelector('.validRGPD').addEventListener('click', function(event){
