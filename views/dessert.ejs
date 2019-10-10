@@ -155,7 +155,7 @@
                 buttons[i].addEventListener('click', function(event){
 					unSeeAll();
 					event.target.parentElement.classList.toggle('active');
-					actualDessert = this.parentElement;
+					actualDessert = this.parentElement.id;
                 });
 			}
 			

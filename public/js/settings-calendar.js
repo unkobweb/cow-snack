@@ -6,7 +6,7 @@ let maxDate = nextWeek.endOf('week').format('DD/MM/YYYY');
 $.datetimepicker.setLocale('fr');
 $('#datetimepicker').datetimepicker({
     formatDate: 'd/m/Y',
-    format: 'd/m/Y',
+    format: 'Y-m-d',
     timepicker: false,
     disabledWeekDays: [0, 2, 6],
     startDate: startDate,

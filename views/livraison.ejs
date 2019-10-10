@@ -31,17 +31,17 @@
 			<div>
 				<div class="nameCustomer">
 					<h5>Dites nous votre nom, on pourra savoir qui à commandé 😉</h5>
-					<input type="text" name="nameCommand" class="name" placeholder="nom prénom">
+					<input type="text" name="nameCommand" class="name" id="name" placeholder="nom prénom">
 				</div>
 				<div class="nameCustomer">
 					<h5>Il ne manque plus que votre numéro de téléphone pour pouvoir vous contacter 😃</h5>
-					<input type="text" name="numTel" class="name" value="" placeholder="06 72 56 89 73">
+					<input type="text" name="numTel" class="name" id="phone" value="" placeholder="06 72 56 89 73">
 				</div>
 			</div>
 
 			<div class="submitLivraison">
 				<input type="button" name="" value="Envoyer la commande 🍔" id="livraisonSubmit">
-				<a href="dessert.html">
+				<a href="/dessert">
 					<div class="annul">
 						Revenir en arrière
 					</div>
@@ -60,6 +60,16 @@
 		<script src="js/jquery.datetimepicker.full.min.js"></script>
     	<script src="js/moment.min.js"></script>
     	<script src="js/fr.js"></script>
-    	<script src="js/settings-calendar.js"></script>
+		<script src="js/settings-calendar.js"></script>
+		<script>
+			document.querySelector('#livraisonSubmit').addEventListener('click', () => {
+				let livraison = document.getElementById("datetimepicker").value;
+				let nom = document.getElementById("name").value;
+				let telephone = document.getElementById("phone").value;
+				$.post('/livraison',{livraison: livraison, nom: nom, telephone: telephone}, () => {
+					window.location.href = "/final";
+				})
+			});
+		</script>
 	</body>
 </html> 
