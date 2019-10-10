@@ -262,3 +262,36 @@ header > div > a, .coverBasket {
 	width: 90px;
 	z-index: 999;
 }
+
+
+
+
+@media screen and (max-width: 500px){
+
+	header {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	header > img {
+		margin-left: 0!important;
+		margin-bottom: 25px;
+	}
+
+	.activeCompte {
+		margin-right: 0!important;
+	}
+	.connexion, .deconnected {
+		height: 30px;
+		width: 80px;
+	}
+	header > div > a, .coverBasket{
+		font-size: .7rem;
+		margin-right: 20px;
+	}
+	.coverBasket .panier{
+		width: 20px;
+		height: 20px;
+	}
+}
