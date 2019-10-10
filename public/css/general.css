@@ -332,7 +332,7 @@ legend{
 }
 .etalage {
 	margin-left: 90px;
-	width: 640px!important;
+	width: 640px;
 }
 .bouton{
 	background-color: #FFA504;
@@ -415,4 +415,104 @@ legend{
 	font-size: .8rem;
 	padding-left: 5px;
 	margin-left: 10px;
+}
+
+
+@media screen and (max-width: 600px) {
+
+
+	/*first image*/
+	#topSection {
+		display: flex;
+		flex-direction: column-reverse;
+	}
+
+	#topSection h1{
+		margin: -100px 0 0 0;
+		width: auto;
+		padding-right: 75px;
+		padding-left: 75px;
+		font-size: 1.8rem;
+	}
+
+	.mainSandwich {
+		width: 350px;
+		margin: 0;
+	}
+
+	#topShape {
+		height: 40px;
+		top: 20px;
+	}
+	/*first topview :)*/
+	.topview{
+		display: none;
+	}
+	.sourire{
+		margin-right: 0;
+		padding-right: 50px;
+		padding-left: 50px;
+	}
+
+
+	#middleShape {
+		height: 60px;
+	}
+	/*Sebou the cook*/
+	.cowboye {
+		display: flex;
+		flex-direction: column-reverse!important;
+		align-items: center;
+	}
+	.cowboye img {
+		width: 250px;
+		margin-bottom: -50px;
+	}
+	.orangeShape, .redShape, .index1 {
+		display: none;
+	}
+	.para-qualite{
+		width: auto;
+		margin-top: 50px;
+		padding-top: 50px;
+		padding-right: 40px;
+		padding-left: 50px;
+	}
+	.para-qualite h2{
+		font-size: 1.2rem;
+	}
+	.para-qualite p{
+		font-size: .9rem;
+	}
+
+
+	h3{
+		width: 75vw;
+	}
+	/*topviews*/
+	.topview2, .etalage{
+		width: 300px;
+		margin: 50px 0 50px 0 ;
+	}
+
+	.space-ar {
+		display: flex;
+		flex-direction: column;
+	}
+	.col .space-ar:last-of-type {
+		display: flex;
+		flex-direction: column-reverse;
+	}
+	.cardRed, .cardOrange {
+		width: 200px;
+		height: 140px;
+		font-size: .9rem;
+		line-height: inherit;
+		padding:  0 30px 0 30px;
+		margin-bottom: 150px;
+	}
+
+	.bouton {
+		font-size: 1rem;
+	}
 }
