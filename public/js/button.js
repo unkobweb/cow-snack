@@ -6,9 +6,3 @@ for (var i = 0; i < image.length; i++) {
 		event.target.parentElement.classList.toggle('active');
 	});
 }
-
-for (var i = 0; i < buttons.length; i++) {
-	buttons[i].addEventListener('click', function(event){
-		event.target.classList.toggle('active');
-	});
-}
