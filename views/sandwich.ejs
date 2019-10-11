@@ -48,7 +48,13 @@
       <form>
         <!-- Menus -->
 
-        <h3>Nos Menus</h3>
+        <div class="symbol">
+          <h3>Nos Menus</h3>
+          <div class="weekAlert">
+            <div class="redAlert">!</div>
+            <p>Disponible seulement pour la semaine prochaine</p>
+          </div>
+        </div>
         <div id="menu" class="wrap">
           <%let sandwichCount = 1;%> <%printMenu.forEach((result) => { %> <%if
           (result.composition_id == sandwichCount) {%> <%sandwichCount++;%>

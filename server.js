@@ -157,6 +157,7 @@ if (false /*countDownDate > now*/) {
       });
     })
     .get("/livraison", (req, res) => {
+      console.log(req.session.commande);
       res.render("livraison.ejs", { session: req.session });
     })
     .post("/livraison", urlencodedParser, (req, res) => {
