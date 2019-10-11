@@ -1573,4 +1573,60 @@ border: none;
 	#end > form > p {
 		font-size: .7rem;
 	}
+
+
+
+	/*Dessert*/
+	#choiceDessert {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	#choiceDessert button{
+		margin-bottom: 50px;
+	}
+
+	#TopDessert h2{
+		font-size:1rem!important;
+		margin-top: 50px;
+	}
+	#TopDessert b{
+		font-size: 1.3rem;
+	}
+	#TopDessert .red{
+		font-size:1.5rem;
+	}
+	#customsubmit{
+		border-radius: 10px;
+	}
+	#groupDrink{
+		margin-left: 0;
+		align-items: center;
+	}
+	.Boissons .extend{
+		margin: 0;
+	}
+	.flex-row .sodaButton:last-child{
+		margin-right: 0!important;
+	}
+	#cowDessert h3 {
+		width: auto!important;
+		margin-top: 50px!important;
+		font-size: .9rem!important;
+	}
+	.nameDrink h5{
+		font-size: .7rem;
+		margin-top: 0!important;
+	}
+	.nameDrink input{
+		width: 200px;
+	}
+	.nameDrink p{
+		font-size: .5rem;
+		width: 220px;
+	}
+	.Desserts{
+		margin-top: 200px;
+	}
 }
