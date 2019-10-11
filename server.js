@@ -73,7 +73,6 @@ if (false /*countDownDate > now*/) {
         if (beModified.ingredients.composition_id != undefined) {
           req.session.commande.sandwich_name =
             beModified.ingredients.sandwich_name;
-          req.session.commande.user_precision = req.body.precision;
           req.session.commande.size = beModified.ingredients.size;
           connexion.query(
             "SELECT * FROM composition INNER JOIN sandwich SW on composition.sandwich_id = SW.composition_id INNER JOIN stock ST on composition.ingredient_id = ST.id WHERE composition_id = ?",
@@ -94,6 +93,7 @@ if (false /*countDownDate > now*/) {
           req.session.commande.sandwich_name =
             beModified.ingredients.sandwich_name;
           req.session.commande.size = beModified.ingredients.size;
+          req.session.commande.user_precision = req.body.precision;
           let ingredients = [];
           let sentence = "SELECT * FROM stock WHERE id IN (";
           let count = 0;
