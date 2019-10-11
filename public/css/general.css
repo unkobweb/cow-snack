@@ -406,6 +406,7 @@ legend{
 	font-size: .6rem;
 	padding-top: 4px;
 	width: 95px!important;
+	display: none;
 }
 
 .rgpd button:not(.denied) {
