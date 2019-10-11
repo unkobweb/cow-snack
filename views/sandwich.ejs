@@ -144,9 +144,14 @@
       </script>
       <form>
         <!-- Viandes -->
-        <div class="flex-row title">
-          <h3>Viandes</h3>
-          <h6>&nbsp(2 max)</h6>
+        <div class="symbol">      
+          <div class="flex-row title">
+            <h3>Viandes</h3><h6> &nbsp(2 max)</h6>
+          </div>
+          <div class="weekAlert">
+            <div class="redAlert">!</div>
+            <p>Disponible seulement pour la semaine prochaine</p>
+          </div>
         </div>
         <div id="viande" class="flex-row wrap pad-200">
           <% print.forEach((result) => { %> <%if (result.type == 1) { %>
@@ -173,7 +178,7 @@
         </div>
 
         <!-- Suppléments -->
-        <div class="flex-row title">
+        <div class="flex-row title deport">
           <h3>Suppléments</h3>
           <h6>&nbsp(2 max)</h6>
         </div>
@@ -202,7 +207,7 @@
         </div>
 
         <!-- Sauces -->
-        <div class="flex-row title">
+        <div class="flex-row title deport">
           <h3>Sauces</h3>
           <h6>&nbsp(3 max)</h6>
         </div>
@@ -231,7 +236,7 @@
         </div>
 
         <!-- Taille -->
-        <h3 class="title">Tailles</h3>
+        <h3 class="title deport">Tailles</h3>
         <div class="flex-row wrap size">
           <div>
             <input
