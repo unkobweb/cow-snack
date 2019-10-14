@@ -1,53 +1,55 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="icon" type="icon/png" href="img/favicon.png"/>
-		<title>Nous contacter - Cow-snack</title>
-		<link rel="stylesheet" href="css/unique.css">
-		<link rel="stylesheet" href="css/header.css">
-		<link rel="stylesheet" href="css/footer.css">
-<!-- 		<script src="../js/jquery-3.4.1.min.js"></script> -->
-	</head>
-	<body>
-		<header>
-			<% include header %>
-		</header>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="icon/png" href="img/favicon.png" />
+    <title>Nous contacter - Cow-snack</title>
+    <link rel="stylesheet" href="css/unique.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <!-- 		<script src="../js/jquery-3.4.1.min.js"></script> -->
+  </head>
+  <body>
+    <header>
+      <% include header %>
+    </header>
 
-		<section id="contact">
-		
-		<div>
-			<h2>Un problème est arrivé sur notre site signalez le nous</h2>
-			<a href="">
-				<div class="bouton">Signalez le problème</div>
-			</a>
-		</div>
+    <section id="contact">
+      <div>
+        <h2>Un problème est arrivé sur notre site signalez le nous</h2>
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSciZ-1yFi0dnJx2LyphNdfR__YDN6s7c8Gx-UyCvYU_mLdTSg/viewform?usp=sf_link"
+        >
+          <div class="bouton">Signalez le problème</div>
+        </a>
+      </div>
 
-		<div>			
-			<h2>Vous souhaitez ajoutez un ingrédients à notre catalogue, faite une demande !</h2>
-			<a href="">
-				<div class="bouton">Faire une demande</div>
-			</a>
-		</div>
-		</section>
+      <div>
+        <h2>
+          Vous souhaitez ajoutez un ingrédients à notre catalogue, faite une
+          demande !
+        </h2>
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSf0iuTB0F5dltd1kVVzfjDESQmJqg82wLAj4ieqAdc_tQ9L4A/viewform?usp=sf_link"
+        >
+          <div class="bouton">Faire une demande</div>
+        </a>
+      </div>
+    </section>
 
-		<footer>
-			<% include footer %>
-		</footer>
-		<script type="text/javascript">
+    <footer>
+      <% include footer %>
+    </footer>
+    <script type="text/javascript">
+      // Changement de style des boutons.
+      var buttons = document.querySelectorAll("button");
 
-
-			// Changement de style des boutons.
-			var buttons = document.querySelectorAll('button');
-
-			for (var i = 0; i < buttons.length; i++) {
-				buttons[i].addEventListener('click', function(event){
-					event.target.classList.toggle('active');
-				});
-			}
-
-
-		</script>
-	</body>
-</html> 
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener("click", function(event) {
+          event.target.classList.toggle("active");
+        });
+      }
+    </script>
+  </body>
+</html>

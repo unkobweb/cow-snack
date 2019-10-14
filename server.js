@@ -29,7 +29,7 @@ app.use(
   })
 );
 
-if (false /*countDownDate > now*/) {
+if (countDownDate > now) {
   app.use((req, res, next) => {
     res.render("countdown.ejs");
   });

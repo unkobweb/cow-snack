@@ -1,75 +1,128 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="icon" type="icon/png" href="img/favicon.png"/>
-		<title>Livraison - Cow-snack</title>
-		<link rel="stylesheet" href="css/header.css">
-		<link rel="stylesheet" href="css/footer.css">
-		<link rel="stylesheet" href="css/unique.css">
-		<link rel="stylesheet" href="css/jquery.datetimepicker.css"/>
-	</head>
-	<body>
-		<header>
-			<% include header %>
-		</header>
-		
-		<section id="livraison">
-			<form action="final.html">
-			<h1>Livraison 🚚</h1>
-			<h3>Choisissez vos conditions de livraisons de nos délicieux plats.</h3>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="icon/png" href="img/favicon.png" />
+    <title>Livraison - Cow-snack</title>
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/unique.css" />
+    <link rel="stylesheet" href="css/jquery.datetimepicker.css" />
+  </head>
+  <body>
+    <header>
+      <% include header %>
+    </header>
 
-			<h2>Quel jour souhaitez-vous être livrés ?</h2>
+    <section id="livraison">
+      <form action="final.html">
+        <h1>Livraison 🚚</h1>
+        <h3>Choisissez vos conditions de livraisons de nos délicieux plats.</h3>
 
-			<input id="datetimepicker" type="hidden">
+        <div id="error"></div>
 
-			<div id="hintCalendar">
-				<div class="sample"></div>
-				<p>Disponibilité de Livraison</p>
-			</div>
-			<div>
-				<div class="nameCustomer">
-					<h5>Dites nous votre nom, on pourra savoir qui à commandé 😉</h5>
-					<input type="text" name="nameCommand" class="name" id="name" placeholder="nom prénom">
-				</div>
-				<div class="nameCustomer">
-					<h5>Il ne manque plus que votre numéro de téléphone pour pouvoir vous contacter 😃</h5>
-					<input type="text" name="numTel" class="name" id="phone" value="" placeholder="06 72 56 89 73">
-				</div>
-			</div>
+        <h2>Quel jour souhaitez-vous être livrés ?</h2>
 
-			<div class="submitLivraison">
-				<input type="button" name="" value="Envoyer la commande 🍔" id="livraisonSubmit">
-				<a href="/dessert">
-					<div class="annul">
-						Revenir en arrière
-					</div>
-				</a>
-			</div>
-				
-			</form>
-		</section>
+        <input id="datetimepicker" type="hidden" />
 
+        <div id="hintCalendar">
+          <div class="sample"></div>
+          <p>Disponibilité de Livraison</p>
+        </div>
+        <div>
+          <div class="nameCustomer">
+            <h5>Dites nous votre nom, on pourra savoir qui à commandé 😉</h5>
+            <input
+              type="text"
+              name="nameCommand"
+              class="name"
+              id="name"
+              placeholder="nom prénom"
+            />
+          </div>
+          <div class="nameCustomer">
+            <h5>
+              Il ne manque plus que votre numéro de téléphone pour pouvoir vous
+              contacter 😃
+            </h5>
+            <input
+              type="text"
+              name="numTel"
+              class="name"
+              id="phone"
+              value=""
+              placeholder="06 72 56 89 73"
+            />
+          </div>
+        </div>
 
+        <div class="submitLivraison">
+          <input
+            type="button"
+            name=""
+            value="Envoyer la commande 🍔"
+            id="livraisonSubmit"
+          />
+          <a href="/dessert">
+            <div class="annul">
+              Revenir en arrière
+            </div>
+          </a>
+        </div>
+      </form>
+    </section>
 
-		<footer>
-			<% include footer %>
-		</footer>
-		<script src="js/jquery-3.4.1.min.js"></script>
-		<script src="js/jquery.datetimepicker.full.min.js"></script>
-    	<script src="js/moment.min.js"></script>
-    	<script src="js/fr.js"></script>
-		<script src="js/settings-calendar.js"></script>
-		<script>
-			document.querySelector('#livraisonSubmit').addEventListener('click', () => {
-				let livraison = document.getElementById("datetimepicker").value;
-				let nom = document.getElementById("name").value;
-				let telephone = document.getElementById("phone").value;
-				$.post('/livraison',{livraison: livraison, nom: nom, telephone: telephone}, () => {
-					window.location.href = "/final";
-				})
-			});
-		</script>
-	</body>
-</html> 
+    <footer>
+      <% include footer %>
+    </footer>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/jquery.datetimepicker.full.min.js"></script>
+    <script src="js/moment.min.js"></script>
+    <script src="js/fr.js"></script>
+    <script src="js/settings-calendar.js"></script>
+    <script>
+      document
+        .querySelector("#livraisonSubmit")
+        .addEventListener("click", () => {
+          let livraison = document.getElementById("datetimepicker").value;
+          let nom = document.getElementById("name").value.trim();
+          let telephone = document
+            .getElementById("phone")
+            .value.replace(/ /g, "");
+          let erreurPlace = document.querySelector("#error");
+          erreurPlace.innerHTML = "";
+          let erreur = document.createElement("ul");
+          erreur.classList.add("errorUser");
+          if (livraison == "") {
+            let noDelivery = document.createElement("li");
+            noDelivery.innerHTML =
+              "Vous n'avez choisi aucune date de livraison";
+            erreur.appendChild(noDelivery);
+          }
+          if (nom == "") {
+            let noName = document.createElement("li");
+            noName.innerHTML = "Vous n'avez rentré aucun nom";
+            erreur.appendChild(noName);
+          }
+          if (telephone.length != 10) {
+            let noPhone = document.createElement("li");
+            noPhone.innerHTML =
+              "Vous n'avez pas rentré un numéro de téléphone valide";
+            erreur.appendChild(noPhone);
+          }
+          if (nom != "" && telephone.length == 10 && !isNaN(telephone)) {
+            $.post(
+              "/livraison",
+              { livraison: livraison, nom: nom, telephone: telephone },
+              () => {
+                window.location.href = "/final";
+              }
+            );
+          }
+          erreurPlace.appendChild(erreur);
+          window.scrollTo(0, 0);
+        });
+    </script>
+  </body>
+</html>

@@ -24,7 +24,7 @@ function opacityCustom() {
       sauce: {},
       drink: {},
       dessert: {},
-      size: ""
+      size: "small"
     }
   };
   console.log(commande);
@@ -46,20 +46,12 @@ function opacityMenu() {
   console.log(commande);
 }
 
-//$('#choicemenu').addEventListener('click', openMenu);
-//$('#choicecustom').addEventListener('click', openCustom);
-
 $("#choicemenu").click(() => {
   openMenu();
 });
 $("#choicecustom").click(() => {
   openCustom();
 });
-
-// Changement de style des boutons.
-/*$('button').click(function(){
-    this.classList.toggle('active');
-});*/
 
 var viandeChoice = 0;
 
@@ -153,13 +145,48 @@ $("#customsubmit, #menusubmit").click(() => {
     precision = "";
   }
 
-  $.post(
-    "/sandwich",
-    { user_commande: JSON.stringify(commande), precision: precision },
-    () => {
-      window.location.href = "/dessert";
+  let erreurPlace = document.querySelector("#error");
+  erreurPlace.innerHTML = "";
+  let erreur = document.createElement("ul");
+  erreur.classList.add("errorUser");
+
+  if (selected == "custom") {
+    if (
+      commande.ingredients.meat.meat0 != undefined ||
+      commande.ingredients.supp.supp0 != undefined ||
+      commande.ingredients.sauce.sauce0 != undefined
+    ) {
+      $.post(
+        "/sandwich",
+        { user_commande: JSON.stringify(commande), precision: precision },
+        () => {
+          window.location.href = "/dessert";
+        }
+      );
+    } else {
+      console.log("oui");
+      let noCustom = document.createElement("li");
+      noCustom.innerHTML = "Vous n'avez choisi aucun ingrédient";
+      erreur.appendChild(noCustom);
     }
-  );
+  } else {
+    if (commande.ingredients.composition_id != 0) {
+      $.post(
+        "/sandwich",
+        { user_commande: JSON.stringify(commande), precision: precision },
+        () => {
+          window.location.href = "/dessert";
+        }
+      );
+    } else {
+      let noPre = document.createElement("li");
+      noPre.innerHTML = "Vous n'avez choisi aucun sandwich";
+      erreur.appendChild(noPre);
+    }
+  }
+
+  erreurPlace.appendChild(erreur);
+  window.scrollTo(0, 0);
 });
 
 $(".presandwich").click(function() {
