@@ -76,6 +76,18 @@ strong {
   width: 360px;
 }
 
+#error ul{
+  background-color: #ec632d;
+  padding-left: 20px;
+  font-weight: bold;
+  color: #FFF;
+}
+
+#error ul li::before{
+  content: 'âš  ';
+}
+
+
 /*Alerte d'indisponibilité pour la semaine*/
 .symbol {
   display: flex;

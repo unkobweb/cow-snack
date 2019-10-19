@@ -354,8 +354,7 @@ legend{
 .rgpd{
 	position: fixed;
 	bottom: 20px;
-	right: auto;
- 	left: auto;
+	right: 20px;
 	background-color: #FFF;
 	border-radius: 15px;
 	padding: 20px;
@@ -516,5 +515,12 @@ legend{
 
 	.bouton {
 		font-size: 1rem;
+	}
+
+	.rgpd {
+		right: auto;
+ 		left: auto;
+ 		bottom: 20px;
+    	position: fixed;
 	}
 }
