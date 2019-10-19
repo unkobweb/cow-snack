@@ -1204,6 +1204,7 @@ border: none;
 	flex-direction: row;
 	justify-content: center;
 	cursor: pointer;
+	margin-left: 20px;
 }
 
 
