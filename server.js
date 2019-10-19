@@ -251,79 +251,115 @@ app
   .get("/mentionslegales", (req, res) => {
     res.render("mentionslegales.ejs", { session: req.session });
   })
-  /*.get('/compte', (req, res) => {
-        res.render('compte.ejs', {session: req.session});
-    })
-    .get('/deconnexion', (req, res) => {
-        req.session.destroy();
-        res.redirect('/');
-    })
-    .get('/connexion', (req, res) => {
-        if (req.session.userID) {
-            res.redirect('/');
-        }
-        res.render('connexion.ejs');
-    })
-    .post('/connexion', urlencodedParser, (req, res) => {
-        let loginCheck = new Promise((resolve, reject) => {
-            connexion.query("SELECT * FROM account WHERE mail = ?", [req.body.usermail], (err, rows) => {
-                if (rows.count == 0) {
-                    resolve({err: "Aucun compte ne possède cet email !"});
-                } else {
-                    rows.forEach((result) => {
-                        bcrypt.compare(req.body.userpassword, result.password, (err, res) => {
-                            if (!res) {
-                                resolve({err: "Vous n'avez pas entré le bon mot de passe !"});
-                            } else {
-                                resolve({userID: result.id, userName: result.name, userFirstname: result.firstname, userMail: result.mail, userPhone: result.phone});
-                            }
-                        });
+  .get("/compte", (req, res) => {
+    res.render("compte.ejs", { session: req.session });
+  })
+  .get("/deconnexion", (req, res) => {
+    req.session.destroy();
+    res.redirect("/");
+  })
+  .get("/connexion", (req, res) => {
+    if (req.session.userID) {
+      res.redirect("/");
+    }
+    res.render("connexion.ejs");
+  })
+  .post("/connexion", urlencodedParser, (req, res) => {
+    let loginCheck = new Promise((resolve, reject) => {
+      connexion.query(
+        "SELECT * FROM account WHERE mail = ?",
+        [req.body.usermail],
+        (err, rows) => {
+          if (rows.length == 0) {
+            resolve({ err: "Aucun compte ne possède cet email !" });
+          } else {
+            rows.forEach(result => {
+              bcrypt.compare(
+                req.body.userpassword,
+                result.password,
+                (err, res) => {
+                  if (!res) {
+                    resolve({
+                      err: "Vous n'avez pas entré le bon mot de passe !"
                     });
+                  } else {
+                    resolve({
+                      userID: result.id,
+                      userName: result.name,
+                      userFirstname: result.firstname,
+                      userMail: result.mail,
+                      userPhone: result.phone
+                    });
+                  }
                 }
+              );
             });
-        });
-        loginCheck.then((value) => {
-            if (value.err) {
-                res.render('connexion.ejs',{err: value.err});
-            } else {
-                req.session.userID        = value.userID;
-                req.session.userName      = value.userName;
-                req.session.userFirstname = value.userFirstname;
-                req.session.userMail      = value.userMail;
-                req.session.userPhone     = value.userPhone;
-                console.log(req.session);
-                res.redirect('/');
-            }
-        });
-    })
-    .get('/creationcompte', (req, res) => {
-        res.render('creationcompte.ejs');
-    })
-    .post('/creationcompte', urlencodedParser, (req, res) => {
-        let signupCheck = new Promise((resolve, reject) => {
-            let errors = [];
-            connexion.query("SELECT * FROM account WHERE mail = ?" ,[req.body.usermail], (err, rows) => {
-                if (rows.length > 0){
-                    errors.push('Cette adresse mail est déjà utilisée !');
+          }
+        }
+      );
+    });
+    loginCheck.then(value => {
+      if (value.err) {
+        res.render("connexion.ejs", { err: value.err });
+      } else {
+        req.session.userID = value.userID;
+        req.session.userName = value.userName;
+        req.session.userFirstname = value.userFirstname;
+        req.session.userMail = value.userMail;
+        req.session.userPhone = value.userPhone;
+        console.log(req.session);
+        res.redirect("/");
+      }
+    });
+  })
+  .get("/creationcompte", (req, res) => {
+    res.render("creationcompte.ejs");
+  })
+  .post("/creationcompte", urlencodedParser, (req, res) => {
+    let signupCheck = new Promise((resolve, reject) => {
+      connexion.query(
+        "SELECT * FROM account WHERE mail = ?",
+        [req.body.usermail],
+        (err, rows) => {
+          if (rows.length > 0) {
+            resolve({ err: "Cette adresse mail est déjà utilisée !" });
+          } else {
+            connexion.query(
+              "SELECT * FROM account WHERE phone = ?",
+              [req.body.userphone.replace(/\s/g, "")],
+              (err, rows) => {
+                if (rows.length > 0) {
+                  resolve({ err: "Ce numéro de téléphone est déjà utilisé !" });
+                } else {
+                  resolve(1);
                 }
-            });
-            connexion.query("SELECT * FROM account WHERE phone = ?" ,[req.body.userphone.replace(/\s/g, "")], (err, rows) => {
-                if (rows.length > 0){
-                    errors.push('Ce numéro de téléphone est déjà utilisé !');
-                }
-            });
-            resolve({err: errors});
+              }
+            );
+          }
+        }
+      );
+    });
+    signupCheck.then(value => {
+      if (value.err) {
+        res.render("creationcompte.ejs", { err: value.err });
+      } else {
+        let hash = bcrypt.hashSync(req.body.userpassword, 10);
+        connexion.query(
+          "INSERT INTO account (name, firstname, password, mail, phone) VALUES (?, ?, ?, ?, ?)",
+          [
+            req.body.username,
+            req.body.userfirstname,
+            hash,
+            req.body.usermail,
+            req.body.userphone.replace(/\s/g, "")
+          ]
+        );
+        res.render("connexion.ejs", {
+          success: "Votre compte à été créer, vous pouvez vous connecter !"
         });
-        signupCheck.then((value) => {
-            if (value.err.length > 0){
-                res.render('creationcompte.ejs', {err: value.err});
-            } else {
-                let hash = bcrypt.hashSync(req.body.userpassword, 10);
-                connexion.query("INSERT INTO account (name, firstname, password, mail, phone) VALUES (?, ?, ?, ?, ?)",[req.body.username, req.body.userfirstname, hash, req.body.usermail, req.body.userphone.replace(/\s/g, "")]);
-                res.render('connexion.ejs',{success: "Votre compte à été créer, vous pouvez vous connecter !"});
-            }
-        });
-    })*/
+      }
+    });
+  })
   .use((req, res, next) => {
     res.status(404).render("maintenance.ejs", { session: req.session });
   });

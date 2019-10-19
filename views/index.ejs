@@ -33,17 +33,17 @@
         <!-- Ajout de la div du panier -->
         <!--<a href="/panier"> 
 					<img src="img/panierWhite.png" class="panier">
-				</a>
-				<%if (session.userID) { %>
-					<a href="/compte" class="activeCompte">
-						<div class="connexion"><%=session.userFirstname + " " + session.userName%></div>
-						<div class="deconnected">Se déconnecter</div>
-					</a>
-				<%} else {%>
-					<a href="/connexion" class="activeCompte">
-						<div class="connexion">Connexion</div>
-					</a>
-				<%}%>-->
+				</a>-->
+        <%if (session.userID) { %>
+        <a href="/compte" class="activeCompte">
+          <div class="connexion">🧑 Mon profil</div>
+          <div class="deconnected">Se déconnecter</div>
+        </a>
+        <%} else {%>
+        <a href="/connexion" class="activeCompte">
+          <div class="connexion">Connexion</div>
+        </a>
+        <%}%>
       </div>
     </header>
     <%console.log(session);%> <%if (session.acceptCookie == false) {%>

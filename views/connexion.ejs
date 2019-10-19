@@ -1,44 +1,58 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="icon" type="icon/png" href="img/favicon.png"/>
-		<title>Connexion- Cow-snack</title>
-		<link rel="stylesheet" href="css/unique.css">
-		<link rel="stylesheet" href="css/header.css">
-		<link rel="stylesheet" href="css/footer.css">
-	</head>
-	<body id="connexion">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="icon/png" href="img/favicon.png" />
+    <title>Connexion- Cow-snack</title>
+    <link rel="stylesheet" href="css/unique.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body id="connexion">
+    <a href="/" class="flex-end abs-button">
+      <div class="bouton">Retourner à l'accueil</div>
+    </a>
+    <img src="img/logo.png" class="highLogo" />
 
-		<a href="index.ejs" class="flex-end abs-button">
-			<div class="bouton">Retourner à l'accueil</div>
-		</a>
-		<img src="img/logo.png" class="highLogo">
-
-		<div class="flex-col align">
-			<h1>Connexion au compte</h1>
-			<h3>Bienvenue chez nous 🤠</h3>
-		</div>
-		<% if (locals.err) { %>
-			<ul class="errorUser">
-				<%err.forEach(element => { %>
-					<li><%=element%></li>
-				<%});%>
-			</ul>	
-		<%} else if (locals.success) { %>
-			<ul class="successUser">
-				<li><%=success%></li>
-			</ul>	
-		<%}%>
-		<form method="POST" action="/connexion">
-			<div class="flex-col align">
-					<input type="email" name="usermail" id="mail" placeholder="Email" required>
-					<input type="password" name="userpassword" id="password" placeholder="Mot de passe" required>
-				<p>un oubli de mot de passe ? 😅</p>
-			</div>
-			<a href="/creationcompte"><h4>Pas de compte ? créer en un ici ! 😊</h4></a>
-			<input type="submit" value="Connexion" class="bouton">
-		</form>
-	</body>
+    <div class="flex-col align">
+      <h1>Connexion au compte</h1>
+      <h3>Bienvenue chez nous 🤠</h3>
+    </div>
+    <% if (locals.err) { %>
+    <div id="error">
+      <ul class="errorUser">
+        <li><%=err%></li>
+      </ul>
+    </div>
+    <%} else if (locals.success) { %>
+    <ul class="successUser">
+      <li><%=success%></li>
+    </ul>
+    <%}%>
+    <form method="POST" action="/connexion">
+      <div class="flex-col align">
+        <input
+          type="email"
+          name="usermail"
+          id="mail"
+          placeholder="Email"
+          required
+        />
+        <input
+          type="password"
+          name="userpassword"
+          id="password"
+          placeholder="Mot de passe"
+          required
+        />
+        <p>un oubli de mot de passe ? 😅</p>
+      </div>
+      <a href="/creationcompte"
+        ><h4>Pas de compte ? créer en un ici ! 😊</h4></a
+      >
+      <input type="submit" value="Connexion" class="bouton" />
+    </form>
+  </body>
 </html>
