@@ -24,6 +24,7 @@
     <section id="commandAdmin">
       <div class="topCommand">
         <h3>Nom du client</h3>
+        <h3>Taille</h3>
         <h3>Nom du Sandwich</h3>
         <h3>Boisson & Dessert</h3>
         <h3>Prix</h3>
@@ -35,27 +36,13 @@
           <img src="img/add.png" class="cruce" />
         </div>
         <div>
-          <p>Alexandre Le Gaulois</p>
-          <p class="colorSandwich">Cow-Custom</p>
-          <div class="popupCustom">
-            <div>
-              <img src="img/height.svg" />
-              <p>Small</p>
-            </div>
-            <div>
-              <img src="img/meat.svg" />
-              <p>Steak Cordon Bleu</p>
-            </div>
-            <div>
-              <img src="img/salad.svg" />
-              <p>Cheddar Lardons Salade Tomates</p>
-            </div>
-            <div>
-              <img src="img/sauce-bottle.svg" />
-              <p>Mayonnaise</p>
-            </div>
-          </div>
-          <p>Orangina / Panini nutella</p>
+          <p><%=result.user_name%></p>
+          <p>small</p>
+          <p class="colorSandwich"><%=result.sandwich_name%></p>
+          <p>
+            <%=result.drink ? result.dessert ? result.drink+" / "+result.dessert
+            : result.drink : result.dessert ? result.dessert : "" %>
+          </p>
           <p>3.00€</p>
           <p>Mardi 7 Juin</p>
           <p class="statut">Livré</p>
