@@ -87,7 +87,9 @@ strong {
   content: '⚠ ';
 }
 
-
+.limited {
+  background-color: #ec632d!important;
+}
 /*Alerte d'indisponibilité pour la semaine*/
 .symbol {
   display: flex;

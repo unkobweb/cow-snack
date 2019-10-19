@@ -63,6 +63,22 @@ var size = "";
 var allType = ["allMeat", "allSupp", "allSauce"];
 
 function updateCommand() {
+
+  let compteur = document.querySelectorAll('.compteur');
+
+  for (let i = 0; i < compteur.length; i++){
+    if (compteur[i].textContent == 2 && i != 2) {
+      console.log('OUI');
+      compteur[i].classList.add('limited');
+    }
+    else if (compteur[2].textContent == 3) {
+      compteur[i].classList.add('limited');
+    }
+    else {
+      compteur[i].classList.remove('limited');
+    }
+  }
+  
   commande.ingredients.meat = {};
   commande.ingredients.supp = {};
   commande.ingredients.sauce = {};
