@@ -84,7 +84,7 @@ strong {
 }
 
 #error ul li::before{
-  content: '⚠';
+  content: '⚠ ';
 }
 
 
