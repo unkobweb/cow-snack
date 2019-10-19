@@ -29,96 +29,65 @@ app.use(
   })
 );
 
-if (countDownDate > now) {
-  app.use((req, res, next) => {
-    res.render("countdown.ejs");
-  });
-} else {
-  app
-    .get("/", (req, res) => {
-      res.render("index.ejs", { session: req.session });
-    })
-    .get("/sandwich", (req, res) => {
-      connexion.query("SELECT * FROM stock", (err, rows1) => {
-        connexion.query("SELECT * FROM size", (err, rows2) => {
-          connexion.query(
-            "SELECT * FROM composition INNER JOIN sandwich SW on composition.sandwich_id = SW.composition_id INNER JOIN stock ST on composition.ingredient_id = ST.id",
-            (err, rows3) => {
-              res.render("sandwich.ejs", {
-                print: rows1,
-                printSize: rows2,
-                printMenu: rows3,
-                session: req.session
-              });
-            }
-          );
-        });
+app
+  .get("/", (req, res) => {
+    if (req.session.acceptCookie == undefined) {
+      req.session.acceptCookie = false;
+    }
+    res.render("index.ejs", { session: req.session });
+  })
+  .post("/cookie", (req, res) => {
+    req.session.acceptCookie = true;
+    res.sendStatus(200);
+  })
+  .get("/admin", (req, res) => {
+    connexion.query(
+      "SELECT * FROM purchase INNER JOIN composition CP on CP.sandwich_id = purchase.composition_id INNER JOIN stock ST on ST.ID = CP.ingredient_id",
+      (err, rows) => {
+        res.render("admin.ejs", { session: req.session, printCommande: rows });
+      }
+    );
+  })
+  .get("/sandwich", (req, res) => {
+    connexion.query("SELECT * FROM stock", (err, rows1) => {
+      connexion.query("SELECT * FROM size", (err, rows2) => {
+        connexion.query(
+          "SELECT * FROM composition INNER JOIN sandwich SW on composition.sandwich_id = SW.composition_id INNER JOIN stock ST on composition.ingredient_id = ST.id",
+          (err, rows3) => {
+            res.render("sandwich.ejs", {
+              print: rows1,
+              printSize: rows2,
+              printMenu: rows3,
+              session: req.session
+            });
+          }
+        );
       });
-    })
-    .post("/sandwich", urlencodedParser, (req, res, next) => {
-      let beModified = JSON.parse(req.body.user_commande);
+    });
+  })
+  .post("/sandwich", urlencodedParser, (req, res, next) => {
+    let beModified = JSON.parse(req.body.user_commande);
 
-      req.session.commande = {
-        name: "",
-        phone: "",
-        sandwich_name: "",
-        user_precision: "",
-        ingredients: [],
-        size: "",
-        dessert: "",
-        drink: ""
-      };
+    req.session.commande = {
+      name: "",
+      phone: "",
+      sandwich_name: "",
+      user_precision: "",
+      ingredients: [],
+      size: "",
+      dessert: "",
+      drink: ""
+    };
 
-      let treatment = new Promise((resolve, reject) => {
-        if (beModified.ingredients.composition_id != undefined) {
-          req.session.commande.sandwich_name =
-            beModified.ingredients.sandwich_name;
-          req.session.commande.size = beModified.ingredients.size;
-          connexion.query(
-            "SELECT * FROM composition INNER JOIN sandwich SW on composition.sandwich_id = SW.composition_id INNER JOIN stock ST on composition.ingredient_id = ST.id WHERE composition_id = ?",
-            [beModified.ingredients.composition_id],
-            (err, rows) => {
-              rows.forEach(x => {
-                req.session.commande.ingredients.push({
-                  id: x.id,
-                  slug: x.slug,
-                  label: x.label,
-                  type: x.type
-                });
-              });
-              resolve();
-            }
-          );
-        } else {
-          req.session.commande.sandwich_name =
-            beModified.ingredients.sandwich_name;
-          req.session.commande.size = beModified.ingredients.size;
-          req.session.commande.user_precision = req.body.precision;
-          let ingredients = [];
-          let sentence = "SELECT * FROM stock WHERE id IN (";
-          let count = 0;
-          let commande = beModified;
-          while (commande.ingredients.meat["meat" + count] != undefined) {
-            ingredients.push(commande.ingredients.meat["meat" + count]);
-            count++;
-          }
-          count = 0;
-          while (commande.ingredients.supp["supp" + count] != undefined) {
-            ingredients.push(commande.ingredients.supp["supp" + count]);
-            count++;
-          }
-          count = 0;
-          while (commande.ingredients.sauce["sauce" + count] != undefined) {
-            ingredients.push(commande.ingredients.sauce["sauce" + count]);
-            count++;
-          }
-          count = 0;
-          ingredients.forEach(result => {
-            count == 0 ? (sentence += result) : (sentence += ", " + result);
-            count++;
-          });
-          sentence += ")";
-          connexion.query(sentence, (err, rows) => {
+    let treatment = new Promise((resolve, reject) => {
+      if (beModified.ingredients.composition_id != undefined) {
+        req.session.commande.sandwich_name =
+          beModified.ingredients.sandwich_name;
+        req.session.commande.size = beModified.ingredients.size;
+        connexion.query(
+          "SELECT * FROM composition INNER JOIN sandwich SW on composition.sandwich_id = SW.composition_id INNER JOIN stock ST on composition.ingredient_id = ST.id WHERE composition_id = ?",
+          [beModified.ingredients.composition_id],
+          (err, rows) => {
             rows.forEach(x => {
               req.session.commande.ingredients.push({
                 id: x.id,
@@ -128,120 +97,161 @@ if (countDownDate > now) {
               });
             });
             resolve();
-          });
-        }
-      });
-      treatment.then(value => {
-        res.sendStatus(200);
-      });
-    })
-    .get("/dessert", (req, res) => {
-      connexion.query("SELECT * FROM stock WHERE type = 4", (err, rows) => {
-        connexion.query("SELECT * FROM stock WHERE type = 5", (err, rows2) => {
-          res.render("dessert.ejs", {
-            session: req.session,
-            printDrink: rows,
-            printDessert: rows2
-          });
-        });
-      });
-    })
-    .post("/dessert", urlencodedParser, (req, res) => {
-      let drinkDessert = new Promise((resolve, reject) => {
-        req.session.commande.drink = req.body.boisson;
-        req.session.commande.dessert = req.body.dessert;
-        resolve();
-      });
-      drinkDessert.then(value => {
-        res.sendStatus(200);
-      });
-    })
-    .get("/livraison", (req, res) => {
-      console.log(req.session.commande);
-      res.render("livraison.ejs", { session: req.session });
-    })
-    .post("/livraison", urlencodedParser, (req, res) => {
-      let livraison = new Promise((resolve, reject) => {
-        let composition_id;
-        req.session.commande.name = req.body.nom;
-        req.session.commande.phone = req.body.telephone;
-        connexion.query(
-          "SELECT MAX(sandwich_id) as count FROM composition",
-          (err, rows) => {
-            composition_id = rows[0].count + 1;
-            req.session.commande.ingredients.forEach(result => {
-              connexion.query(
-                "INSERT INTO composition (sandwich_id, ingredient_id) VALUES (?,?)",
-                [composition_id, result.id]
-              );
-            });
-            connexion.query(
-              "INSERT INTO purchase (composition_id, user_name, user_phone, sandwich_name, delivery_date, size, user_precision, drink, dessert) VALUES (?,?,?,?,?,?,?,?,?)",
-              [
-                composition_id,
-                req.session.commande.name,
-                req.session.commande.phone,
-                req.session.commande.sandwich_name,
-                req.body.livraison,
-                req.session.commande.size,
-                req.session.commande.user_precision,
-                req.session.commande.drink,
-                req.session.commande.dessert
-              ]
-            );
-            req.session.commande = {};
-            connexion.query(
-              "SELECT MAX(id) as count FROM purchase",
-              (err, rows) => {
-                req.session.commandeid = rows[0].count;
-                resolve();
-              }
-            );
           }
         );
-      });
-      livraison.then(value => {
-        res.sendStatus(200);
-      });
-    })
-    .get("/final", (req, res) => {
-      if (req.session.commandeid == undefined) {
-        res.redirect("/");
       } else {
-        res.render("final.ejs", { session: req.session });
+        req.session.commande.sandwich_name =
+          beModified.ingredients.sandwich_name;
+        req.session.commande.size = beModified.ingredients.size;
+        req.session.commande.user_precision = req.body.precision;
+        let ingredients = [];
+        let sentence = "SELECT * FROM stock WHERE id IN (";
+        let count = 0;
+        let commande = beModified;
+        while (commande.ingredients.meat["meat" + count] != undefined) {
+          ingredients.push(commande.ingredients.meat["meat" + count]);
+          count++;
+        }
+        count = 0;
+        while (commande.ingredients.supp["supp" + count] != undefined) {
+          ingredients.push(commande.ingredients.supp["supp" + count]);
+          count++;
+        }
+        count = 0;
+        while (commande.ingredients.sauce["sauce" + count] != undefined) {
+          ingredients.push(commande.ingredients.sauce["sauce" + count]);
+          count++;
+        }
+        count = 0;
+        ingredients.forEach(result => {
+          count == 0 ? (sentence += result) : (sentence += ", " + result);
+          count++;
+        });
+        sentence += ")";
+        connexion.query(sentence, (err, rows) => {
+          rows.forEach(x => {
+            req.session.commande.ingredients.push({
+              id: x.id,
+              slug: x.slug,
+              label: x.label,
+              type: x.type
+            });
+          });
+          resolve();
+        });
       }
-    })
-    .post("/final", urlencodedParser, (req, res) => {
-      let note = new Promise((resolve, reject) => {
-        connexion.query(
-          "INSERT INTO rate (mark, purchase_id, user_precision) VALUES (?,?,?)",
-          [req.body.mark, req.session.commandeid, req.body.remarque]
-        );
-        resolve();
+    });
+    treatment.then(value => {
+      res.sendStatus(200);
+    });
+  })
+  .get("/dessert", (req, res) => {
+    connexion.query("SELECT * FROM stock WHERE type = 4", (err, rows) => {
+      connexion.query("SELECT * FROM stock WHERE type = 5", (err, rows2) => {
+        res.render("dessert.ejs", {
+          session: req.session,
+          printDrink: rows,
+          printDessert: rows2
+        });
       });
-      note.then(value => {
-        res.sendStatus(200);
-      });
-    })
-    .get("/special", (req, res) => {
-      res.render("special.ejs", { session: req.session });
-    })
-    .get("/apropos", (req, res) => {
-      res.render("apropos.ejs", { session: req.session });
-    })
-    .get("/contact", (req, res) => {
-      res.render("contact.ejs", { session: req.session });
-    })
-    .get("/conditionsgenerales", (req, res) => {
-      res.render("conditionsgenerales.ejs", { session: req.session });
-    })
-    .get("/politique", (req, res) => {
-      res.render("politique.ejs", { session: req.session });
-    })
-    .get("/mentionslegales", (req, res) => {
-      res.render("mentionslegales.ejs", { session: req.session });
-    })
-    /*.get('/compte', (req, res) => {
+    });
+  })
+  .post("/dessert", urlencodedParser, (req, res) => {
+    let drinkDessert = new Promise((resolve, reject) => {
+      req.session.commande.drink = req.body.boisson;
+      req.session.commande.dessert = req.body.dessert;
+      resolve();
+    });
+    drinkDessert.then(value => {
+      res.sendStatus(200);
+    });
+  })
+  .get("/livraison", (req, res) => {
+    console.log(req.session.commande);
+    res.render("livraison.ejs", { session: req.session });
+  })
+  .post("/livraison", urlencodedParser, (req, res) => {
+    let livraison = new Promise((resolve, reject) => {
+      let composition_id;
+      req.session.commande.name = req.body.nom;
+      req.session.commande.phone = req.body.telephone;
+      connexion.query(
+        "SELECT MAX(sandwich_id) as count FROM composition",
+        (err, rows) => {
+          composition_id = rows[0].count + 1;
+          req.session.commande.ingredients.forEach(result => {
+            connexion.query(
+              "INSERT INTO composition (sandwich_id, ingredient_id) VALUES (?,?)",
+              [composition_id, result.id]
+            );
+          });
+          connexion.query(
+            "INSERT INTO purchase (composition_id, user_name, user_phone, sandwich_name, delivery_date, size, user_precision, drink, dessert) VALUES (?,?,?,?,?,?,?,?,?)",
+            [
+              composition_id,
+              req.session.commande.name,
+              req.session.commande.phone,
+              req.session.commande.sandwich_name,
+              req.body.livraison,
+              req.session.commande.size,
+              req.session.commande.user_precision,
+              req.session.commande.drink,
+              req.session.commande.dessert
+            ]
+          );
+          req.session.commande = {};
+          connexion.query(
+            "SELECT MAX(id) as count FROM purchase",
+            (err, rows) => {
+              req.session.commandeid = rows[0].count;
+              resolve();
+            }
+          );
+        }
+      );
+    });
+    livraison.then(value => {
+      res.sendStatus(200);
+    });
+  })
+  .get("/final", (req, res) => {
+    if (req.session.commandeid == undefined) {
+      res.redirect("/");
+    } else {
+      res.render("final.ejs", { session: req.session });
+    }
+  })
+  .post("/final", urlencodedParser, (req, res) => {
+    let note = new Promise((resolve, reject) => {
+      connexion.query(
+        "INSERT INTO rate (mark, purchase_id, user_precision) VALUES (?,?,?)",
+        [req.body.mark, req.session.commandeid, req.body.remarque]
+      );
+      resolve();
+    });
+    note.then(value => {
+      res.sendStatus(200);
+    });
+  })
+  .get("/special", (req, res) => {
+    res.render("special.ejs", { session: req.session });
+  })
+  .get("/apropos", (req, res) => {
+    res.render("apropos.ejs", { session: req.session });
+  })
+  .get("/contact", (req, res) => {
+    res.render("contact.ejs", { session: req.session });
+  })
+  .get("/conditionsgenerales", (req, res) => {
+    res.render("conditionsgenerales.ejs", { session: req.session });
+  })
+  .get("/politique", (req, res) => {
+    res.render("politique.ejs", { session: req.session });
+  })
+  .get("/mentionslegales", (req, res) => {
+    res.render("mentionslegales.ejs", { session: req.session });
+  })
+  /*.get('/compte', (req, res) => {
         res.render('compte.ejs', {session: req.session});
     })
     .get('/deconnexion', (req, res) => {
@@ -314,8 +324,7 @@ if (countDownDate > now) {
             }
         });
     })*/
-    .use((req, res, next) => {
-      res.status(404).render("maintenance.ejs", { session: req.session });
-    });
-}
+  .use((req, res, next) => {
+    res.status(404).render("maintenance.ejs", { session: req.session });
+  });
 app.listen(8080);

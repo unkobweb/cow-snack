@@ -46,6 +46,7 @@
 				<%}%>-->
       </div>
     </header>
+    <%console.log(session);%> <%if (session.acceptCookie == false) {%>
     <div class="rgpd">
       <p>
         Le site utilise des cookies 🍪 afin de pouvoir garder votre compte
@@ -59,6 +60,7 @@
         </div>
       </div>
     </div>
+    <%}%>
     <!-- Top section -->
     <section class="orange" id="topSection">
       <h1>
@@ -186,6 +188,7 @@
         <a href="/mentionslegales">Mentions Légales</a>
       </div>
     </footer>
+    <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/cookie.js"></script>
   </body>
 </html>
