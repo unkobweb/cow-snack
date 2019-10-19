@@ -274,7 +274,7 @@ header > div > a, .coverBasket {
 		justify-content: space-between;
 	}
 
-	header > img {
+	header > img, header .logo {
 		margin-left: 0!important;
 		margin-bottom: 25px;
 	}
