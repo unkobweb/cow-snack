@@ -27,7 +27,6 @@ function opacityCustom() {
       size: "small"
     }
   };
-  console.log(commande);
 }
 
 function opacityMenu() {
@@ -43,7 +42,7 @@ function opacityMenu() {
       composition_id: 0
     }
   };
-  console.log(commande);
+
 }
 
 $("#choicemenu").click(() => {
@@ -81,7 +80,6 @@ function updateCommand() {
       }
     });
   });
-  console.log(commande);
 }
 
 let viandeLimit = 2;
@@ -89,7 +87,6 @@ let suppLimit = 2;
 let sauceLimit = 3;
 
 $(".selecteurViande, .selecteurSupp, .selecteurSauce").click(function() {
-  console.log(this.classList[0].substring(9).toLowerCase());
   let typeFood = this.classList[0].substring(9).toLowerCase();
   if (
     eval(this.value + " ==  false") &&
@@ -133,7 +130,6 @@ $(".size").click(function() {
     ).value;
     $("#priceCustom").text(eval(commande.ingredients.size).toFixed(2) + " €");
   }
-  console.log(commande);
 });
 
 $("#customsubmit, #menusubmit").click(() => {
@@ -164,7 +160,6 @@ $("#customsubmit, #menusubmit").click(() => {
         }
       );
     } else {
-      console.log("oui");
       let noCustom = document.createElement("li");
       noCustom.innerHTML = "Vous n'avez choisi aucun ingrédient";
       erreur.appendChild(noCustom);
@@ -190,7 +185,6 @@ $("#customsubmit, #menusubmit").click(() => {
 });
 
 $(".presandwich").click(function() {
-  console.log(this.id);
   document.querySelectorAll(".presandwich").forEach(element => {
     element.classList.remove("active");
   });
