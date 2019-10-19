@@ -354,7 +354,8 @@ legend{
 .rgpd{
 	position: fixed;
 	bottom: 20px;
-	right: 20px;
+	right: auto;
+ 	left: auto;
 	background-color: #FFF;
 	border-radius: 15px;
 	padding: 20px;
