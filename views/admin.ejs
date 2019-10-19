@@ -1,113 +1,123 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="icon" type="icon/png" href="../public/img/favicon.png"/>
-		<title>Commande effectué - Cow-snack</title>
-		<link rel="stylesheet" href="../public/css/unique.css">
-		<link rel="stylesheet" href="../public/css/header.css">
-		<link rel="stylesheet" href="../public/css/footer.css">
-<!-- 		<script src="../js/jquery-3.4.1.min.js"></script> -->
-	</head>
-	<body id="admin">
-		<div class="flex-row align">
-			<img src="../public/img/logo.png" class="logoFirst">
-			<div class="flex-row align">
-				<a href="index.ejs" class="flex-end">
-						<div class="bouton">Accueil</div>
-				</a>
-				<div class="deconnexion">Se déconnecter</div>
-			</div>
-		</div>
-		
-		<h2>Commandes</h2>
-		<section id="commandAdmin">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="icon/png" href="img/favicon.png" />
+    <title>Commande effectué - Cow-snack</title>
+    <link rel="stylesheet" href="css/unique.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <!-- 		<script src="../js/jquery-3.4.1.min.js"></script> -->
+  </head>
+  <body id="admin">
+    <div class="flex-row align">
+      <img src="img/logo.png" class="logoFirst" />
+      <div class="flex-row align">
+        <a href="index.ejs" class="flex-end">
+          <div class="bouton">Accueil</div>
+        </a>
+        <div class="deconnexion">Se déconnecter</div>
+      </div>
+    </div>
 
-			<div class="topCommand">
-				<h3>Nom du client</h3>
-				<h3>Nom du Sandwich</h3>
-				<h3>Boisson & Dessert</h3>
-				<h3>Prix</h3>
-				<h3>Date de Livraison</h3>
-				<h3>Statut</h3>
-			</div>
-			<div class="flex-row align commandContainer">
-				<div>
-					<p>Alexandre Le Gaulois</p>
-					<p class="colorSandwich">Cow-Miam</p>
-					<p>Orangina / Panini nutella</p>
-					<p>3.00€</p>
-					<p>Mardi 7 Juin</p>
-					<p class="statut">Livré</p>
-				</div>
-				<div class="paiementValidate">Paiement effectué</div>
-				<div class="infos">+</div>
-			</div>
-			<div class="flex-row align commandContainer">
-				<div>
-					<p>Alexandre Le Gaulois</p>
-					<p class="colorSandwich">Cow-Miam</p>
-					<p>Orangina / Panini nutella</p>
-					<p>3.00€</p>
-					<p>Mardi 7 Juin</p>
-					<p class="statut">Livré</p>
-				</div>
-				<div class="paiementValidate">Paiement effectué</div>
-				<div class="infos">+</div>
-			</div>
+    <h2>Commandes</h2>
+    <section id="commandAdmin">
+      <div class="topCommand">
+        <h3>Nom du client</h3>
+        <h3>Nom du Sandwich</h3>
+        <h3>Boisson & Dessert</h3>
+        <h3>Prix</h3>
+        <h3>Date de Livraison</h3>
+        <h3>Statut</h3>
+      </div>
+      <%let actualCommande = printCommande[0].composition_id;%> <%
+      printCommande.forEach(result => { if (result.composition_id ==
+      actualCommande) { %> <% actualCommande++;%>
+      <div class="flex-row align commandContainer">
+        <div>
+          <p><%=result.user_name%></p>
+          <p class="colorSandwich"><%=result.sandwich_name%></p>
+          <p>
+            <%=result.drink ? result.dessert ? result.drink+" / "+result.dessert
+            : result.drink : result.dessert ? result.dessert : "" %>
+          </p>
+          <p>3.00€</p>
+          <p><%=result.delivery_date%></p>
+          <p class="statut">Livré</p>
+        </div>
+        <div class="paiementValidate">Paiement effectué</div>
+        <div class="infos">+</div>
+      </div>
+      <%} });%>
+      <!--<div class="flex-row align commandContainer">
+        <div>
+          <p>Alexandre Le Gaulois</p>
+          <p class="colorSandwich">Cow-Miam</p>
+          <p>Orangina / Panini nutella</p>
+          <p>3.00€</p>
+          <p>Mardi 7 Juin</p>
+          <p class="statut">Livré</p>
+        </div>
+        <div class="paiementValidate">Paiement effectué</div>
+        <div class="infos">+</div>
+      </div>
+      <div class="flex-row align commandContainer">
+        <div>
+          <p>Alexandre Le Gaulois</p>
+          <p class="colorSandwich">Cow-Miam</p>
+          <p>Orangina / Panini nutella</p>
+          <p>3.00€</p>
+          <p>Mardi 7 Juin</p>
+          <p class="statut">Livré</p>
+        </div>
+        <div class="paiementValidate">Paiement effectué</div>
+        <div class="infos">+</div>
+      </div>-->
+    </section>
 
-		</section>
+    <h2>Stock</h2>
+    <h3>Viandes</h3>
+    <section class="sectionStock">
+      <div class="compteurContainer">
+        <div class="dish">
+          <div class="dish-img"><img src="img/steak.png" /></div>
+          <div class="dish-compteur">
+            <div class="dish-arrow">
+              <img src="img/top-arrow.png" />
+              <img src="img/bottom-arrow.png" />
+            </div>
+            <b>2</b>
+          </div>
+        </div>
+        <div class="compteurBottom">
+          <p>Steak</p>
+          <div>Besoin:<span class="besoin"> 6</span></div>
+        </div>
+      </div>
 
-		
-		<h2>Stock</h2>
-		<h3>Viandes</h3>
-			<section class="sectionStock">
-				<div class="compteurContainer">
-					<div class="dish">
-						<div class="dish-img"><img src="../public/img/steak.png"></div>
-						<div class="dish-compteur">
-							<div class="dish-arrow">						
-								<img src="../public/img/top-arrow.png">
-								<img src="../public/img/bottom-arrow.png">
-							</div>
-							<b>2</b>
-						</div>
-					</div>
-					<div class="compteurBottom">
-						<p>Steak</p>
-						<div>Besoin:<span class="besoin"> 6</span></div>
-					</div>
-				</div>
+      <div class="compteurContainer">
+        <div class="dish">
+          <div class="dish-img"><img src="img/steak.png" /></div>
+          <div class="dish-compteur">
+            <div class="dish-arrow">
+              <img src="img/top-arrow.png" />
+              <img src="img/bottom-arrow.png" />
+            </div>
+            <b>2</b>
+          </div>
+        </div>
+        <div class="compteurBottom">
+          <p>Steak</p>
+          <div>Besoin:<span class="besoin"> 6</span></div>
+        </div>
+      </div>
+    </section>
 
-				<div class="compteurContainer">
-					<div class="dish">
-						<div class="dish-img"><img src="../public/img/steak.png"></div>
-						<div class="dish-compteur">
-							<div class="dish-arrow">						
-								<img src="../public/img/top-arrow.png">
-								<img src="../public/img/bottom-arrow.png">
-							</div>
-							<b>2</b>
-						</div>
-					</div>
-					<div class="compteurBottom">
-						<p>Steak</p>
-						<div>Besoin:<span class="besoin"> 6</span></div>
-					</div>
-				</div>
-			</section>
+    <h3>Suppléments</h3>
+    <section></section>
 
-			<h3>Suppléments</h3>
-			<section>
-				
-			</section>
-
-
-			<h3>Sauces</h3>
-			<section>
-				
-			</section>
-
-	</body>
-</html> 
+    <h3>Sauces</h3>
+    <section></section>
+  </body>
+</html>
