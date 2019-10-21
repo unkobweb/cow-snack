@@ -69,8 +69,10 @@ let customs = document.querySelectorAll(".colorSandwich");
 
 for (let i = 0; i < customs.length; i++) {
   customs[i].addEventListener("click", function(event) {
-    for (let i = 0; i < customs.length; i++) {
-      customs[i].nextElementSibling.classList.remove("custom");
+    if (!event.target.nextElementSibling.classList.contains("custom")) {
+      for (let i = 0; i < customs.length; i++) {
+        customs[i].nextElementSibling.classList.remove("custom");
+      }
     }
     event.target.nextElementSibling.classList.toggle("custom");
     event.target.classList.toggle("presence");
