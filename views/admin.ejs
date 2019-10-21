@@ -183,7 +183,7 @@
           <div class="dish-img">
             <img src="img/<%=result.slug%>.png" width="80vw" />
           </div>
-          <div class="dish-compteur">
+          <div class="dish-compteur <%= result.quantity >= 10 ? "extended" : ""%>">
             <div class="dish-arrow">
               <img
                 src="img/top-arrow.png"
@@ -203,7 +203,7 @@
           <p><%=result.label%></p>
           <div>Besoin:<span class="besoin"><%=result.need%></span></div>
           <div class="initBesoin">
-            <img src="img/add.png" class="cross" />
+            <img src="img/add.png" class="cross" id="<%=result.slug%>" />
           </div>
         </div>
       </div>
@@ -221,10 +221,10 @@
           <div class="dish-img">
             <img src="img/<%=result.slug%>.png" width="80vw" />
           </div>
-          <div class="dish-compteur">
+          <div class="dish-compteur <%= result.quantity >= 10 ? "extended" : ""%>">
             <div class="dish-arrow">
-              <img src="img/top-arrow.png" class="arrowUp" />
-              <img src="img/bottom-arrow.png" class="arrowDown" />
+              <img src="img/top-arrow.png" class="arrowUp" id="<%=result.slug%>"/>
+              <img src="img/bottom-arrow.png" class="arrowDown" id="<%=result.slug%>"/>
             </div>
             <b><%=result.quantity%></b>
           </div>
@@ -233,7 +233,7 @@
           <p><%=result.label%></p>
           <div>Besoin:<span class="besoin"><%=result.need%></span></div>
           <div class="initBesoin">
-            <img src="img/add.png" class="cross" />
+            <img src="img/add.png" class="cross" id="<%=result.slug%>" />
           </div>
         </div>
       </div>
@@ -251,10 +251,10 @@
           <div class="dish-img">
             <img src="img/<%=result.slug%>.png" width="80vw" />
           </div>
-          <div class="dish-compteur">
+          <div class="dish-compteur <%= result.quantity >= 10 ? "extended" : ""%>">
             <div class="dish-arrow">
-              <img src="img/top-arrow.png" class="arrowUp" />
-              <img src="img/bottom-arrow.png" class="arrowDown" />
+              <img src="img/top-arrow.png" class="arrowUp" id="<%=result.slug%>"/>
+              <img src="img/bottom-arrow.png" class="arrowDown" id="<%=result.slug%>"/>
             </div>
             <b><%=result.quantity%></b>
           </div>
@@ -263,7 +263,7 @@
           <p><%=result.label%></p>
           <div>Besoin:<span class="besoin"><%=result.need%></span></div>
           <div class="initBesoin">
-            <img src="img/add.png" class="cross" />
+            <img src="img/add.png" class="cross" id="<%=result.slug%>" />
           </div>
         </div>
       </div>

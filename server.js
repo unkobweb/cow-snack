@@ -85,6 +85,13 @@ app
           }
         );
       } else if (req.body.action == 3) {
+        connexion.query(
+          "UPDATE stock SET need = 0 WHERE slug = ?",
+          [req.body.slug],
+          (err, rows) => {
+            resolve();
+          }
+        );
       }
     });
     updateBDD.then(value => {

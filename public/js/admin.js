@@ -97,6 +97,7 @@ let crosses = document.querySelectorAll(".cross");
 
 for (let i = 0; i < besoins.length; i++) {
   crosses[i].addEventListener("click", function(event) {
+    $.post("/admin", { action: 3, slug: this.id });
     event.target.parentElement.previousElementSibling.children[0].innerText =
       " 0";
   });
