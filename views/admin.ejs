@@ -24,42 +24,81 @@
     <section id="commandAdmin">
       <div class="topCommand">
         <h3>Nom du client</h3>
-        <h3>Taille</h3>
         <h3>Nom du Sandwich</h3>
         <h3>Boisson & Dessert</h3>
         <h3>Prix</h3>
         <h3>Date de Livraison</h3>
         <h3>Statut</h3>
       </div>
-      <%printCommande.forEach(result => { %>
+      <%let actuel = (printCommande[0].composition_id -1);%> <%let prix = 0;%>
+      <%printCommande.forEach(result => { if (result.composition_id != actuel)
+      {%> <%actuel = result.composition_id;%> <%prix = 0; if (result.size ==
+      "small" ) { prix += 4; } else if (result.size == "medium") { prix += 5; }
+      else { prix += 7; } if (result.dessert != "") { prix += 1; } if
+      (result.dessert != "") { prix += 1; } %>
       <div class="flex-row align commandContainer">
         <div class="suppr">
           <img src="img/add.png" class="cruce" />
         </div>
         <div>
           <p><%=result.user_name%></p>
-          <p>small</p>
-          <p class="colorSandwich"><%=result.sandwich_name%></p>
+          <p class="colorSandwich">
+            <%=result.sandwich_name != "" ?
+            result.sandwich_name.charAt(0).toUpperCase()+result.sandwich_name.slice(1).toLowerCase()
+            : "No-name"%>
+          </p>
+          <div class="popupCustom">
+            <div>
+              <img src="img/height.svg" />
+              <p>
+                <%=result.size.charAt(0).toUpperCase()+result.size.slice(1)%>
+              </p>
+            </div>
+            <div>
+              <img src="img/meat.svg" />
+              <% let sentence = ""; printCommande.forEach(result => { if
+              (result.composition_id == actuel && result.type == 1) { sentence
+              += result.label + " "; } })%>
+              <p><%=sentence%></p>
+            </div>
+            <div>
+              <img src="img/salad.svg" />
+              <% sentence = ""; printCommande.forEach(result => { if
+              (result.composition_id == actuel && result.type == 2) { sentence
+              += result.label + " "; } })%>
+              <p><%=sentence%></p>
+            </div>
+            <div>
+              <img src="img/sauce-bottle.svg" />
+              <% sentence = ""; printCommande.forEach(result => { if
+              (result.composition_id == actuel && result.type == 3) { sentence
+              += result.label + " "; } })%>
+              <p><%=sentence%></p>
+            </div>
+          </div>
           <p>
             <%=result.drink ? result.dessert ? result.drink+" / "+result.dessert
-            : result.drink : result.dessert ? result.dessert : "" %>
+            : result.drink : result.dessert ? result.dessert : "Aucun" %>
           </p>
-          <p>3.00€</p>
-          <p>Mardi 7 Juin</p>
-          <p class="statut">Livré</p>
+          <p><%=prix.toFixed(2)+" €"%></p>
+          <%let d = new Date();%>
+          <p><%=result.delivery_date.toString().slice(4,15)%></p>
+          <p class="statut">
+            <%=result.status == 2? "Livré" : result.status == 1 ? "En cours" :
+            "Annulé"%>
+          </p>
         </div>
         <div class="paiementValidate">Paiement effectué</div>
         <div class="infos">
           +
           <div class="infosContainer">
             <p>
-              Yo Seb, est ce que ça serai possible de bien cuire mon steak parce
-              que je suis pas fan de la cuisson au bleu.
+              <%=result.user_precision%>
             </p>
           </div>
         </div>
       </div>
-      <%});%>
+      <%}});%>
 
       <div class="flex-row align commandContainer">
         <div class="suppr">
