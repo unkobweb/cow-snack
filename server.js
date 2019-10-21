@@ -44,9 +44,59 @@ app
     connexion.query(
       "SELECT * FROM purchase INNER JOIN composition CP on CP.sandwich_id = purchase.composition_id INNER JOIN stock ST on ST.ID = CP.ingredient_id",
       (err, rows) => {
-        res.render("admin.ejs", { session: req.session, printCommande: rows });
+        connexion.query("SELECT * FROM stock WHERE type = 1", (err, rows2) => {
+          connexion.query(
+            "SELECT * FROM stock WHERE type = 2",
+            (err, rows3) => {
+              connexion.query(
+                "SELECT * FROM stock WHERE type = 3",
+                (err, rows4) => {
+                  res.render("admin.ejs", {
+                    session: req.session,
+                    printCommande: rows,
+                    printViande: rows2,
+                    printSupp: rows3,
+                    printSauce: rows4
+                  });
+                }
+              );
+            }
+          );
+        });
       }
     );
+  })
+  .post("/admin", urlencodedParser, (req, res) => {
+    let updateBDD = new Promise((resolve, reject) => {
+      if (req.body.action == 1) {
+        connexion.query(
+          "UPDATE stock SET quantity = quantity + 1 WHERE slug = ?",
+          [req.body.slug],
+          (err, rows) => {
+            resolve();
+          }
+        );
+      } else if (req.body.action == 2) {
+        connexion.query(
+          "UPDATE stock SET quantity = quantity - 1 WHERE slug = ?",
+          [req.body.slug],
+          (err, rows) => {
+            resolve();
+          }
+        );
+      } else if (req.body.action == 3) {
+        connexion.query(
+          "UPDATE stock SET need = 0 WHERE slug = ?",
+          [req.body.slug],
+          (err, rows) => {
+            resolve();
+          }
+        );
+      }
+    });
+    updateBDD.then(value => {
+      res.sendStatus(200);
+    });
   })
   .get("/sandwich", (req, res) => {
     connexion.query("SELECT * FROM stock", (err, rows1) => {

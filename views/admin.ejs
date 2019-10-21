@@ -89,6 +89,7 @@
           </p>
         </div>
         <div class="paiementValidate">Paiement effectué</div>
+        <%if (result.user_precision != "") { %>
         <div class="infos">
           +
           <div class="infosContainer">
@@ -97,6 +98,7 @@
             </p>
           </div>
         </div>
+        <%}%>
       </div>
       <%}});%>
 
@@ -173,54 +175,102 @@
 
     <h2>Stock</h2>
     <h3>Viandes</h3>
+    <% let result; for (let i = 0; i < printViande.length/5; i++) {%>
     <section class="sectionStock">
+      <%for (let i2 = 0; i2 < 5; i2++) { result = printViande[(i*5)+i2]%>
       <div class="compteurContainer">
         <div class="dish">
-          <div class="dish-img"><img src="img/steak.png" /></div>
-          <div class="dish-compteur">
+          <div class="dish-img">
+            <img src="img/<%=result.slug%>.png" width="80vw" />
+          </div>
+          <div class="dish-compteur <%= result.quantity >= 10 ? "extended" : ""%>">
             <div class="dish-arrow">
-              <img src="img/top-arrow.png" class="arrowUp" />
-              <img src="img/bottom-arrow.png" class="arrowDown" />
+              <img
+                src="img/top-arrow.png"
+                class="arrowUp"
+                id="<%=result.slug%>"
+              />
+              <img
+                src="img/bottom-arrow.png"
+                class="arrowDown"
+                id="<%=result.slug%>"
+              />
             </div>
-            <b>0</b>
+            <b><%=result.quantity%></b>
           </div>
         </div>
         <div class="compteurBottom">
-          <p>Steak</p>
-          <div>Besoin:<span class="besoin"> 6</span></div>
+          <p><%=result.label%></p>
+          <div>Besoin:<span class="besoin"><%=result.need%></span></div>
           <div class="initBesoin">
-            <img src="img/add.png" class="cross" />
+            <img src="img/add.png" class="cross" id="<%=result.slug%>" />
           </div>
         </div>
       </div>
-
-      <div class="compteurContainer">
-        <div class="dish">
-          <div class="dish-img"><img src="img/steak.png" /></div>
-          <div class="dish-compteur">
-            <div class="dish-arrow">
-              <img src="img/top-arrow.png" class="arrowUp" />
-              <img src="img/bottom-arrow.png" class="arrowDown" />
-            </div>
-            <b>0</b>
-          </div>
-        </div>
-        <div class="compteurBottom">
-          <p>Steak</p>
-          <div>Besoin:<span class="besoin"> 6</span></div>
-          <div class="initBesoin">
-            <img src="img/add.png" class="cross" />
-          </div>
-        </div>
-      </div>
+      <%} %>
     </section>
+    <%}%>
 
     <h3>Suppléments</h3>
-    <section></section>
+    <%for (let i = 0; i < printSupp.length/5; i++) {%>
+    <section class="sectionStock">
+      <%for (let i2 = 0; i2 < 5; i2++) { if (printSupp[(i*5)+i2] != undefined) {
+      result = printSupp[(i*5)+i2] %>
+      <div class="compteurContainer">
+        <div class="dish">
+          <div class="dish-img">
+            <img src="img/<%=result.slug%>.png" width="80vw" />
+          </div>
+          <div class="dish-compteur <%= result.quantity >= 10 ? "extended" : ""%>">
+            <div class="dish-arrow">
+              <img src="img/top-arrow.png" class="arrowUp" id="<%=result.slug%>"/>
+              <img src="img/bottom-arrow.png" class="arrowDown" id="<%=result.slug%>"/>
+            </div>
+            <b><%=result.quantity%></b>
+          </div>
+        </div>
+        <div class="compteurBottom">
+          <p><%=result.label%></p>
+          <div>Besoin:<span class="besoin"><%=result.need%></span></div>
+          <div class="initBesoin">
+            <img src="img/add.png" class="cross" id="<%=result.slug%>" />
+          </div>
+        </div>
+      </div>
+      <%}} %>
+    </section>
+    <%}%>
 
     <h3>Sauces</h3>
-    <section></section>
-
+    <%for (let i = 0; i < printSauce.length/5; i++) {%>
+    <section class="sectionStock">
+      <%for (let i2 = 0; i2 < 5; i2++) { if (printSauce[(i*5)+i2] != undefined)
+      { result = printSauce[(i*5)+i2] %>
+      <div class="compteurContainer">
+        <div class="dish">
+          <div class="dish-img">
+            <img src="img/<%=result.slug%>.png" width="80vw" />
+          </div>
+          <div class="dish-compteur <%= result.quantity >= 10 ? "extended" : ""%>">
+            <div class="dish-arrow">
+              <img src="img/top-arrow.png" class="arrowUp" id="<%=result.slug%>"/>
+              <img src="img/bottom-arrow.png" class="arrowDown" id="<%=result.slug%>"/>
+            </div>
+            <b><%=result.quantity%></b>
+          </div>
+        </div>
+        <div class="compteurBottom">
+          <p><%=result.label%></p>
+          <div>Besoin:<span class="besoin"><%=result.need%></span></div>
+          <div class="initBesoin">
+            <img src="img/add.png" class="cross" id="<%=result.slug%>" />
+          </div>
+        </div>
+      </div>
+      <%}}%>
+    </section>
+    <%}%>
+    <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/admin.js"></script>
   </body>
 </html>
