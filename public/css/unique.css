@@ -1038,7 +1038,7 @@ border: none;
 	position: relative;
 }
 #commandCompte .commandContainer{
-	width: 1100px;
+	width: 900px;
 }
 
 .topCommand {
@@ -1049,7 +1049,7 @@ border: none;
 	width: 1150px;
 }
 #commandCompte .topCommand {
-	width: 1100px;
+	width: 900px;
 }
 
 .topCommand h3{
@@ -1081,7 +1081,7 @@ border: none;
 	width: 1300px;
 }
 #admin .commandContainer p {
-	width: 175px;
+	width: 200px;
 	margin: 0;
 }
 #compte .commandContainer p {
