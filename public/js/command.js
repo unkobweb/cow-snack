@@ -72,7 +72,7 @@ function updateCommand() {
       compteur[i].classList.add('limited');
     }
     else if (compteur[2].textContent == 3) {
-      compteur[i].classList.add('limited');
+      compteur[2].classList.add('limited');
     }
     else {
       compteur[i].classList.remove('limited');
