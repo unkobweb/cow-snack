@@ -4,8 +4,9 @@ let arrowDown = document.querySelectorAll(".arrowDown");
 let vari = [];
 
 for (let i = 0; i < arrowUp.length; i++) {
-  vari[i] = 0;
+  vari[i] = parseInt(arrowUp[i].parentElement.nextElementSibling.innerHTML);
   arrowUp[i].addEventListener("click", function(event) {
+    $.post("/admin", { action: 1, slug: this.id });
     vari[i] += 1;
     event.target.parentElement.nextElementSibling.innerHTML = vari[i];
     if (vari[i] >= 10 || vari[i] < 0) {
@@ -18,6 +19,7 @@ for (let i = 0; i < arrowUp.length; i++) {
 
 for (let i = 0; i < arrowDown.length; i++) {
   arrowDown[i].addEventListener("click", function(event) {
+    $.post("/admin", { action: 2, slug: this.id });
     vari[i] -= 1;
     event.target.parentElement.nextElementSibling.innerHTML = vari[i];
     if (vari[i] >= 10 || vari[i] < 0) {
