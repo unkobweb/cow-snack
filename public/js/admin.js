@@ -41,7 +41,7 @@ for (let i = 0; i < enhance.length; i++) {
 let statut = document.querySelectorAll(".statut");
 
 for (let i = 0; i < statut.length; i++) {
-  let content = statut[i].textContent;
+  let content = statut[i].textContent.trim();
   if (content === "Livré") {
     statut[i].classList.toggle("green");
   } else if (content === "En cours") {

@@ -83,10 +83,8 @@
           <p><%=prix.toFixed(2)+" €"%></p>
           <%let d = new Date();%>
           <p><%=result.delivery_date.toString().slice(4,15)%></p>
-          <p class="statut">
-            <%=result.status == 2? "Livré" : result.status == 1 ? "En cours" :
-            "Annulé"%>
-          </p>
+          <p class="statut"><%=result.status == 2? "Livré" : result.status == 1 ? "En cours" :
+            "Annulé"%></p>
         </div>
         <div class="paiementValidate">Paiement effectué</div>
         <%if (result.user_precision != "") { %>
