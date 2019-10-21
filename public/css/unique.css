@@ -1294,7 +1294,7 @@ border: none;
 	background-color: #FFF;
 	top: 55px;
 	left: -15px;
-	width: 120px;
+	width: 200px;
 	padding: 15px;
 	border-radius: 15px;
 	-webkit-box-shadow: 0px 3px 6px 0px rgba(156,156,156,0.6);
@@ -1309,7 +1309,6 @@ border: none;
 }
 .infosContainer p{
 	font-size: .9rem;
-	width: 120px;
 }
 
 
@@ -1319,25 +1318,35 @@ border: none;
 
 
 /*Compteur Admin*/
+#admin > h3{
+	margin-top: 100px;
+}
 
 .sectionStock{
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
+	flex-wrap: wrap;
+	padding-left: 200px;
+	padding-right: 200px;
 }
 
 .compteurContainer{
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	align-items: center;
+	justify-content: space-between;
+	margin-right: 50px;
+	margin-bottom: 100px;
 }
 
 .dish {
 	display: flex;
-	flex-direction: row;
-	justify-content: center;
+	flex-direction: column;
+	justify-content: flex-start;
 	align-items: center;
+	height: 120px!important;
 }
 
 .dish-img{
@@ -1366,6 +1375,7 @@ border: none;
 	box-shadow: 0px 3px 6px 0px rgba(156,156,156,0.6);
 	border-radius: 7px;
 	margin-left: 20px;
+	margin-top: 10px;
 }
 
 .dish-compteur.extended{
@@ -1387,7 +1397,7 @@ border: none;
 	cursor: pointer;
 }
 
-.dish b {
+.compteurContainer b {
 	font-size: 3.5rem;
 	display: flex;
 	flex-direction: row;
@@ -1397,25 +1407,28 @@ border: none;
 
 .compteurBottom{
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	align-items: center;
-	width: 210px;
-	padding-left: 50px;
-	margin-top: 5px;
+	justify-content: flex-start;
 	position: relative;
+	height: 100%;
 }
 
-.compteurBottom div{
+.compteurBottom > div:nth-of-type(2){
 	background-color: #FFFFFF;
 	box-shadow: 0px 3px 6px 0px rgba(156,156,156,0.6);
 	padding: 5px;
 	border-radius: 7px;
-	margin-left: 65px;
 	font-size: .8rem;
+	position: relative;
+	margin-top: 10px;
 }
 
-.compteurBottom p{
+.dish p{
 	font-weight: bold;
+	margin-top: 10px;
+	width: 100px;
+	text-align: center;
 }
 
 .besoin{
@@ -1471,15 +1484,14 @@ border: none;
 	color: #F5F5F5;
 	border-radius: 50%!important;
 	font-size: 2rem;
-	width: 10px!important;
-	height: 10px!important;
+	padding: 5px;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
 	position: absolute;
-	right: 10px;
-	top: 4px;
+	right: -30px;
+	top: 3px;
 	box-shadow: 0px 3px 6px 0px rgba(156,156,156,0.6);
 	cursor: pointer;
 }

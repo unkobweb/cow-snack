@@ -95,11 +95,11 @@ let crosses = document.querySelectorAll(".cross");
 
 for (let i = 0; i < besoins.length; i++) {
   crosses[i].addEventListener("click", function(event) {
-    event.target.parentElement.previousElementSibling.children[0].innerText =
+    event.target.parentElement.previousElementSibling.innerText =
       " 0";
   });
   besoins[i].addEventListener("click", function(event) {
-    event.target.previousElementSibling.children[0].innerText = " 0";
+    event.target.previousElementSibling.innerText = " 0";
   });
 }
 
