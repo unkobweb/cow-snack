@@ -263,12 +263,8 @@ header > div > a, .coverBasket {
 	z-index: 999;
 }
 
-
-
-
-@media screen and (max-width: 500px){
-
-	header {
+@media screen and (max-width: 700px){
+		header {
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
@@ -278,7 +274,6 @@ header > div > a, .coverBasket {
 		margin-left: 0!important;
 		margin-bottom: 25px;
 	}
-
 	.activeCompte {
 		margin-right: 0!important;
 	}
@@ -286,12 +281,8 @@ header > div > a, .coverBasket {
 		height: 30px;
 		width: 80px;
 	}
-	header > div > a, .coverBasket{
+	header > div > a{
 		font-size: .7rem;
 		margin-right: 20px;
-	}
-	.coverBasket .panier{
-		width: 20px;
-		height: 20px;
 	}
 }

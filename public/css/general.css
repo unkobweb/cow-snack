@@ -418,48 +418,55 @@ legend{
 	margin-left: 10px;
 }
 
-
-@media screen and (max-width: 600px) {
-
-
+@media screen and (max-width: 1100px) {
 	/*first image*/
 	#topSection {
 		display: flex;
 		flex-direction: column-reverse;
 	}
-
+	.mainSandwich {
+		width: 500px;
+		margin: 0;
+	}
 	#topSection h1{
-		margin: -100px 0 0 0;
+		margin: -150px 0 0 0;
 		width: auto;
-		padding-right: 75px;
-		padding-left: 75px;
+		padding-right: 55px;
+		padding-left: 55px;
 		font-size: 1.8rem;
 	}
 
-	.mainSandwich {
-		width: 350px;
-		margin: 0;
-	}
 
-	#topShape {
-		height: 40px;
-		top: 20px;
+	.assemble .extend {
+		flex-direction: column-reverse;
 	}
-	/*first topview :)*/
-	.topview{
-		display: none;
-	}
-	.sourire{
-		margin-right: 0;
-		padding-right: 50px;
-		padding-left: 50px;
+	.sourire {
+		margin-top: 100px;
+		margin-bottom: -100px;
 	}
 
 
-	#middleShape {
-		height: 60px;
+
+	.topview {
+		width: 400px;
+		margin-top: 0px;
+		margin-bottom: -100px;
 	}
-	/*Sebou the cook*/
+	.topview2, .etalage{
+		width: 300px;
+		margin: 50px 0 50px 0 ;
+	}
+	.space-ar {
+		display: flex;
+		flex-direction: column;
+	}
+	.col .space-ar:last-of-type {
+		display: flex;
+		flex-direction: column-reverse;
+	}
+}
+@media screen and (max-width: 800px) {
+		/*Sebou the cook*/
 	.cowboye {
 		display: flex;
 		flex-direction: column-reverse!important;
@@ -472,6 +479,45 @@ legend{
 	.orangeShape, .redShape, .index1 {
 		display: none;
 	}
+}
+@media screen and (max-width: 600px) {
+
+	#topSection h1{
+		margin: -100px 0 0 0;
+		width: auto;
+		padding-right: 55px;
+		padding-left: 55px;
+		font-size: 1.8rem;
+	}
+
+	.mainSandwich {
+		width: 340px;
+		margin: 0;
+	}
+
+	#topShape {
+		height: 40px;
+		top: 20px;
+	}
+	/*first topview :)*/
+	.assemble .extend {
+		flex-direction: row;
+		height: 400px!important;
+	}
+	.topview{
+		display: none;
+	}
+	.sourire{
+		margin: 50px 0 0 0;
+		padding-right: 50px;
+		padding-left: 50px;
+	}
+
+
+	#middleShape {
+		height: 60px;
+	}
+
 	.para-qualite{
 		width: auto;
 		margin-top: 50px;
@@ -491,10 +537,6 @@ legend{
 		width: 75vw;
 	}
 	/*topviews*/
-	.topview2, .etalage{
-		width: 300px;
-		margin: 50px 0 50px 0 ;
-	}
 
 	.space-ar {
 		display: flex;
@@ -522,5 +564,20 @@ legend{
  		left: auto;
  		bottom: 20px;
     	position: fixed;
+	}
+}
+
+
+@media screen and (max-width: 340px) {
+	.mainSandwich {
+		width: 250px;
+	}
+	#topSection h1 {
+		margin: 0;
+		padding-left: 40px;
+		padding-right: 40px;
+	}
+	.assemble .extend {
+		height: 500px!important;
 	}
 }
