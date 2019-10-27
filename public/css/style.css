@@ -283,10 +283,14 @@ strong {
   color: #303030;
   opacity: 0.5;
   margin-top: 200px;
+  padding-left: 50px;
+  padding-right: 50px;
+  text-align: center;
 }
 
 .choiceSpe > h5 {
   margin-bottom: 100px;
+      text-align: center;
 }
 
 .choicebutton > a > div {
@@ -652,6 +656,11 @@ input:checked + label {
   color: #ec632d;
   font-weight: bold;
 }
+@media screen and (max-width: 1100px) {
+  .presentationSpe {
+    flex-direction: column;
+  }
+}
 
 @media screen and (max-width: 600px) {
   .presentation-sandwich {
@@ -734,5 +743,33 @@ input:checked + label {
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+
+
+  /*special*/
+  .presentationSpe > img {
+    margin: 0;
+    width: 300px;
+  }
+  .presentationSpe > .flex-col {
+    margin: 0;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+  .para-sand {
+    width: auto;
+    font-size: .8rem;
+    line-height: 23px;
+    margin-right: 0;
+    padding-right: 20px;
+  }
+  .line2 {
+    width: calc(100% - 60px);
+  }
+  .presentation-sandwich > div > h2,
+  .presentationSpe > div > h2 {
+    font-size: 1.6rem;
+    width: initial;
   }
 }
