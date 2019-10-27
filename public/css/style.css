@@ -56,6 +56,7 @@ strong {
   flex-direction: column;
 }
 
+
 .align {
   align-items: center;
 }
@@ -222,10 +223,10 @@ strong {
   margin-top: 100px;
 }
 .choicebutton {
-  width: 50vw;
+  width: 70vw;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 #choiceSandwich a {
@@ -239,6 +240,7 @@ strong {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
 }
 .presentation-sandwich > div,
 .presentationSpe > div {
@@ -290,7 +292,9 @@ strong {
 
 .choiceSpe > h5 {
   margin-bottom: 100px;
-      text-align: center;
+  text-align: center;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .choicebutton > a > div {
@@ -657,21 +661,38 @@ input:checked + label {
   font-weight: bold;
 }
 @media screen and (max-width: 1100px) {
-  .presentationSpe {
-    flex-direction: column;
-  }
-}
-
-@media screen and (max-width: 600px) {
   .presentation-sandwich {
     display: flex;
     flex-direction: column;
   }
+  .presentation-sandwich {
+      margin-top: 100px;
+  }
+  .presentationSpe {
+    flex-direction: column;
+  }
+  .choicebutton {
+    width: 90vw;
+  }
+
+  .choicebutton > a >div {
+    width: 190px;
+    height: 120px;
+  }
+  #choicecustom h3, #choicemenu h3{
+    font-size: 1.5rem;
+  }
+  .choicebutton > a > div > p {
+    font-size: .9rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+
   .presentation-sandwich .flex-col {
     margin-left: 0;
-    padding-right: 45px;
-    padding-left: 45px;
-    margin-top: 100px;
+    padding-right: 85px;
+    padding-left: 85px;
   }
   .presentation-sandwich h2 {
     font-size: 1.5rem !important;
@@ -686,7 +707,7 @@ input:checked + label {
     margin-right: 0;
   }
   .presentation-sandwich img {
-    width: 350px;
+    width: 320px;
     margin-right: 0;
   }
 
