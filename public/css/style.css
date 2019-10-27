@@ -473,8 +473,8 @@ button.active img {
 }
 
 .pad-200 {
-  padding-right: 200px;
-  padding-left: 200px;
+  padding-right: 100px;
+  padding-left: 100px;
   justify-content: center;
 }
 
@@ -691,8 +691,8 @@ input:checked + label {
 
   .presentation-sandwich .flex-col {
     margin-left: 0;
-    padding-right: 85px;
-    padding-left: 85px;
+    padding-right: 55px;
+    padding-left: 55px;
   }
   .presentation-sandwich h2 {
     font-size: 1.5rem !important;
@@ -758,7 +758,7 @@ input:checked + label {
   }
   input[type="text"],
   input[type="name"] {
-    width: 200px;
+    width: calc(100% - 110px);
   }
   .nameSandwich {
     display: flex;
@@ -775,8 +775,8 @@ input:checked + label {
   }
   .presentationSpe > .flex-col {
     margin: 0;
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 100px;
+    padding-right: 100px;
   }
   .para-sand {
     width: auto;
@@ -792,5 +792,29 @@ input:checked + label {
   .presentationSpe > div > h2 {
     font-size: 1.6rem;
     width: initial;
+  }
+
+  .pad-200 {
+    padding-right: 75px;
+    padding-left: 75px;
+  }
+  .size div {
+    margin: 65px 0 65px 0;
+  }
+  #menu {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  .weekAlert {
+    width: auto;
+  }
+
+  .nameSandwich h5, .nameSandwich p{
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  .nameSandwich p {
+    font-size: .8rem;
   }
 }
