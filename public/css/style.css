@@ -770,13 +770,13 @@ input:checked + label {
 
   /*special*/
   .presentationSpe > img {
-    margin: 0;
+    margin: 40px 0 0 0;
     width: 300px;
   }
   .presentationSpe > .flex-col {
     margin: 0;
-    padding-left: 100px;
-    padding-right: 100px;
+    padding-left: 50px;
+    padding-right: 50px;
   }
   .para-sand {
     width: auto;
@@ -816,5 +816,8 @@ input:checked + label {
 
   .nameSandwich p {
     font-size: .8rem;
+  }
+  .choiceSpe > h3 {
+    margin-top: 50px;
   }
 }
