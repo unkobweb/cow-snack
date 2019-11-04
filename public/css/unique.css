@@ -1048,8 +1048,7 @@ border: none;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	justify-content: flex-start;
-	width: 1150px;
+	justify-content: space-between;
 }
 #commandCompte .topCommand {
 	width: 900px;
@@ -1057,7 +1056,7 @@ border: none;
 
 .topCommand h3{
 	color: #EC632D;
-	width: 200px;
+	width: 40%;
 	text-align: center;
 }
 
@@ -1066,7 +1065,6 @@ border: none;
 }
 
 .commandContainer {
-	width: 1200px;
 	height: 50px;
 	border-radius: 10px;
 	background-color: #FFFFFF;
@@ -1077,15 +1075,16 @@ border: none;
 	-moz-box-shadow: 0px 3px 6px 0px rgba(156,156,156,0.6);
 	box-shadow: 0px 3px 6px 0px rgba(156,156,156,0.6);
 	position: relative;
+	margin-right: 50px;
+	margin-left: 50px;
 }
 
 #admin .commandContainer {
 	margin-bottom: 20px;
-	width: 1300px;
 }
 #admin .commandContainer p {
-	width: 200px;
 	margin: 0;
+	width: 16%;
 }
 #compte .commandContainer p {
 	width: 180px;
@@ -1181,9 +1180,13 @@ border: none;
 }
 
 /*commandes admin*/
+#commandAdmin {
+	width: 80vw;
+}
 
 #admin .topCommand{
-	padding-left: 10px;
+	padding-left: 50px;
+	padding-right: 60px;
 }
 #admin .commandContainer p:first-child {
 	color: #FFA504;
@@ -1203,11 +1206,17 @@ border: none;
 }
 
 #commandAdmin .commandContainer > div {
-	width: 1150px;
 	height: 50px;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
+
+}
+#commandAdmin .commandContainer > div:nth-of-type(2) {
+	width: 100%;
+	justify-content: space-between;
+	padding-right: 20px;
+
 }
 
 .paiementValidate {
@@ -1296,7 +1305,7 @@ border: none;
 	position: absolute;
 	background-color: #FFF;
 	top: 55px;
-	left: -15px;
+	left: -120px;
 	width: 200px;
 	padding: 15px;
 	border-radius: 15px;
@@ -1312,6 +1321,7 @@ border: none;
 }
 .infosContainer p{
 	font-size: .9rem;
+	width: auto!important;
 }
 
 
@@ -1444,8 +1454,8 @@ border: none;
 	color: #FFA504;
 	border-radius: 50px;
 	font-size: 3.5rem;
-	width: 50px!important;
-	height: 50px!important;
+	width: 50px;
+	height: 50px;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -1463,7 +1473,7 @@ border: none;
 	color: #F5F5F5;
 	border-radius: 50px;
 	font-size: 2rem;
-	width: 40px!important;
+	width: 40px;
 	height: 40px!important;
 	display: flex;
 	flex-direction: row;
@@ -1508,6 +1518,23 @@ border: none;
 
 	#chrono h1{
 		font-size: 7rem;
+	}
+	.infos{
+		top:10px;
+		right: -50px;
+		width: 30px;
+		height: 30px!important;
+		font-size: 2rem;
+	}
+	.suppr{
+		top: 10px;
+		left: -40px;
+		width: 30px;
+		height: 30px!important;
+	}
+	.cruce{
+		width: 30px;
+		height: 30px;
 	}
 }
 
