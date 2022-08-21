@@ -1,0 +1,288 @@
+header {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	width: 100vw;
+	margin-top: 40px;
+	z-index: 50;
+}
+
+header > div {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+header > div > a, .coverBasket {
+	font-size: 1rem;
+	font-weight: bold;
+	margin-right: 45px;
+}
+.logo {
+	width: 204px;
+	height: 50px;
+	margin-left: 80px;
+}
+
+.panier{
+	width: 30px;
+	height: 30px;
+	cursor: pointer
+}
+
+.connexion {
+	width: 120px;
+	height: 40px;
+	border-radius: 10px;
+	background-color: #FFA504;
+	color: #F5F5F5;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 5;
+}
+
+.activeCompte{
+	position: relative;
+	z-index: 6;
+}
+
+.deconnected {
+	position: absolute;
+	top: 0;
+	width: 120px;
+	height: 30px;
+	background-color: #FFFFFF;
+	color: #c0c0c0;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	font-size: .8rem;
+	z-index: -1;
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+	padding-bottom: 10px;
+	transition-delay: .5s;
+	transition-duration: .4s;
+	opacity: 0;
+}
+
+.activeCompte:hover .deconnected {
+	transform: translateY(35px);
+	opacity: 1!important;
+
+}
+
+
+
+/*Accueil Header*/
+#generalHead{
+	background-color: #FFA504;
+	margin-top: 0;
+	padding: 40px 0 0 0;
+	width: 100vw!important;
+}
+#generalHead .connexion{
+	background-color: #F5F5F5;
+	color: #FFA504;
+}
+#generalHead .deconnected{
+	background-color: #EC632D;
+	color: #F5F5F5;
+	z-index: -1;
+}
+
+
+#generalHead a {
+	color: #F5F5F5;
+}
+
+
+
+
+
+
+
+
+
+
+
+.coverBasket{
+	position: relative;
+}
+
+
+
+
+/* Panier */
+
+.basket {
+	background-color: #FFF;
+	width: 300px;
+	position: absolute;
+	top: 60px;
+	right: -44px;
+	display: none;
+	flex-direction: column;
+	border-radius: 25px;
+	padding: 30px 30px 20px 30px;
+	box-shadow: 5px 5px 30px 1px rgba(102,102,102,0.2);
+}
+
+.basket.visible{
+	display: flex;
+}
+
+.basket h3{
+	margin: 0;
+	font-size: 1.5rem;
+	width: 100%;
+	align-self: flex-start;
+	color: #FFA504;
+	text-align: left;
+}
+
+.basketImg{
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+}
+
+.basketImg img {
+	height: 40px;
+	margin-left: 15px;
+}
+
+.basketCommand{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
+.basketCommand h5{
+	color: #FFA504;
+	margin: 0;
+}
+
+.basketCommand > div{
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+
+.basketCommand > div:first-child {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+
+
+.basketCommand > div:first-child > div{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	
+}
+
+.basketCommand > div:nth-child(2) {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.basketCommand p{
+	font-size: .7rem;
+	margin-left: 20px;
+}
+.basketCommand hr{
+	background-color: #FFA504;
+	height: 1px;
+	width: 100px;
+	border: none;
+}
+
+.basket > hr {
+	background-color: #303030;
+	height: 1px;
+	width: 100%;
+	border: none;
+	margin-top: 50px;
+}
+
+.basket .align {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.bBask{
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+}
+
+.basket h4{
+	margin-top: 0;
+	margin-bottom: 20px;
+	font-size: 1.5rem;
+}
+
+.basket button{
+	border-radius: 5px;
+	padding: 5px 10px 5px 10px;
+	font-weight: bold;
+	cursor: pointer;
+	outline: none;
+	font-size: .75rem;
+}
+
+.basketCancel {
+	color: #303030;
+	background-color: transparent;
+	border: 2px solid #DDDDDD;
+}
+
+.basketAction {
+	width: 125px;
+	background-color: #EC632D;
+	border: none;
+	color: #F5F5F5;
+	margin-left: 20px;
+
+}
+
+
+
+.slope{
+	position: absolute;
+	top: -23px;
+	right: 15px;
+	width: 90px;
+	z-index: 999;
+}
+
+@media screen and (max-width: 700px){
+		header {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	header > img, header .logo {
+		margin-left: 0!important;
+		margin-bottom: 25px;
+	}
+	.activeCompte {
+		margin-right: 0!important;
+	}
+	.connexion, .deconnected {
+		height: 30px;
+		width: 80px;
+	}
+	header > div > a{
+		font-size: .7rem;
+		margin-right: 20px;
+	}
+}

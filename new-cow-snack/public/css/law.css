@@ -1,0 +1,102 @@
+@font-face {
+    font-family: 'proxima_nova';
+    src: url('../font/proximanova-regular-webfont.woff2') format('woff2'),
+         url('../font/proximanova-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'proxima_nova';
+    src: url('../font/proxima_nova_bold-webfont.woff2') format('woff2'),
+         url('../font/proxima_nova_bold-webfont.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+
+}
+
+html,body{
+	margin: 0;
+	padding: 0;
+	scroll-behavior: smooth;
+	overflow-x: hidden;
+	font-family: 'proxima_nova', sans-serif;
+	background-color: #F5F5F5;
+}
+
+a{
+	text-decoration: none;
+	color: #FFA504;
+	font-weight: bold;
+}
+
+.law strong {
+	color: #FFA504;
+}
+
+.law a {
+	color: #EC632D;
+}
+.lineLaw {
+	width: 400px;
+	height: 3px;
+	background-color: #FFA504;
+	margin-bottom: 50px;
+}
+
+.law {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 200px;
+}
+
+.law > h1 {
+	font-size: 3rem;
+	color: #FFA504;
+	text-align: center;
+}
+
+.law h2{
+	margin-top: 100px;
+}
+
+.law h3{
+	margin-top: 50px;
+}
+
+.law h5{
+	margin-top: 0;
+}
+
+.law > p{
+	padding-left: 25vw;
+	padding-right: 25vw;
+	font-size: 1.3em;
+}
+
+
+.alignLeft {
+	align-self: flex-start;
+}
+.bold {
+	font-weight: bold;
+}
+@media screen and (max-width: 500px) {
+
+	h1{
+		font-size: 2rem!important;
+		text-align: center;
+	}
+	.lineLaw {
+		width: 100px;
+	}
+	.law > p{
+		padding-left: 15vw;
+		padding-right: 15vw;
+	}
+	h2, h3 {
+		padding-left: 10vw;
+		padding-right: 10vw;
+		text-align: center;
+	}
+}
