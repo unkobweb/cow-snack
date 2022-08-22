@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" type="icon/png" href="img/favicon.png"/>
+		<title>Dessert & Boissons - Cow-snack</title>
+		<link rel="stylesheet" href="css/header.css">
+		<link rel="stylesheet" href="css/footer.css">
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/unique.css">
+	</head>
+	<body>
+		@include('partial/header')
+
+		<section id="TopDessert">
+				<h1>Boissons et Desserts</h1>
+					<a href="/sandwich">
+						<div class="annul">
+							<img src="img/left-arrow.svg" width="10%">
+							Revenir en arrière
+						</div>
+					</a>
+				<h2>Une <b>boisson </b><span class="red">?</span>, un <b>dessert</b><span class="red"> ?</span></h2>
+				<div id="choiceDessert">
+						<button type="button" id="drinkButton" class="selecteur">
+							<img src="img/can.png" width="100vw" class="vitrine">
+						</button>
+						<button type="button" id="dessertButton" class="selecteur">
+							<img src="img/cookies.png" width="100vw" class="vitrine">
+						</button>
+				</div>
+		</section>
+
+
+
+		<!--  -->
+		<section id="cowDessert">
+			<form>
+				<section class="Boissons">
+					<h2>Boisson</h2>
+					<div class="flex-row align extend wrap">
+						<div id="groupDrink">
+							<%	let drinkCount = 0 %>
+							<% for (let i = 1; i <= 3; i++) { %>
+								<div class="flex-row">
+									<% printDrink.forEach((element) => {%>
+										<%if ( drinkCount >= ((i-1)*3) && drinkCount < (i*3)) {%>
+											<div class="sodaButton">
+												<input type="radio" name="soda" value="<%=element.label%>" id="<%=element.slug%>" <%=drinkCount == 0 ? "checked" : ""%>>
+												<label for="<%=element.slug%>"><img src="img/<%=element.slug%>.jpg"></label>
+											</div>
+										<%}%>
+										<%drinkCount++;%>
+									<%})%>
+									<%drinkCount = 0;%>
+								</div>
+							<%}%>
+						</div>
+						<div id="customDrink">
+							<h3>Vous ne trouvez pas la boisson que vous cherchez ?</h3>
+							<div class="nameDrink">
+								<h5>Dites-nous de quelle boisson il s'agit ?</h5>
+								<input type="text" id="drinkCustom" class="name">
+								<p>Si la boisson est indisponible, vous serez recontacté pour en choisir une autre.</p>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section class="Desserts">
+								<h2>Dessert</h2>
+								<div id="buttonDessert" class="flex-row wrap pad-200">
+									<%let dessertCount = 0;%>
+									<%printDessert.forEach((result) => {%>
+										<div>
+				  							<button type="button" id="<%=result.label%>" <%=dessertCount == 0 ? "class=active" : ""%>><img src="img/<%=result.slug%>.png" width="90%" class="img"></button>
+				  							<p><%=result.label%></p>
+										</div>
+										<%dessertCount++;%>  
+									<%})%>
+				  				</div>
+				</section>
+				
+				<div class="submite">
+					<input type="button" value="Finaliser la commande" id="customsubmit">
+				</div>
+				
+			</form>
+		</section>
+
+		@include('partial/footer')
+		<script src="js/jquery-3.4.1.min.js"></script>
+		<script src="js/dessert.js"></script>
+	</body>
+</html>

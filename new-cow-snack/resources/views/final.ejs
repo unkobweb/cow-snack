@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" type="icon/png" href="img/favicon.png"/>
+		<title>Commande effectué - Cow-snack</title>
+		<link rel="stylesheet" href="css/unique.css">
+		<link rel="stylesheet" href="css/header.css">
+		<link rel="stylesheet" href="css/footer.css">
+	</head>
+	<body>
+		<header>
+			<%include header%>
+		</header>
+
+		<section id="end">
+			<form>
+				<div class="titled">
+					<h1>Merci de votre commande ! 😀</h1>	
+					<h2>À bientôt, pour un autre repas chez nous 😉</h2>
+				</div>
+				<div class="flex-row align">
+					<div>
+						<h4>Combien de chapeau cowboy vaut notre service ?</h4>
+						<div id="rate">
+							<img src="img/favicon.png" class="cowRate">
+							<img src="img/favicon.png" class="cowRate">
+							<img src="img/favicon.png" class="cowRate">
+							<img src="img/favicon.png" class="cowRate">
+							<img src="img/favicon.png" class="cowRate star">
+						</div>
+					</div>
+					<div>
+						<h4>Des remarques ?</h4>
+						<input type="text" name="" id="remarque"><input type="button" id="envoiRemarque" value="Envoyer">
+						<p>Seb lira vos remarques afin d'améliorer son service</p>
+					</div>
+				</div>
+				<p>Cow-Snack et Seb vous remercie pour votre confiance et nos services.</p>
+			</form>
+		</section>
+		<footer>
+			<%include footer%>
+		</footer>
+		<script src="js/jquery-3.4.1.min.js"></script>
+		<script src="js/rate.js"></script>
+	</body>
+</html>

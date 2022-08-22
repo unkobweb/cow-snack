@@ -1,0 +1,20 @@
+<header>
+  <a href="/">
+    <img src="img/logo.png" class="logo" />
+  </a>
+  <div>
+    <a href="/sandwich">Sandwich</a>
+    @if(auth && auth.isLoggedIn)
+    <a href="/special">
+      <div class="connexion">Admin panel</div>
+    </a>
+    <a href="/logout">  
+      <div class="deconnected">Se déconnecter</div>
+    </a>
+    @else
+    <a href="/login" class="activeCompte">
+      <div class="connexion">Connexion</div>
+    </a>
+    @endif
+  </div>
+</header>

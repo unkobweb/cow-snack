@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="icon/png" href="img/favicon.png" />
+    <title>Administration - Cow-snack</title>
+    <link rel="stylesheet" href="css/unique.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+  </head>
+  <body id="admin">
+    <div class="flex-row align">
+      <img src="img/logo.png" class="logoFirst" />
+      <div class="flex-row align">
+        <a href="index.ejs" class="flex-end">
+          <div class="bouton">Accueil</div>
+        </a>
+        <div class="deconnexion">Se déconnecter</div>
+      </div>
+    </div>
+
+    <h2>Commandes</h2>
+    <section id="commandAdmin">
+      <div class="topCommand">
+        <h3>Nom du client</h3>
+        <h3>Nom du Sandwich</h3>
+        <h3>Boisson & Dessert</h3>
+        <h3>Prix</h3>
+        <h3>Date de Livraison</h3>
+        <h3>Statut</h3>
+      </div>
+      <%let actuel = (printCommande[0].composition_id -1);%> <%let prix = 0;%>
+      <%printCommande.forEach(result => { if (result.composition_id != actuel)
+      {%> <%actuel = result.composition_id;%> <%prix = 0; if (result.size ==
+      "small" ) { prix += 4; } else if (result.size == "medium") { prix += 5; }
+      else { prix += 7; } if (result.dessert != "") { prix += 1; } if
+      (result.dessert != "") { prix += 1; } %>
+      <div class="flex-row align commandContainer">
+        <div class="suppr">
+          <img src="img/cruce.png" class="cruce" />
+        </div>
+        <div>
+          <p><%=result.user_name%></p>
+          <p class="colorSandwich">
+            <%=result.sandwich_name != "" ?
+            result.sandwich_name.charAt(0).toUpperCase()+result.sandwich_name.slice(1).toLowerCase()
+            : "No-name"%>
+          </p>
+          <div class="popupCustom">
+            <div>
+              <img src="img/height.svg" />
+              <p>
+                <%=result.size.charAt(0).toUpperCase()+result.size.slice(1)%>
+              </p>
+            </div>
+            <div>
+              <img src="img/meat.svg" />
+              <% let sentence = ""; printCommande.forEach(result => { if
+              (result.composition_id == actuel && result.type == 1) { sentence
+              += result.label + " "; } })%>
+              <p><%=sentence%></p>
+            </div>
+            <div>
+              <img src="img/salad.svg" />
+              <% sentence = ""; printCommande.forEach(result => { if
+              (result.composition_id == actuel && result.type == 2) { sentence
+              += result.label + " "; } })%>
+              <p><%=sentence%></p>
+            </div>
+            <div>
+              <img src="img/sauce-bottle.svg" />
+              <% sentence = ""; printCommande.forEach(result => { if
+              (result.composition_id == actuel && result.type == 3) { sentence
+              += result.label + " "; } })%>
+              <p><%=sentence%></p>
+            </div>
+          </div>
+          <p>
+            <%=result.drink ? result.dessert ? result.drink+" / "+result.dessert
+            : result.drink : result.dessert ? result.dessert : "Aucun" %>
+          </p>
+          <p><%=prix.toFixed(2)+" €"%></p>
+          <%let d = new Date();%>
+          <p><%=result.delivery_date.toString().slice(4,15)%></p>
+          <p class="statut"><%=result.status == 2? "Livré" : result.status == 1 ? "En cours" :
+            "Annulé"%></p>
+        </div>
+        <%if (result.user_precision != "") { %>
+        <div class="infos">
+          +
+          <div class="infosContainer">
+            <p>
+              <%=result.user_precision%>
+            </p>
+          </div>
+        </div>
+        <%}%>
+      </div>
+      <%}});%>
+
+      <div class="flex-row align commandContainer">
+        <div class="suppr">
+          <img src="img/add.png" class="cruce" />
+        </div>
+        <div>
+          <p>Alexandre Le Gaulois</p>
+          <p class="colorSandwich">Cow-Miam</p>
+          <p>Orangina / Panini nutella</p>
+          <p>3.00€</p>
+          <p>Mardi 7 Juin</p>
+          <p class="statut">En cours</p>
+        </div>
+        <div class="infos">
+          +
+          <div class="infosContainer">
+            <p>
+              J'aimerai si possible avoir une petite part de steak dans mon
+              cow-miam parce que je souhaite pas manger trop lourd et pas
+              beacoup de ketchup aussi parce que un peu c'est bien mais trop
+              c'est moins bien.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex-row align commandContainer">
+        <div class="suppr">
+          <img src="img/add.png" class="cruce" />
+        </div>
+        <div>
+          <p>Alexandre Le Gaulois</p>
+          <p class="colorSandwich">Cow-Custom</p>
+          <div class="popupCustom">
+            <div>
+              <img src="img/height.svg" />
+              <p>Small</p>
+            </div>
+            <div>
+              <img src="img/meat.svg" />
+              <p>Steak Cordon Bleu</p>
+            </div>
+            <div>
+              <img src="img/salad.svg" />
+              <p>Cheddar Lardons Salade Tomates</p>
+            </div>
+            <div>
+              <img src="img/sauce-bottle.svg" />
+              <p>Mayonnaise</p>
+            </div>
+          </div>
+          <p>Orangina / Panini nutella</p>
+          <p>3.00€</p>
+          <p>Mardi 7 Juin</p>
+          <p class="statut">Annulé</p>
+        </div>
+        <div class="infos">
+          +
+          <div class="infosContainer">
+            <p>
+              Bonsoir nous somme l'administration français et nous avons été
+              récemment au fait de votre marché noir de sandwich nous vous
+              contactons donc afin de vous demander d'arrêter parce que c'est
+              pas super gentil de pas payer vos taxes et nous on aime l'argent
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <h2>Stock</h2>
+    <h3>Viandes</h3>
+    <% let result; for (let i = 0; i < printViande.length/5; i++) {%>
+    <section class="sectionStock">
+      <%for (let i2 = 0; i2 < 5; i2++) { result = printViande[(i*5)+i2]%>
+      <div class="compteurContainer">
+        <div class="dish">
+          <div class="dish-img">
+            <img src="img/<%=result.slug%>.png" width="80vw" />
+          </div>
+          <p><%=result.label%></p>
+        </div>
+        <div class="compteurBottom">
+          <div class="dish-compteur <%= result.quantity >= 10 ? "extended" : ""%>">
+            <div class="dish-arrow">
+              <img src="img/top-arrow.png" class="arrowUp" id="<%=result.slug%>"/>
+              <img src="img/bottom-arrow.png" class="arrowDown" id="<%=result.slug%>"/>
+            </div>
+            <b><%=result.quantity%></b>
+          </div>
+
+          <div>
+            Besoin:<span class="besoin"><%=result.need%></span>
+            <div class="initBesoin">
+              <img src="img/add.png" class="cross" id="<%=result.slug%>" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <%} %>
+    </section>
+    <%}%>
+
+    <h3>Suppléments</h3>
+    <%for (let i = 0; i < printSupp.length/5; i++) {%>
+    <section class="sectionStock">
+      <%for (let i2 = 0; i2 < 5; i2++) { if (printSupp[(i*5)+i2] != undefined) {
+      result = printSupp[(i*5)+i2] %>
+      <div class="compteurContainer">
+        <div class="dish">
+          <div class="dish-img">
+            <img src="img/<%=result.slug%>.png" width="80vw" />
+          </div>
+          <p><%=result.label%></p>
+        </div>
+        <div class="compteurBottom">
+          <div class="dish-compteur <%= result.quantity >= 10 ? "extended" : ""%>">
+            <div class="dish-arrow">
+              <img src="img/top-arrow.png" class="arrowUp" id="<%=result.slug%>"/>
+              <img src="img/bottom-arrow.png" class="arrowDown" id="<%=result.slug%>"/>
+            </div>
+            <b><%=result.quantity%></b>
+          </div>
+
+          <div>
+            Besoin:<span class="besoin"><%=result.need%></span>
+            <div class="initBesoin">
+              <img src="img/add.png" class="cross" id="<%=result.slug%>" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <%}} %>
+    </section>
+    <%}%>
+
+    <h3>Sauces</h3>
+    <%for (let i = 0; i < printSauce.length/5; i++) {%>
+    <section class="sectionStock">
+      <%for (let i2 = 0; i2 < 5; i2++) { if (printSauce[(i*5)+i2] != undefined)
+      { result = printSauce[(i*5)+i2] %>
+      <div class="compteurContainer">
+        <div class="dish">
+          <div class="dish-img">
+            <img src="img/<%=result.slug%>.png" width="80vw" />
+          </div>
+          <p><%=result.label%></p>
+        </div>
+        <div class="compteurBottom">
+          <div class="dish-compteur <%= result.quantity >= 10 ? "extended" : ""%>">
+            <div class="dish-arrow">
+              <img src="img/top-arrow.png" class="arrowUp" id="<%=result.slug%>"/>
+              <img src="img/bottom-arrow.png" class="arrowDown" id="<%=result.slug%>"/>
+            </div>
+            <b><%=result.quantity%></b>
+          </div>
+
+          <div>
+            Besoin:<span class="besoin"><%=result.need%></span>
+            <div class="initBesoin">
+              <img src="img/add.png" class="cross" id="<%=result.slug%>" />
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <%}}%>
+    </section>
+    <%}%>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/admin.js"></script>
+  </body>
+</html>
