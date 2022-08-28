@@ -23,8 +23,9 @@ import Route from '@ioc:Adonis/Core/Route'
 Route.get('/', async ({view}) => { return view.render('index') })
 Route.get('/about', async ({view}) => { return view.render('about') })
 Route.get('/cgu', async ({view}) => { return view.render('cgu') })
-Route.get('/dessert', async ({view}) => { return view.render('dessert') })
 Route.get('/sandwich', 'SandwichesController.index')
 Route.get('/login', async ({view}) => { return view.render('login') })
+Route.get('/dessert', 'SandwichesController.dessert')
 
 Route.post('/login', 'AuthController.login')
+Route.post('/sandwich/first-step', 'SandwichesController.storeFirstStep')

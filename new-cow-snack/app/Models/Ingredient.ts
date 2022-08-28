@@ -11,7 +11,7 @@ export default class Ingredient extends BaseModel {
 
   @computed()
   public get slug() {
-    return this.name.toLowerCase().replace(/\s/gmi,'_')
+    return this.name.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/\s/gmi,'_')
   }
 
   @column()
