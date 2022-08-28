@@ -19,16 +19,12 @@
 */
 
 import Route from '@ioc:Adonis/Core/Route'
-import fs from 'fs'
 
-const routes = fs.readdirSync('./resources/views').filter(file => file.endsWith('.edge'))
-
-console.log('\nPrecreated routes:\n')
-for (const route of routes) {
-  const name = route.split('.')[0]  // remove .edge
-  Route.get(`/${name === 'index' ? '' : name}`, async ({ view }) => { return view.render(name) })
-  console.log('GET /' + name + " route created")
-}
-console.log()
+Route.get('/', async ({view}) => { return view.render('index') })
+Route.get('/about', async ({view}) => { return view.render('about') })
+Route.get('/cgu', async ({view}) => { return view.render('cgu') })
+Route.get('/dessert', async ({view}) => { return view.render('dessert') })
+Route.get('/sandwich', 'SandwichesController.index')
+Route.get('/login', async ({view}) => { return view.render('login') })
 
 Route.post('/login', 'AuthController.login')
