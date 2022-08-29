@@ -10,85 +10,75 @@
 		<link rel="stylesheet" href="css/style.css">
 		<link rel="stylesheet" href="css/unique.css">
 	</head>
-	<body>
+	<body x-data="dessert">
 		@include('partials/header')
 
 		<section id="TopDessert">
-				<h1>Boissons et Desserts</h1>
-					<a href="/sandwich">
-						<div class="annul">
-							<img src="img/left-arrow.svg" width="10%">
-							Revenir en arrière
-						</div>
-					</a>
-				<h2>Une <b>boisson </b><span class="red">?</span>, un <b>dessert</b><span class="red"> ?</span></h2>
-				<div id="choiceDessert">
-						<button type="button" id="drinkButton" class="selecteur">
-							<img src="img/can.png" width="100vw" class="vitrine">
-						</button>
-						<button type="button" id="dessertButton" class="selecteur">
-							<img src="img/cookies.png" width="100vw" class="vitrine">
-						</button>
+			<h1>Boissons et Desserts</h1>
+			<a href="/sandwich">
+				<div class="annul">
+					<img src="img/left-arrow.svg" width="10%">
+					Revenir en arrière
 				</div>
+			</a>
+			<h2>Une <b>boisson </b><span class="red">?</span>, un <b>dessert</b><span class="red"> ?</span></h2>
+			<div id="choiceDessert">
+				<button type="button" id="drinkButton" class="selecteur" :class="{ 'active': showBoisson }" @click="toggleShowBoisson">
+					<img src="img/can.png" width="100vw" class="vitrine">
+				</button>
+				<button type="button" id="dessertButton" class="selecteur" :class="{ 'active': showDessert }" @click="toggleShowDessert">
+					<img src="img/cookies.png" width="100vw" class="vitrine">
+				</button>
+			</div>
 		</section>
 
-
-
-		<!--  -->
 		<section id="cowDessert">
 			<form>
-				<section class="Boissons">
+				<section class="Boissons" :class="{ 'opac': showBoisson }">
 					<h2>Boisson</h2>
 					<div class="flex-row align extend wrap">
 						<div id="groupDrink">
-							<%	let drinkCount = 0 %>
-							<% for (let i = 1; i <= 3; i++) { %>
-								<div class="flex-row">
-									<% printDrink.forEach((element) => {%>
-										<%if ( drinkCount >= ((i-1)*3) && drinkCount < (i*3)) {%>
-											<div class="sodaButton">
-												<input type="radio" name="soda" value="<%=element.label%>" id="<%=element.slug%>" <%=drinkCount == 0 ? "checked" : ""%>>
-												<label for="<%=element.slug%>"><img src="img/<%=element.slug%>.jpg"></label>
-											</div>
-										<%}%>
-										<%drinkCount++;%>
-									<%})%>
-									<%drinkCount = 0;%>
-								</div>
-							<%}%>
+							<div class="flex-row">
+								@each(boisson in boissons)
+									<div class="sodaButton">
+										<input type="radio" name="soda" value="{{boisson.name}}" id="{{boisson.slug}}" @click="toggleBoisson({{boisson.id}})">
+										<label for="{{boisson.slug}}"><img src="img/{{boisson.slug}}.jpg"></label>
+									</div>
+								@end
+							</div>
 						</div>
 						<div id="customDrink">
 							<h3>Vous ne trouvez pas la boisson que vous cherchez ?</h3>
 							<div class="nameDrink">
 								<h5>Dites-nous de quelle boisson il s'agit ?</h5>
-								<input type="text" id="drinkCustom" class="name">
+								<input type="text" id="drinkCustom" class="name" x-model="newBoisson">
 								<p>Si la boisson est indisponible, vous serez recontacté pour en choisir une autre.</p>
 							</div>
 						</div>
 					</div>
 				</section>
-				<section class="Desserts">
-								<h2>Dessert</h2>
-								<div id="buttonDessert" class="flex-row wrap pad-200">
-									<%let dessertCount = 0;%>
-									<%printDessert.forEach((result) => {%>
-										<div>
-				  							<button type="button" id="<%=result.label%>" <%=dessertCount == 0 ? "class=active" : ""%>><img src="img/<%=result.slug%>.png" width="90%" class="img"></button>
-				  							<p><%=result.label%></p>
-										</div>
-										<%dessertCount++;%>  
-									<%})%>
-				  				</div>
+				<section class="Desserts" :class="{ 'opac': showDessert }">
+					<h2>Dessert</h2>
+					<div id="buttonDessert" class="flex-row wrap pad-200">
+						@each(dessert in desserts)
+							<div>
+								<button type="button" id="{{dessert.name}}"><img src="img/{{dessert.slug}}.png" width="90%" class="img" @click="toggleDessert({{dessert.id}})"></button>
+								<p>{{dessert.name}}</p>
+							</div>
+						@end
+					</div>
 				</section>
 				
 				<div class="submite">
-					<input type="button" value="Finaliser la commande" id="customsubmit">
+					<input type="button" value="Finaliser la commande" id="customsubmit" @click="finishOrder">
 				</div>
 				
 			</form>
 		</section>
 
 		@include('partials/footer')
-		<script src="js/dessert.js"></script>
+  	<script defer src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+		<script defer src="js/dessert.js"></script>
+  	<script defer src="https://unpkg.com/alpinejs@3.10.3/dist/cdn.min.js"></script>
 	</body>
 </html>

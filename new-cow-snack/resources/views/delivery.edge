@@ -11,9 +11,7 @@
     <link rel="stylesheet" href="css/jquery.datetimepicker.css" />
   </head>
   <body>
-    <header>
-      <% include header %>
-    </header>
+    @include('partials/header')
 
     <section id="livraison">
       <form action="final.html">
@@ -38,7 +36,7 @@
               name="nameCommand"
               class="name"
               id="name"
-              placeholder="nom prénom"
+              placeholder="Nom Prénom"
             />
           </div>
           <div class="nameCustomer">
@@ -52,7 +50,7 @@
               class="name"
               id="phone"
               value=""
-              placeholder="06 72 56 89 73"
+              placeholder="06 XX XX XX XX"
             />
           </div>
         </div>
@@ -73,15 +71,14 @@
       </form>
     </section>
 
-    <footer>
-      <% include footer %>
-    </footer>
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/jquery.datetimepicker.full.min.js"></script>
-    <script src="js/moment.min.js"></script>
-    <script src="js/fr.js"></script>
-    <script src="js/settings-calendar.js"></script>
-    <script>
+    @include('partials/footer')
+  	<script defer src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script defer src="js/jquery-3.4.1.min.js"></script>
+    <script defer src="js/jquery.datetimepicker.full.min.js"></script>
+    <script defer src="js/moment.min.js"></script>
+    <script defer src="js/fr.js"></script>
+    <script defer src="js/settings-calendar.js"></script>
+    <script defer>
       document
         .querySelector("#livraisonSubmit")
         .addEventListener("click", () => {
@@ -111,14 +108,14 @@
               "Vous n'avez pas rentré un numéro de téléphone valide";
             erreur.appendChild(noPhone);
           }
-          if (nom != "" && telephone.length == 10 && !isNaN(telephone)) {
-            $.post(
-              "/livraison",
-              { livraison: livraison, nom: nom, telephone: telephone },
-              () => {
-                window.location.href = "/final";
-              }
-            );
+          if (nom !== "" && telephone.length === 10 && !isNaN(telephone)) {
+            axios.post('/sandwich/third-step', {
+              livraison,
+              nom,
+              telephone
+            }).then(() => {
+              window.location.href = "/final"
+            })
           }
           erreurPlace.appendChild(erreur);
           window.scrollTo(0, 0);
